@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Snexz | Find the Next Tool for Your Trade</title>
+    <meta name="description" content="Enter your industry and goals into Snexz to instantly discover the best software to run your business.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { 
+            --bg: #F9FAFB; 
+            --brand-main: #111827; /* Charcoal */
+            --text-main: #111827; 
+            --text-sub: #6B7280; 
+            --success: #10B981; 
+            --border: #E5E7EB; 
+            --shadow-premium: 0 20px 40px -15px rgba(17, 24, 39, 0.08);
+            --shadow-hover: 0 25px 50px -12px rgba(17, 24, 39, 0.15);
+        }
+        
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        
+        /* The "Laser Wipe & Lock" Loading Animation */
+        #loader-overlay { position: fixed; inset: 0; background-color: var(--bg); z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .loader-svg { width: 120px; height: auto; }
+        .loader-svg path { clip-path: inset(0 100% 0 0); animation: wipeRight 1s cubic-bezier(0.76, 0, 0.24, 1) forwards 0.2s; }
+        .loader-svg polygon { opacity: 0; transform: translateY(20px); animation: lockIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.1s forwards; }
+        
+        @keyframes wipeRight { to { clip-path: inset(0 0 0 0); } }
+        @keyframes lockIn { to { opacity: 1; transform: translateY(0); } }
+        
+        main { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; margin-top: 6vh; width: 100%; max-width: 680px; text-align: center; opacity: 0; animation: revealMain 0.8s ease-out 2.6s forwards; }
+        @keyframes revealMain { to { opacity: 1; } }
+
+        /* Brand Header */
+        .brand-header { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 20px; }
+        .logo-svg { height: 60px; width: auto; }
+        .brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 3.8rem; letter-spacing: -1.5px; color: var(--brand-main); margin: 0; line-height: 1; }
+        
+        .tagline { color: var(--text-sub); font-size: 1.15rem; margin-bottom: 40px; font-weight: 500; }
+        
+        /* Premium Advanced Search Engine UI */
+        .search-container { background: #FFFFFF; border-radius: 24px; padding: 35px; border: 1px solid rgba(17, 24, 39, 0.06); box-shadow: var(--shadow-premium); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); text-align: left;}
+        .search-container:hover { box-shadow: var(--shadow-hover); border-color: rgba(17, 24, 39, 0.12); }
+        
+        .form-section { margin-bottom: 25px; }
+        .section-title { font-size: 0.8rem; font-weight: 800; color: var(--text-sub); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 8px; font-family: 'Outfit', sans-serif; }
+        
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
+        
+        .form-group label { font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 8px; display: block; }
+        
+        select { width: 100%; border: 1.5px solid var(--border); padding: 14px 16px; font-size: 1rem; border-radius: 12px; outline: none; font-family: inherit; background-color: #F9FAFB; color: var(--text-main); box-sizing: border-box; transition: 0.2s; cursor: pointer; appearance: none; font-weight: 600; }
+        select:focus { border-color: var(--brand-main); box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.08); background-color: #FFF; }
+        
+        /* Custom Tech Spec Toggles */
+        .tech-specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+        .tech-toggle { display: block; position: relative; cursor: pointer; }
+        .tech-toggle input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
+        .tech-toggle span { display: block; padding: 12px 10px; text-align: center; border: 1.5px solid var(--border); border-radius: 10px; font-size: 0.85rem; font-weight: 700; color: var(--text-sub); transition: all 0.2s; background: #F9FAFB; user-select: none; }
+        .tech-toggle input:checked ~ span { background: var(--brand-main); color: #FFF; border-color: var(--brand-main); box-shadow: 0 4px 10px rgba(17, 24, 39, 0.2); }
+        
+        .btn-audit { background: var(--brand-main); color: white; border: none; padding: 22px; border-radius: 14px; font-weight: 800; font-size: 1.15rem; cursor: pointer; transition: all 0.2s ease; font-family: 'Outfit', sans-serif; margin-top: 15px; width: 100%; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(17, 24, 39, 0.15); }
+        .btn-audit:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(17, 24, 39, 0.3); }
+        .btn-audit:active { transform: translateY(0); }
+        .btn-audit:disabled { opacity: 0.8; cursor: wait; transform: none; box-shadow: none; }
+
+        /* Dynamic Results Area */
+        #result-area { display: none; margin-top: 25px; text-align: left; animation: slideUp 0.4s ease-out; width: 100%; }
+        
+        /* Top Match Card */
+        .audit-card { background: #FFF; border-radius: 24px; padding: 35px; border: 1px solid var(--brand-main); box-shadow: var(--shadow-premium); margin-bottom: 30px; position: relative; overflow: hidden; }
+        .optimal-badge { position: absolute; top: 0; right: 0; background: var(--brand-main); color: #FFF; font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 800; padding: 8px 16px; border-bottom-left-radius: 16px; text-transform: uppercase; letter-spacing: 1px; }
+        .score-big { font-size: 5rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-right: 20px; line-height: 1; letter-spacing: -2px; }
+        .metric-row { display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid #F3F4F6; font-size: 0.95rem; }
+        
+        .btn-proceed { display: block; background: var(--brand-main); color: white; text-align: center; padding: 20px; border-radius: 12px; text-decoration: none; font-weight: 800; margin-top: 25px; font-size: 1.05rem; transition: 0.2s; font-family: 'Outfit', sans-serif; letter-spacing: 0.5px;}
+        .btn-proceed:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(17, 24, 39, 0.3); }
+
+        /* Ranked List Section */
+        .ranked-header { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin: 40px 0 20px 0; padding-bottom: 15px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-end;}
+        .ranked-header span { font-size: 0.9rem; font-weight: 600; color: var(--text-sub); font-family: 'Plus Jakarta Sans', sans-serif;}
+        
+        .ranked-list { display: flex; flex-direction: column; gap: 15px; }
+        
+        .ranked-row { display: flex; align-items: center; justify-content: space-between; background: #FFF; border: 1px solid var(--border); border-radius: 16px; padding: 20px 25px; transition: 0.3s ease; text-decoration: none; color: inherit; }
+        .ranked-row:hover { border-color: #D1D5DB; transform: translateX(4px); box-shadow: var(--shadow-sm); }
+        
+        .row-left { display: flex; align-items: center; gap: 20px; }
+        .row-score { font-family: 'Outfit', sans-serif; font-size: 2.2rem; font-weight: 800; width: 60px; text-align: center; }
+        .row-details h3 { margin: 0 0 5px 0; font-family: 'Outfit', sans-serif; font-size: 1.2rem; color: var(--text-main); }
+        .row-details p { margin: 0; font-size: 0.9rem; font-weight: 500; }
+        
+        .row-action { font-weight: 700; font-size: 0.9rem; color: var(--text-main); display: flex; align-items: center; gap: 5px; }
+        .row-action::after { content: '→'; transition: 0.2s; }
+        .ranked-row:hover .row-action::after { transform: translateX(4px); }
+
+        /* Modals */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(8px); }
+        .modal-content { background: white; padding: 40px; border-radius: 24px; max-width: 500px; text-align: left; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); animation: modalPop 0.3s ease-out; }
+        .modal-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+        
+        @keyframes modalPop { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        
+        /* Footer */
+        .site-footer { padding: 40px; text-align: center; color: var(--text-sub); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: auto; width: 100%; font-weight: 600; opacity: 0; animation: revealMain 0.8s ease-out 2.6s forwards; }
+        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-main); text-decoration: none; font-weight: 700; cursor: pointer; transition: 0.2s; }
+        .footer-links a:hover { color: var(--text-sub); }
+        
+        @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div id="loader-overlay">
+        <svg class="loader-svg" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 338 100 L 863 100 L 663 300 L 843 460 L 843 540 L 663 700 L 138 700 L 338 500 L 158 340 L 158 260 Z" stroke="#111827" stroke-width="85" fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="10" />
+            <polygon points="300.5,280 430.5,280 700.5,520 570.5,520" fill="#111827" />
+        </svg>
+    </div>
+
+    <main>
+        <div class="brand-header">
+            <svg class="logo-svg" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 338 100 L 863 100 L 663 300 L 843 460 L 843 540 L 663 700 L 138 700 L 338 500 L 158 340 L 158 260 Z" stroke="#111827" stroke-width="85" fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="10" />
+                <polygon points="300.5,280 430.5,280 700.5,520 570.5,520" fill="#111827" />
+            </svg>
+            <h1 class="brand-name">Snexz</h1>
+        </div>
+        
+        <div id="search-box-ui">
+            <p class="tagline">Stop guessing. Find the exact software your business needs.</p>
+            
+            <div class="search-container">
+                
+                <div class="form-section">
+                    <div class="section-title">Core Architecture</div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Industry</label>
+                            <select id="input-industry">
+                                <option value="Construction">Construction & Trades</option>
+                                <option value="Agency">Marketing & Digital Agency</option>
+                                <option value="Medical">Medical & Dental</option>
+                                <option value="Ecommerce">E-Commerce & Retail</option>
+                                <option value="Real Estate">Real Estate & Property</option>
+                                <option value="Legal">Legal & Professional</option>
+                                <option value="SaaS">SaaS & Tech Startup</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Primary Operational Goal</label>
+                            <select id="input-task">
+                                <option value="CRM">Lead & Pipeline Mgmt (CRM)</option>
+                                <option value="Project Management">Task & Project Tracking</option>
+                                <option value="Invoicing">Automated Billing & Finance</option>
+                                <option value="Booking">Client Scheduling</option>
+                                <option value="HR">HR, Payroll & Recruiting</option>
+                                <option value="Marketing">Marketing Automation</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-title">Scale & Deployment</div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Company Size</label>
+                            <select id="input-size">
+                                <option value="Solo">Solo Founder / Freelancer</option>
+                                <option value="Micro">2 - 10 Employees</option>
+                                <option value="Small">11 - 50 Employees</option>
+                                <option value="Medium">51 - 200 Employees</option>
+                                <option value="Enterprise">200+ Employees</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Monthly Software Budget</label>
+                            <select id="input-budget">
+                                <option value="Free">£0 (Freemium Tools)</option>
+                                <option value="Low">£10 - £50 / month</option>
+                                <option value="Medium">£50 - £200 / month</option>
+                                <option value="Enterprise">£200+ / month</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-title">Required Capabilities</div>
+                    <div class="tech-specs-grid">
+                        <label class="tech-toggle">
+                            <input type="checkbox" value="Zapier" checked>
+                            <span>Zapier / APIs</span>
+                        </label>
+                        <label class="tech-toggle">
+                            <input type="checkbox" value="GDPR">
+                            <span>GDPR Ready</span>
+                        </label>
+                        <label class="tech-toggle">
+                            <input type="checkbox" value="SSO">
+                            <span>SSO / SAML Security</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button class="btn-audit" id="audit-btn" onclick="startSearch()">Search</button>
+            </div>
+        </div>
+
+        <div id="result-area">
+            </div>
+    </main>
+
+    <div id="info-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <svg viewBox="0 0 1000 800" style="height: 35px; width: auto;" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 338 100 L 863 100 L 663 300 L 843 460 L 843 540 L 663 700 L 138 700 L 338 500 L 158 340 L 158 260 Z" stroke="#111827" stroke-width="85" fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="10" />
+                    <polygon points="300.5,280 430.5,280 700.5,520 570.5,520" fill="#111827" />
+                </svg>
+                <h2 id="modal-title" style="font-family:'Outfit', sans-serif; margin:0; font-size: 1.5rem; letter-spacing: -0.5px;"></h2>
+            </div>
+            <div id="modal-body" style="line-height:1.6; color:var(--text-main); font-size:0.95rem;"></div>
+            <button onclick="closeModal()" style="margin-top:25px; background:var(--text-main); color:white; border:none; padding:15px 30px; border-radius:12px; font-weight:700; cursor:pointer; font-family:'Outfit', sans-serif; letter-spacing: 0.5px; width: 100%;">Close Panel</button>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a onclick="openModal('how')">How it works</a>
+            <a onclick="openModal('privacy')">Privacy Policy</a>
+            <a href="/industries.html">Software Library</a>
+            <a href="mailto:hello@snexz.com">Contact</a>
+        </div>
+        <div>&copy; 2026 Snexz. All rights reserved.</div>
+        <div style="max-width:400px; margin:15px auto 0; line-height:1.5; opacity:0.7;"><strong>Earnings Disclosure:</strong> Snexz may earn a commission on qualifying purchases made through our referral links.</div>
+    </footer>
+
+    <script>
+        // 1. Loader Logic
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loader = document.getElementById('loader-overlay');
+                loader.style.opacity = '0';
+                setTimeout(() => { loader.style.visibility = 'hidden'; }, 500);
+            }, 2800);
+        });
+
+        // 2. Global Currency Localization Logic (Restored)
+        async function localizeCurrency() {
+            try {
+                const res = await fetch('https://ipapi.co/json/');
+                const data = await res.json();
+                const userCurrency = data.currency;
+                
+                const budgetSelect = document.getElementById('input-budget');
+                const rates = { 
+                    'USD': { sym: '$', mult: 1.25 }, 
+                    'EUR': { sym: '€', mult: 1.17 }, 
+                    'AUD': { sym: 'A$', mult: 1.95 }, 
+                    'CAD': { sym: 'C$', mult: 1.70 } 
+                };
+
+                if (rates[userCurrency]) {
+                    const c = rates[userCurrency];
+                    budgetSelect.options[0].text = `${c.sym}0 (Freemium Tools)`;
+                    budgetSelect.options[1].text = `${c.sym}${Math.round(10 * c.mult)} - ${c.sym}${Math.round(50 * c.mult)} / month`;
+                    budgetSelect.options[2].text = `${c.sym}${Math.round(50 * c.mult)} - ${c.sym}${Math.round(200 * c.mult)} / month`;
+                    budgetSelect.options[3].text = `${c.sym}${Math.round(200 * c.mult)}+ / month`;
+                }
+            } catch (error) {
+                console.log("Localization deferred to default currency.");
+            }
+        }
+        localizeCurrency();
+
+        // 3. Modal Logic
+        function openModal(type) {
+            const m = document.getElementById('info-modal'), t = document.getElementById('modal-title'), b = document.getElementById('modal-body');
+            if(type === 'how') { 
+                t.innerText = "The Decision Engine"; 
+                b.innerHTML = "<p>Snexz operates utilizing <strong>Programmatic Feature Matching</strong>. By bypassing surface-level marketplace marketing, our engine maps your specific industry, scale, and compliance needs directly to verified B2B SaaS architecture.</p><p>We cross-reference budget constraints and operational workflows to establish an optimal software match, saving you hours of research and thousands in mismatched software subscriptions.</p>"; 
+            }
+            else { 
+                t.innerText = "Privacy Policy"; 
+                b.innerHTML = "<p>Business privacy is a foundational pillar of the Snexz infrastructure. We operate strictly as an analytical proxy; we do not track, store, or monetize individual company data or browsing habits.</p><p>Our engine strictly analyzes the parameters provided during a search request. Communication is secured via industry-standard encryption, ensuring a completely anonymous and private verification experience.</p>"; 
+            }
+            m.style.display = 'flex';
+        }
+        function closeModal() { document.getElementById('info-modal').style.display = 'none'; }
+
+        // 4. Dynamic Opacity Calculator for Scores
+        function getScoreColor(score) {
+            if (score >= 90) return `rgba(17, 24, 39, 1)`;     // Solid Charcoal
+            if (score >= 70) return `rgba(17, 24, 39, 0.7)`;   // Faded Charcoal
+            if (score >= 60) return `rgba(17, 24, 39, 0.4)`;   // Light Grey
+            return `rgba(17, 24, 39, 0.15)`;                   // Ghosted Grey for 50 and below
+        }
+
+        // 5. Search Engine & Ranking Logic
+        function startSearch() {
+            const ind = document.getElementById('input-industry').value;
+            const size = document.getElementById('input-size').value;
+            const btn = document.getElementById('audit-btn');
+            
+            let stage = 0; 
+            const stages = ["Querying SaaS database...", "Cross-referencing compliance...", "Calculating ROI metrics...", "Finalizing Match..."];
+            btn.disabled = true;
+            
+            const timer = setInterval(() => { 
+                if (stage < stages.length) {
+                    btn.innerText = stages[stage];
+                    stage++;
+                }
+            }, 800);
+
+            setTimeout(() => {
+                clearInterval(timer);
+                
+                // Dynamic mapping demo based on inputs
+                let topName = "Contractor Foreman";
+                if (ind === "Agency") topName = "HighLevel";
+                if (ind === "Medical") topName = "Appointy";
+                if (ind === "Real Estate") topName = "Buildium";
+                
+                // Injecting the dynamic ranked HTML into the DOM
+                const resultArea = document.getElementById('result-area');
+                resultArea.innerHTML = `
+                    <div class="audit-card">
+                        <div class="optimal-badge">#1 Optimal Fit</div>
+                        <div style="display:flex; align-items:center; margin-bottom:25px;">
+                            <div class="score-big" style="color: ${getScoreColor(98)}">98</div>
+                            <div>
+                                <div style="font-size:0.8rem; color:var(--text-sub); text-transform:uppercase; font-weight:800; letter-spacing:0.5px; font-family:'Outfit', sans-serif;">Match Score</div>
+                                <div style="font-weight:800; font-size:0.95rem; color:var(--text-main);">Verified for ${ind}</div>
+                            </div>
+                        </div>
+                        <div class="metric-row"><span>Recommended Software</span><strong style="font-size:1.1rem;">${topName}</strong></div>
+                        <div class="metric-row"><span>Scale Alignment</span><span style="font-weight:700;">${size} Tier Optimized</span></div>
+                        <a href="/software-template.html" class="btn-proceed">View Architectural Analysis →</a>
+                    </div>
+
+                    <div class="ranked-header">
+                        Complete Matrix Analysis
+                        <span>Showing 4 evaluated systems</span>
+                    </div>
+                    
+                    <div class="ranked-list">
+                        <a href="/software-template.html" class="ranked-row">
+                            <div class="row-left">
+                                <div class="row-score" style="color: ${getScoreColor(84)}">84</div>
+                                <div class="row-details">
+                                    <h3>Jobber</h3>
+                                    <p style="color: #4B5563;">Strong alternative. Lacks advanced custom reporting.</p>
+                                </div>
+                            </div>
+                            <div class="row-action">View Analysis</div>
+                        </a>
+
+                        <a href="/software-template.html" class="ranked-row">
+                            <div class="row-left">
+                                <div class="row-score" style="color: ${getScoreColor(62)}">62</div>
+                                <div class="row-details">
+                                    <h3>Buildertrend</h3>
+                                    <p style="color: #6B7280;">Partial match. Exceeds selected budget constraints.</p>
+                                </div>
+                            </div>
+                            <div class="row-action">View Analysis</div>
+                        </a>
+
+                        <a href="/software-template.html" class="ranked-row" style="background: #F9FAFB; border-style: dashed;">
+                            <div class="row-left">
+                                <div class="row-score" style="color: ${getScoreColor(50)}">50</div>
+                                <div class="row-details">
+                                    <h3 style="color: var(--text-sub);">Toast POS</h3>
+                                    <p style="color: #9CA3AF;">Incompatible. System designed for Hospitality, not ${ind}.</p>
+                                </div>
+                            </div>
+                            <div class="row-action" style="color: var(--text-sub);">Filtered</div>
+                        </a>
+                    </div>
+                `;
+                
+                document.getElementById('search-box-ui').style.display = 'none';
+                resultArea.style.display = 'block';
+                btn.innerText = "Search";
+                btn.disabled = false;
+                
+            }, 3500); 
+        }
+    </script>
+</body>
+</html>
