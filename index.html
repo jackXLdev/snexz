@@ -36,11 +36,9 @@
         @keyframes revealMain { to { opacity: 1; } }
 
         /* Brand Header */
-        .brand-header { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 20px; }
+        .brand-header { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 40px; }
         .logo-svg { height: 60px; width: auto; }
         .brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 3.8rem; letter-spacing: -1.5px; color: var(--brand-main); margin: 0; line-height: 1; }
-        
-        .tagline { color: var(--text-sub); font-size: 1.15rem; margin-bottom: 40px; font-weight: 500; }
         
         /* Premium Advanced Search Engine UI */
         .search-container { background: #FFFFFF; border-radius: 24px; padding: 35px; border: 1px solid rgba(17, 24, 39, 0.06); box-shadow: var(--shadow-premium); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); text-align: left;}
@@ -102,7 +100,17 @@
         /* Modals */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(8px); }
         .modal-content { background: white; padding: 40px; border-radius: 24px; max-width: 500px; text-align: left; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); animation: modalPop 0.3s ease-out; }
-        .modal-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+        
+        /* Modal Typography & Layout Updates */
+        .modal-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+        .modal-brand svg { height: 35px; width: auto; }
+        .modal-brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.8rem; letter-spacing: -0.5px; color: var(--brand-main); margin: 0; }
+        .modal-header { border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 20px; }
+        #modal-title { font-family: 'Outfit', sans-serif; margin: 0; font-size: 1.2rem; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-sub); }
+        
+        /* Strict sizing for modal paragraphs */
+        #modal-body p { font-size: 0.95rem; line-height: 1.6; margin-top: 0; margin-bottom: 15px; color: var(--text-main); }
+        #modal-body p:last-child { margin-bottom: 0; }
         
         @keyframes modalPop { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         
@@ -134,8 +142,6 @@
         </div>
         
         <div id="search-box-ui">
-            <p class="tagline">Stop guessing. Find the exact software your business needs.</p>
-            
             <div class="search-container">
                 
                 <div class="form-section">
@@ -220,14 +226,17 @@
 
     <div id="info-modal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <svg viewBox="0 0 1000 800" style="height: 35px; width: auto;" xmlns="http://www.w3.org/2000/svg">
+            <div class="modal-brand">
+                <svg viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
                     <path d="M 338 100 L 863 100 L 663 300 L 843 460 L 843 540 L 663 700 L 138 700 L 338 500 L 158 340 L 158 260 Z" stroke="#111827" stroke-width="85" fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="10" />
                     <polygon points="300.5,280 430.5,280 700.5,520 570.5,520" fill="#111827" />
                 </svg>
-                <h2 id="modal-title" style="font-family:'Outfit', sans-serif; margin:0; font-size: 1.5rem; letter-spacing: -0.5px;"></h2>
+                <h3 class="modal-brand-name">Snexz</h3>
             </div>
-            <div id="modal-body" style="line-height:1.6; color:var(--text-main); font-size:0.95rem;"></div>
+            <div class="modal-header">
+                <h2 id="modal-title"></h2>
+            </div>
+            <div id="modal-body"></div>
             <button onclick="closeModal()" style="margin-top:25px; background:var(--text-main); color:white; border:none; padding:15px 30px; border-radius:12px; font-weight:700; cursor:pointer; font-family:'Outfit', sans-serif; letter-spacing: 0.5px; width: 100%;">Close Panel</button>
         </div>
     </div>
@@ -281,7 +290,7 @@
         }
         localizeCurrency();
 
-        // 3. Modal Logic
+        // 3. Modal Logic (Updated paragraphs for equal sizing)
         function openModal(type) {
             const m = document.getElementById('info-modal'), t = document.getElementById('modal-title'), b = document.getElementById('modal-body');
             if(type === 'how') { 
