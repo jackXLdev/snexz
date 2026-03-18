@@ -30,16 +30,17 @@
         @keyframes wipeRight { to { clip-path: inset(0 0 0 0); } }
         @keyframes lockIn { to { opacity: 1; transform: translateY(0); } }
         
-        /* Centered Main Container */
-        main { flex: 1; display: flex; flex-direction: column; justify-content: center; margin: auto; width: 100%; max-width: 680px; text-align: center; opacity: 0; animation: revealMain 0.8s ease-out 2.6s forwards; }
+        /* Lowered Main Container */
+        main { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; margin-top: 12vh; width: 100%; max-width: 680px; text-align: center; opacity: 0; animation: revealMain 0.8s ease-out 2.6s forwards; }
         @keyframes revealMain { to { opacity: 1; } }
 
-        .brand-header { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 10px; }
-        .logo-svg { height: 45px; width: auto; stroke: var(--brand-main); }
+        .brand-header { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 12px; }
+        .logo-svg { height: 65px; width: auto; stroke: var(--brand-main); }
         .logo-svg polygon { fill: var(--brand-main); }
-        .brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 2.8rem; letter-spacing: -1px; color: var(--brand-main); margin: 0; line-height: 1; }
+        .brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 3.8rem; letter-spacing: -1.5px; color: var(--brand-main); margin: 0; line-height: 1; }
         
-        .tagline { color: var(--text-sub); font-size: 1.1rem; margin-bottom: 30px; font-weight: 500; }
+        /* Darker, bolder tagline */
+        .tagline { color: var(--text-main); font-size: 1.15rem; margin-bottom: 35px; font-weight: 600; }
         
         .search-container { background: transparent; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); text-align: left; width: 100%;}
         
@@ -72,7 +73,7 @@
 
         #result-area { display: none; margin-top: 10px; text-align: left; animation: slideUp 0.4s ease-out; width: 100%; background: transparent; padding: 0; border-radius: 0; box-sizing: border-box; }
         
-        .audit-card { background: #FFF; border-radius: 20px; padding: 35px; border: 1px solid var(--border); box-shadow: var(--shadow-premium); margin-bottom: 30px; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 15px;}
+        .audit-card { background: #FFF; border-radius: 20px; padding: 35px; border: 1px solid var(--brand-main); box-shadow: var(--shadow-premium); margin-bottom: 30px; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 15px;}
         .brand-header-result { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
         .result-logo-container { display: flex; align-items: center; gap: 15px; }
         .company-logo { width: 55px; height: 55px; border-radius: 12px; object-fit: contain; border: 1px solid var(--border); padding: 6px; background: #FFF; box-shadow: var(--shadow-sm); }
@@ -80,13 +81,13 @@
         .result-title span { font-size: 0.85rem; font-weight: 800; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.5px;}
         
         .score-pill { display: flex; flex-direction: column; align-items: flex-end; }
-        .score-big { font-size: 3.5rem; font-weight: 800; font-family: 'Outfit', sans-serif; line-height: 0.9; letter-spacing: -1px; }
+        .score-big { font-size: 3.5rem; font-weight: 800; font-family: 'Outfit', sans-serif; line-height: 0.9; letter-spacing: -1px; color: var(--brand-main); }
         .score-label { font-size: 0.75rem; font-weight: 800; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.5px; font-family: 'Outfit', sans-serif; }
         
         .metric-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #F1F5F9; font-size: 0.95rem; }
         .metric-row:last-of-type { border-bottom: none; }
         
-        .btn-proceed { display: flex; justify-content: center; align-items: center; gap: 8px; color: white; padding: 18px; border-radius: 12px; text-decoration: none; font-weight: 800; margin-top: 15px; font-size: 1.05rem; transition: 0.2s; font-family: 'Outfit', sans-serif; letter-spacing: 0.5px;}
+        .btn-proceed { display: flex; justify-content: center; align-items: center; gap: 8px; background: var(--brand-main); color: white; padding: 18px; border-radius: 12px; text-decoration: none; font-weight: 800; margin-top: 15px; font-size: 1.05rem; transition: 0.2s; font-family: 'Outfit', sans-serif; letter-spacing: 0.5px;}
         .btn-proceed:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(17, 24, 39, 0.2); }
 
         .ranked-header { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--text-main); margin: 30px 0 15px 0; display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 10px; border-bottom: 1px solid var(--border);}
@@ -311,21 +312,21 @@
         }
 
         const softwareDatabase = [
-            { id: 'hubspot', name: 'HubSpot', domain: 'hubspot.com', color: '#ff7a59', ind: ['Agency', 'SaaS', 'Ecommerce', 'Finance', 'Education'], task: ['CRM', 'Marketing', 'Customer Support', 'Analytics'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Free', 'Medium', 'Enterprise'], desc: 'The gold standard CRM and marketing automation suite.', link: 'hubspot.html' },
-            { id: 'monday', name: 'Monday.com', domain: 'monday.com', color: '#ff3d57', ind: ['Agency', 'SaaS', 'Construction', 'Real Estate', 'NonProfit'], task: ['Project Management', 'CRM', 'HR'], size: ['Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium'], desc: 'Highly visual, customizable work OS and project tracker.', link: 'monday.html' },
-            { id: 'shopify', name: 'Shopify', domain: 'shopify.com', color: '#95bf47', ind: ['Ecommerce', 'Hospitality'], task: ['Invoicing', 'Marketing', 'Inventory'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium', 'Enterprise'], desc: 'The definitive platform for independent retail architecture.', link: 'shopify.html' },
-            { id: 'contractor-foreman', name: 'Contractor Foreman', domain: 'contractorforeman.com', color: '#f39c12', ind: ['Construction'], task: ['Project Management', 'Invoicing'], size: ['Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'All-in-one management for specialty contractors and builders.', link: 'contractor-foreman.html' },
-            { id: 'quickbooks', name: 'QuickBooks', domain: 'quickbooks.intuit.com', color: '#2ca01c', ind: ['Construction', 'Agency', 'Medical', 'Ecommerce', 'Real Estate', 'Legal', 'SaaS', 'Finance', 'NonProfit'], task: ['Invoicing', 'Analytics'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'Industry-standard accounting and automated billing.', link: 'quickbooks.html' },
-            { id: 'zendesk', name: 'Zendesk', domain: 'zendesk.com', color: '#03363d', ind: ['SaaS', 'Ecommerce', 'Agency', 'Hospitality', 'Education'], task: ['CRM', 'Customer Support'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Medium', 'Enterprise'], desc: 'Enterprise-grade customer service and ticketing system.', link: 'zendesk.html' },
-            { id: 'highlevel', name: 'HighLevel', domain: 'gohighlevel.com', color: '#1052E6', ind: ['Agency', 'Real Estate'], task: ['CRM', 'Marketing', 'Booking'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Medium'], desc: 'White-label marketing platform built specifically for agencies.', link: 'highlevel.html' },
-            { id: 'pandadoc', name: 'PandaDoc', domain: 'pandadoc.com', color: '#00a85d', ind: ['Legal', 'Agency', 'SaaS', 'Real Estate', 'Finance'], task: ['Project Management', 'CRM', 'Document'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low', 'Medium'], desc: 'Automated document signing and secure proposal tracking.', link: 'pandadoc.html' },
-            { id: 'katana', name: 'Katana', domain: 'katanamrp.com', color: '#000000', ind: ['Ecommerce', 'Construction'], task: ['Project Management', 'Invoicing', 'Inventory'], size: ['Small', 'Medium'], budget: ['Medium', 'Enterprise'], desc: 'Advanced manufacturing and inventory management software.', link: 'katana.html' },
-            { id: 'appointy', name: 'Appointy', domain: 'appointy.com', color: '#446eed', ind: ['Medical', 'Legal', 'Hospitality'], task: ['Booking'], size: ['Solo', 'Micro', 'Small'], budget: ['Free', 'Low'], desc: 'HIPAA-compliant patient and client scheduling portal.', link: 'appointy.html' },
-            { id: 'notion', name: 'Notion', domain: 'notion.so', color: '#000000', ind: ['Agency', 'SaaS', 'Education', 'NonProfit'], task: ['Project Management', 'Document'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low'], desc: 'Highly flexible, all-in-one workspace for documents and wikis.', link: 'notion.html' },
-            { id: 'brevo', name: 'Brevo', domain: 'brevo.com', color: '#0092ff', ind: ['Ecommerce', 'Agency', 'Hospitality', 'NonProfit'], task: ['Marketing', 'CRM'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low', 'Medium'], desc: 'Affordable, scalable email marketing and automation platform.', link: 'brevo.html' },
-            { id: 'slack', name: 'Slack', domain: 'slack.com', color: '#4a154b', ind: ['SaaS', 'Agency', 'Ecommerce', 'NonProfit', 'Education'], task: ['Project Management', 'Customer Support'], size: ['Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low', 'Medium', 'Enterprise'], desc: 'The industry-standard hub for team communication and workflows.', link: 'slack.html' },
-            { id: 'dropbox', name: 'Dropbox', domain: 'dropbox.com', color: '#0061ff', ind: ['Construction', 'Agency', 'Legal', 'Real Estate', 'Education'], task: ['Document', 'Project Management'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low', 'Medium'], desc: 'AI-enhanced workspace and secure cloud file-sharing architecture.', link: 'dropbox.html' },
-            { id: 'activecampaign', name: 'ActiveCampaign', domain: 'activecampaign.com', color: '#356ae6', ind: ['Agency', 'SaaS', 'Ecommerce', 'Education'], task: ['Marketing', 'CRM'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Medium', 'Enterprise'], desc: 'Deep marketing automation and customer experience platform.', link: 'activecampaign.html' }
+            { id: 'hubspot', name: 'HubSpot', domain: 'hubspot.com', ind: ['Agency', 'SaaS', 'Ecommerce', 'Finance', 'Education'], task: ['CRM', 'Marketing', 'Customer Support', 'Analytics'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Free', 'Medium', 'Enterprise'], desc: 'The gold standard CRM and marketing automation suite.', link: 'hubspot.html' },
+            { id: 'monday', name: 'Monday.com', domain: 'monday.com', ind: ['Agency', 'SaaS', 'Construction', 'Real Estate', 'NonProfit'], task: ['Project Management', 'CRM', 'HR'], size: ['Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium'], desc: 'Highly visual, customizable work OS and project tracker.', link: 'monday.html' },
+            { id: 'shopify', name: 'Shopify', domain: 'shopify.com', ind: ['Ecommerce', 'Hospitality'], task: ['Invoicing', 'Marketing', 'Inventory'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium', 'Enterprise'], desc: 'The definitive platform for independent retail architecture.', link: 'shopify.html' },
+            { id: 'contractor-foreman', name: 'Contractor Foreman', domain: 'contractorforeman.com', ind: ['Construction'], task: ['Project Management', 'Invoicing'], size: ['Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'All-in-one management for specialty contractors and builders.', link: 'contractor-foreman.html' },
+            { id: 'quickbooks', name: 'QuickBooks', domain: 'quickbooks.intuit.com', ind: ['Construction', 'Agency', 'Medical', 'Ecommerce', 'Real Estate', 'Legal', 'SaaS', 'Finance', 'NonProfit'], task: ['Invoicing', 'Analytics'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'Industry-standard accounting and automated billing.', link: 'quickbooks.html' },
+            { id: 'zendesk', name: 'Zendesk', domain: 'zendesk.com', ind: ['SaaS', 'Ecommerce', 'Agency', 'Hospitality', 'Education'], task: ['CRM', 'Customer Support'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Medium', 'Enterprise'], desc: 'Enterprise-grade customer service and ticketing system.', link: 'zendesk.html' },
+            { id: 'highlevel', name: 'HighLevel', domain: 'gohighlevel.com', ind: ['Agency', 'Real Estate'], task: ['CRM', 'Marketing', 'Booking'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Medium'], desc: 'White-label marketing platform built specifically for agencies.', link: 'highlevel.html' },
+            { id: 'pandadoc', name: 'PandaDoc', domain: 'pandadoc.com', ind: ['Legal', 'Agency', 'SaaS', 'Real Estate', 'Finance'], task: ['Project Management', 'CRM', 'Document'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low', 'Medium'], desc: 'Automated document signing and secure proposal tracking.', link: 'pandadoc.html' },
+            { id: 'katana', name: 'Katana Cloud', domain: 'katanamrp.com', ind: ['Ecommerce', 'Construction'], task: ['Project Management', 'Invoicing', 'Inventory'], size: ['Small', 'Medium'], budget: ['Medium', 'Enterprise'], desc: 'Advanced manufacturing and inventory management software.', link: 'katana.html' },
+            { id: 'appointy', name: 'Appointy', domain: 'appointy.com', ind: ['Medical', 'Legal', 'Hospitality'], task: ['Booking'], size: ['Solo', 'Micro', 'Small'], budget: ['Free', 'Low'], desc: 'HIPAA-compliant patient and client scheduling portal.', link: 'appointy.html' },
+            { id: 'notion', name: 'Notion', domain: 'notion.so', ind: ['Agency', 'SaaS', 'Education', 'NonProfit'], task: ['Project Management', 'Document'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low'], desc: 'Highly flexible, all-in-one workspace for documents and wikis.', link: 'notion.html' },
+            { id: 'brevo', name: 'Brevo', domain: 'brevo.com', ind: ['Ecommerce', 'Agency', 'Hospitality', 'NonProfit'], task: ['Marketing', 'CRM'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low', 'Medium'], desc: 'Affordable, scalable email marketing and automation platform.', link: 'brevo.html' },
+            { id: 'slack', name: 'Slack', domain: 'slack.com', ind: ['SaaS', 'Agency', 'Ecommerce', 'NonProfit', 'Education'], task: ['Project Management', 'Customer Support'], size: ['Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low', 'Medium', 'Enterprise'], desc: 'The industry-standard hub for team communication and workflows.', link: 'slack.html' },
+            { id: 'dropbox', name: 'Dropbox', domain: 'dropbox.com', ind: ['Construction', 'Agency', 'Legal', 'Real Estate', 'Education'], task: ['Document', 'Project Management'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low', 'Medium'], desc: 'AI-enhanced workspace and secure cloud file-sharing architecture.', link: 'dropbox.html' },
+            { id: 'activecampaign', name: 'ActiveCampaign', domain: 'activecampaign.com', ind: ['Agency', 'SaaS', 'Ecommerce', 'Education'], task: ['Marketing', 'CRM'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Medium', 'Enterprise'], desc: 'Deep marketing automation and customer experience platform.', link: 'activecampaign.html' }
         ];
 
         function startSearch() {
@@ -359,11 +360,16 @@
                 
                 let results = softwareDatabase.map(tool => {
                     let score = 50; 
+                    
+                    // Added a tiny tie-breaker based on tool ID length so scores don't cluster identically
+                    score += (tool.id.length % 4); 
+
                     if (tool.ind.includes(reqInd)) score += 25; else score -= 10; 
                     if (tool.task.includes(reqTask)) score += 15;
                     if (tool.size.includes(reqSize)) score += 8;
                     const budgetTiers = { 'Free': 0, 'Low': 1, 'Medium': 2, 'Enterprise': 3 };
                     if (budgetTiers[tool.budget[0]] <= budgetTiers[reqBudget]) score += 10;
+                    
                     if (score > 98) score = 98;
                     if (score < 50) score = 50;
                     return { ...tool, score };
@@ -379,7 +385,6 @@
                 runnerUps.forEach(tool => {
                     const isFiltered = tool.score === 50;
                     
-                    // Logo Image Tag with built-in fallback if Clearbit fails
                     const logoTag = `<img src="https://logo.clearbit.com/${tool.domain}" onerror="this.onerror=null; this.src='https://icon.horse/icon/${tool.domain}';" class="row-logo" alt="${tool.name} logo">`;
                     
                     runnerUpsHTML += `
@@ -399,11 +404,10 @@
                     `;
                 });
 
-                // Top Result Logo with built-in fallback
                 const topLogoTag = `<img src="https://logo.clearbit.com/${topTool.domain}" onerror="this.onerror=null; this.src='https://icon.horse/icon/${topTool.domain}';" class="company-logo" alt="${topTool.name} logo">`;
 
                 resultArea.innerHTML = `
-                    <div class="audit-card" style="border-top: 6px solid ${topTool.color};">
+                    <div class="audit-card" style="border-top: 6px solid var(--brand-main);">
                         <div class="brand-header-result">
                             <div class="result-logo-container">
                                 ${topLogoTag}
@@ -413,7 +417,7 @@
                                 </div>
                             </div>
                             <div class="score-pill">
-                                <div class="score-big" style="color: ${topTool.color};">${topTool.score}</div>
+                                <div class="score-big" style="color: var(--brand-main);">${topTool.score}</div>
                                 <div class="score-label">Snexz Score</div>
                             </div>
                         </div>
@@ -423,7 +427,7 @@
                             <div class="metric-row"><span>Industry Compliance</span><strong style="color: var(--brand-main);">${reqInd} Standards</strong></div>
                         </div>
                         
-                        <a href="/${topTool.link}?score=${topTool.score}" class="btn-proceed" style="background: ${topTool.color};">
+                        <a href="/${topTool.link}?score=${topTool.score}" class="btn-proceed" style="background: var(--brand-main);">
                             View Analysis 
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
