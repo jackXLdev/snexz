@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Software Library | Snexz</title>
-    <meta name="description" content="Browse the Snexz database of verified B2B SaaS solutions by industry and operational requirement.">
+    <meta name="description" content="Browse the Snexz verified database of B2B SaaS architecture.">
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
     
@@ -16,55 +15,49 @@
             --text-main: #111827; 
             --text-sub: #6B7280; 
             --border: #E5E7EB; 
-            --shadow-sm: 0 4px 15px rgba(0,0,0,0.03);
-            --shadow-hover: 0 20px 40px -12px rgba(17, 24, 39, 0.12);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-premium: 0 10px 25px -5px rgba(17, 24, 39, 0.1);
         }
         
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px 20px 0 20px; -webkit-font-smoothing: antialiased; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px; -webkit-font-smoothing: antialiased; }
         
-        /* Top Navigation */
-        nav { width: 100%; max-width: 1000px; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; margin-bottom: 4vh; }
+        nav { width: 100%; max-width: 1100px; display: flex; justify-content: space-between; align-items: center; padding: 10px 0 30px 0; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
         .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .nav-logo { height: 35px; width: auto; }
+        .nav-logo { height: 35px; width: auto; stroke: var(--brand-main); }
+        .nav-logo polygon { fill: var(--brand-main); }
         .nav-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.8rem; letter-spacing: -0.5px; color: var(--brand-main); margin: 0; }
         
-        /* Interactive Back Button */
-        .nav-back { font-weight: 700; color: var(--text-main); text-decoration: none; font-size: 0.95rem; padding: 10px 18px; border-radius: 8px; background: #FFF; border: 1px solid var(--border); transition: 0.2s; display: flex; align-items: center; gap: 8px; }
-        .nav-back:hover { box-shadow: var(--shadow-sm); border-color: #D1D5DB; }
-        .nav-back span { display: flex; align-items: center; transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .nav-back { font-weight: 700; color: var(--text-main); text-decoration: none; font-size: 0.95rem; padding: 10px 18px; border-radius: 8px; background: #FFF; border: 1px solid var(--border); transition: 0.2s; display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow-sm); }
+        .nav-back:hover { box-shadow: var(--shadow-premium); border-color: #D1D5DB; transform: translateY(-2px); }
+        .nav-back span { display: flex; align-items: center; transition: transform 0.2s; }
         .nav-back:hover span { transform: translateX(-4px); }
 
-        main { flex: 1; width: 100%; max-width: 1000px; display: flex; flex-direction: column; }
-        
-        /* Page Header */
-        .page-header { text-align: left; margin-bottom: 40px; }
-        .page-title { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 3rem; letter-spacing: -1px; color: var(--brand-main); margin: 0 0 15px 0; line-height: 1.1; }
-        .page-desc { color: var(--text-sub); font-size: 1.15rem; font-weight: 500; max-width: 600px; line-height: 1.6; }
+        main { flex: 1; width: 100%; max-width: 1100px; display: flex; flex-direction: column; animation: fadeUp 0.6s ease-out; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Grid Layout */
-        .library-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-bottom: 60px; }
-        
-        /* Industry Cards with Charcoal Glow Hover */
-        .category-card { background: #FFF; border-radius: 20px; padding: 30px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-decoration: none; display: flex; flex-direction: column; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .category-card:hover { 
-            transform: translateY(-4px); 
-            border-color: var(--brand-main); 
-            box-shadow: 0 0 15px rgba(17, 24, 39, 0.15), 0 15px 35px rgba(17, 24, 39, 0.1); 
-        }
-        
-        /* Native Charcoal SVGs */
-        .cat-icon { height: 48px; width: 48px; background: #F3F4F6; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--brand-main); transition: 0.3s; }
-        .cat-icon svg { width: 24px; height: 24px; stroke-width: 2.2px; }
-        .category-card:hover .cat-icon { background: var(--brand-main); color: #FFF; }
-        
-        .cat-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.4rem; color: var(--text-main); margin: 0 0 10px 0; letter-spacing: -0.5px; transition: 0.3s; }
-        .cat-desc { color: var(--text-sub); font-size: 0.95rem; line-height: 1.5; margin: 0 0 20px 0; flex: 1; }
-        .cat-link { font-weight: 700; color: var(--brand-main); font-size: 0.9rem; display: flex; align-items: center; gap: 5px; margin-top: auto; }
-        .cat-link::after { content: '→'; transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
-        .category-card:hover .cat-link::after { transform: translateX(4px); }
+        .page-header { margin-bottom: 40px; }
+        .page-title { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 3rem; letter-spacing: -1px; color: var(--brand-main); margin: 0 0 10px 0; line-height: 1.1; }
+        .page-subtitle { color: var(--text-sub); font-size: 1.15rem; font-weight: 500; margin: 0; }
 
-        /* Footer */
-        .site-footer { padding: 40px 0; text-align: center; color: var(--text-sub); font-size: 0.85rem; border-top: 1px solid var(--border); width: 100%; max-width: 1000px; font-weight: 600; margin-top: auto; }
+        .library-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; margin-bottom: 60px; }
+        
+        .lib-card { background: #FFF; border-radius: 20px; padding: 25px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-decoration: none; display: flex; flex-direction: column; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; }
+        .lib-card:hover { border-color: var(--brand-main); box-shadow: var(--shadow-premium); transform: translateY(-4px); }
+        
+        .card-top { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .card-logo { width: 45px; height: 45px; border-radius: 10px; object-fit: contain; border: 1px solid var(--border); padding: 4px; background: #FFF; }
+        .card-title { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin: 0; }
+        
+        .card-desc { color: var(--text-sub); font-size: 0.95rem; line-height: 1.5; margin: 0 0 20px 0; flex: 1; }
+        
+        .card-bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #F1F5F9; padding-top: 15px; }
+        .card-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .tag { background: #F3F4F6; color: var(--text-main); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 8px; border-radius: 6px; font-family: 'Outfit', sans-serif; }
+        
+        .card-arrow { color: var(--text-sub); transition: 0.2s; display: flex; align-items: center; }
+        .lib-card:hover .card-arrow { color: var(--brand-main); transform: translateX(4px); }
+
+        .site-footer { padding: 40px 0; text-align: center; color: var(--text-sub); font-size: 0.85rem; border-top: 1px solid var(--border); width: 100%; max-width: 1100px; font-weight: 600; margin-top: auto; }
         .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .footer-links a { color: var(--text-main); text-decoration: none; font-weight: 700; transition: 0.2s; }
         .footer-links a:hover { color: var(--text-sub); }
@@ -75,88 +68,211 @@
     <nav>
         <a href="/" class="nav-brand">
             <svg class="nav-logo" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
-                <path d="M 338 100 L 863 100 L 663 300 L 843 460 L 843 540 L 663 700 L 138 700 L 338 500 L 158 340 L 158 260 Z" stroke="#111827" stroke-width="85" fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="10" />
-                <polygon points="300.5,280 430.5,280 700.5,520 570.5,520" fill="#111827" />
+                <path d="M 338 100 L 863 100 L 663 300 L 843 460 L 843 540 L 663 700 L 138 700 L 338 500 L 158 340 L 158 260 Z" stroke-width="85" fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="10" />
+                <polygon points="300.5,280 430.5,280 700.5,520 570.5,520" />
             </svg>
             <span class="nav-name">Snexz</span>
         </a>
         <a href="/" class="nav-back">
-            <span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            </span> 
-            Back to Snexz
+            <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></span> 
+            Engine
         </a>
     </nav>
 
     <main>
         <div class="page-header">
-            <h1 class="page-title">The Software Library</h1>
-            <p class="page-desc">Browse our verified database of B2B SaaS solutions. Every tool is categorized by industry constraints and operational workflows.</p>
+            <h1 class="page-title">Software Library</h1>
+            <p class="page-subtitle">Browse our verified database of B2B SaaS architecture.</p>
         </div>
 
         <div class="library-grid">
             
-            <a href="#" class="category-card">
-                <div class="cat-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                    </svg>
+            <a href="hubspot.html" class="lib-card">
+                <div class="card-top">
+                    <img src="https://logo.clearbit.com/hubspot.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hubspot.com&size=128';" class="card-logo" alt="HubSpot logo">
+                    <h2 class="card-title">HubSpot</h2>
                 </div>
-                <h2 class="cat-title">Construction & Trades</h2>
-                <p class="cat-desc">Software optimized for job costing, field service management, and contractor bidding.</p>
-                <div class="cat-link">View 14 Tools</div>
+                <p class="card-desc">The gold standard CRM and marketing automation suite.</p>
+                <div class="card-bottom">
+                    <div class="card-tags"><span class="tag">Sales</span><span class="tag">Marketing</span></div>
+                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </div>
             </a>
 
-            <a href="#" class="category-card">
-                <div class="cat-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            <a href="monday.html" class="lib-card">
+                <div class="card-top">
+                    <img src="https://logo.clearbit.com/monday.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://monday.com&size=128';" class="card-logo" alt="Monday.com logo">
+                    <h2 class="card-title">Monday.com</h2>
                 </div>
-                <h2 class="cat-title">Marketing Agencies</h2>
-                <p class="cat-desc">Client reporting, white-label dashboards, and complex campaign management.</p>
-                <div class="cat-link">View 22 Tools</div>
+                <p class="card-desc">Highly visual, customizable work OS and project tracker.</p>
+                <div class="card-bottom">
+                    <div class="card-tags"><span class="tag">Project Mgmt</span><span class="tag">Ops</span></div>
+                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </div>
             </a>
 
-            <a href="#" class="category-card">
-                <div class="cat-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            <a href="shopify.html" class="lib-card">
+                <div class="card-top">
+                    <img src="https://logo.clearbit.com/shopify.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://shopify.com&size=128';" class="card-logo" alt="Shopify logo">
+                    <h2 class="card-title">Shopify</h2>
                 </div>
-                <h2 class="cat-title">Medical & Dental</h2>
-                <p class="cat-desc">HIPAA-compliant patient scheduling, telehealth portals, and practice management.</p>
-                <div class="cat-link">View 9 Tools</div>
+                <p class="card-desc">The definitive platform for independent retail architecture.</p>
+                <div class="card-bottom">
+                    <div class="card-tags"><span class="tag">E-Commerce</span><span class="tag">Retail</span></div>
+                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </div>
             </a>
 
-            <a href="#" class="category-card">
-                <div class="cat-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+            <a href="contractor-foreman.html" class="lib-card">
+                <div class="card-top">
+                    <img src="https://logo.clearbit.com/contractorforeman.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://contractorforeman.com&size=128';" class="card-logo" alt="Contractor Foreman logo">
+                    <h2 class="card-title">Contractor Foreman</h2>
                 </div>
-                <h2 class="cat-title">E-Commerce & Retail</h2>
-                <p class="cat-desc">Inventory synchronization, multi-channel fulfillment, and dynamic pricing engines.</p>
-                <div class="cat-link">View 31 Tools</div>
+                <p class="card-desc">All-in-one management for specialty contractors and builders.</p>
+                <div class="card-bottom">
+                    <div class="card-tags"><span class="tag">Construction</span></div>
+                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </div>
             </a>
 
-            <a href="#" class="category-card">
-                <div class="cat-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <a href="quickbooks.html" class="lib-card">
+                <div class="card-top">
+                    <img src="https://logo.clearbit.com/quickbooks.intuit.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://quickbooks.intuit.com&size=128';" class="card-logo" alt="QuickBooks logo">
+                    <h2 class="card-title">QuickBooks</h2>
                 </div>
-                <h2 class="cat-title">Real Estate & Property</h2>
-                <p class="cat-desc">Tenant screening, automated rent collection, and portfolio analytics.</p>
-                <div class="cat-link">View 11 Tools</div>
+                <p class="card-desc">Industry-standard accounting and automated billing.</p>
+                <div class="card-bottom">
+                    <div class="card-tags"><span class="tag">Finance</span><span class="tag">Billing</span></div>
+                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </div>
             </a>
 
-            <a href="#" class="category-card">
-                <div class="cat-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <a href="zendesk.html" class="lib-card">
+                <div class="card-top">
+                    <img src="https://logo.clearbit.com/zendesk.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://zendesk.com&size=128';" class="card-logo" alt="Zendesk logo">
+                    <h2 class="card-title">Zendesk</h2>
                 </div>
-                <h2 class="cat-title">Legal & Professional</h2>
-                <p class="cat-desc">Secure document signing, billable hour tracking, and case management.</p>
-                <div class="cat-link">View 16 Tools</div>
+                <p class="card-desc">Enterprise-grade customer service and ticketing system.</p>
+                <div class="card-bottom">
+                    <div class="card-tags"><span class="tag">Support</span><span class="tag">CRM</span></div>
+                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </div>
             </a>
+
+            <a href="highlevel.html" class="lib-card">
+                <div class="card-top">
+                    <img src="https://logo.clearbit.com/gohighlevel.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://gohighlevel.com&size=128';" class="card-logo" alt="HighLevel logo">
+                    <h2 class="card-title">HighLevel</h2>
+                </div>
+                <p class="card-desc">White-label marketing platform built specifically for agencies.</p>
+                <div class="card-bottom">
+                    <div class="card-tags"><span class="tag">Agency</span><span class="tag">Marketing</span></div>
+                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </div>
+            </a>
+
+            <a href="pandadoc.html" class="lib-card">
+                <div class="card-top">
+                    <img src="https://logo.clearbit.com/pandadoc.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://pandadoc.com&size=128';" class="card-logo" alt="PandaDoc logo">
+                    <h2 class="card-title">PandaDoc</h2>
+                </div>
+                <p class="card-desc">Automated document signing and secure proposal tracking.</p>
+                <div class="card-bottom">
+                    <div class="card-tags"><span class="tag">Legal</span><span class="tag">Sales</span></div>
+                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </div>
+            </a>
+
+            <a href="katana.html" class="lib-card">
+                <div class="card-top">
+                    <img src="https://logo.clearbit.com/katanamrp.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://katanamrp.com&size=128';" class="card-logo" alt="Katana logo">
+                    <h2 class="card-title">Katana</h2>
+                </div>
+                <p class="card-desc">Advanced manufacturing and inventory management software.</p>
+                <div class="card-bottom">
+                    <div class="card-tags"><span class="tag">Inventory</span><span class="tag">Mfg</span></div>
+                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </div>
+            </a>
+
+            <a href="appointy.html" class="lib-card">
+                <div class="card-top">
+                    <img src="https://logo.clearbit.com/appointy.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://appointy.com&size=128';" class="card-logo" alt="Appointy logo">
+                    <h2 class="card-title">Appointy</h2>
+                </div>
+                <p class="card-desc">HIPAA-compliant patient and client scheduling portal.</p>
+                <div class="card-bottom">
+                    <div class="card-tags"><span class="tag">Booking</span><span class="tag">Medical</span></div>
+                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </div>
+            </a>
+
+            <a href="notion.html" class="lib-card">
+                <div class="card-top">
+                    <img src="https://logo.clearbit.com/notion.so" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://notion.so&size=128';" class="card-logo" alt="Notion logo">
+                    <h2 class="card-title">Notion</h2>
+                </div>
+                <p class="card-desc">Highly flexible, all-in-one workspace for documents and wikis.</p>
+                <div class="card-bottom">
+                    <div class="card-tags"><span class="tag">Workspace</span><span class="tag">Docs</span></div>
+                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </div>
+            </a>
+
+            <a href="brevo.html" class="lib-card">
+                <div class="card-top">
+                    <img src="https://logo.clearbit.com/brevo.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://brevo.com&size=128';" class="card-logo" alt="Brevo logo">
+                    <h2 class="card-title">Brevo</h2>
+                </div>
+                <p class="card-desc">Affordable, scalable email marketing and automation platform.</p>
+                <div class="card-bottom">
+                    <div class="card-tags"><span class="tag">Marketing</span><span class="tag">Email</span></div>
+                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </div>
+            </a>
+
+            <a href="slack.html" class="lib-card">
+                <div class="card-top">
+                    <img src="https://logo.clearbit.com/slack.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://slack.com&size=128';" class="card-logo" alt="Slack logo">
+                    <h2 class="card-title">Slack</h2>
+                </div>
+                <p class="card-desc">The industry-standard hub for team communication and workflows.</p>
+                <div class="card-bottom">
+                    <div class="card-tags"><span class="tag">Comms</span><span class="tag">Internal</span></div>
+                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </div>
+            </a>
+
+            <a href="dropbox.html" class="lib-card">
+                <div class="card-top">
+                    <img src="https://logo.clearbit.com/dropbox.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://dropbox.com&size=128';" class="card-logo" alt="Dropbox logo">
+                    <h2 class="card-title">Dropbox</h2>
+                </div>
+                <p class="card-desc">AI-enhanced workspace and secure cloud file-sharing architecture.</p>
+                <div class="card-bottom">
+                    <div class="card-tags"><span class="tag">Storage</span><span class="tag">Cloud</span></div>
+                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </div>
+            </a>
+
+            <a href="activecampaign.html" class="lib-card">
+                <div class="card-top">
+                    <img src="https://logo.clearbit.com/activecampaign.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://activecampaign.com&size=128';" class="card-logo" alt="ActiveCampaign logo">
+                    <h2 class="card-title">ActiveCampaign</h2>
+                </div>
+                <p class="card-desc">Deep marketing automation and customer experience platform.</p>
+                <div class="card-bottom">
+                    <div class="card-tags"><span class="tag">Marketing</span><span class="tag">CRM</span></div>
+                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </div>
+            </a>
+
         </div>
     </main>
 
     <footer class="site-footer">
         <div class="footer-links">
-            <a href="/">Snexz Search</a>
+            <a href="/">Snexz Engine</a>
             <a href="mailto:hello@snexz.com">Contact</a>
         </div>
         <div>&copy; 2026 Snexz. All rights reserved.</div>
