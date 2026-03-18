@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Snexz | The Ultimate SaaS Tool Search </title>
+    <title>Snexz | SaaS Tool Comparison </title>
     <meta name="description" content="Enter your industry and goals into Snexz to instantly discover the best software to run your business.">
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
     <style>
         :root { 
             --bg: #F9FAFB; 
-            --brand-main: #111827; /* Charcoal */
+            --brand-main: #111827; 
             --text-main: #111827; 
             --text-sub: #6B7280; 
             --success: #10B981; 
@@ -23,7 +23,6 @@
         
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         
-        /* The "Laser Wipe & Lock" Loading Animation */
         #loader-overlay { position: fixed; inset: 0; background-color: var(--bg); z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
         .loader-svg { width: 120px; height: auto; }
         .loader-svg path { clip-path: inset(0 100% 0 0); animation: wipeRight 1s cubic-bezier(0.76, 0, 0.24, 1) forwards 0.2s; }
@@ -35,15 +34,12 @@
         main { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; margin-top: 6vh; width: 100%; max-width: 680px; text-align: center; opacity: 0; animation: revealMain 0.8s ease-out 2.6s forwards; }
         @keyframes revealMain { to { opacity: 1; } }
 
-        /* Brand Header */
         .brand-header { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 20px; }
         .logo-svg { height: 60px; width: auto; }
         .brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 3.8rem; letter-spacing: -1.5px; color: var(--brand-main); margin: 0; line-height: 1; }
         
-        /* Tagline restored and set to charcoal */
         .tagline { color: var(--brand-main); font-size: 1.15rem; margin-bottom: 40px; font-weight: 500; }
         
-        /* Premium Advanced Search Engine UI */
         .search-container { background: #FFFFFF; border-radius: 24px; padding: 35px; border: 1px solid rgba(17, 24, 39, 0.06); box-shadow: var(--shadow-premium); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); text-align: left;}
         .search-container:hover { box-shadow: var(--shadow-hover); border-color: rgba(17, 24, 39, 0.12); }
         
@@ -58,7 +54,6 @@
         select { width: 100%; border: 1.5px solid var(--border); padding: 14px 16px; font-size: 1rem; border-radius: 12px; outline: none; font-family: inherit; background-color: #F9FAFB; color: var(--text-main); box-sizing: border-box; transition: 0.2s; cursor: pointer; appearance: none; font-weight: 600; }
         select:focus { border-color: var(--brand-main); box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.08); background-color: #FFF; }
         
-        /* Custom Tech Spec Toggles */
         .tech-specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
         .tech-toggle { display: block; position: relative; cursor: pointer; }
         .tech-toggle input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
@@ -70,10 +65,8 @@
         .btn-audit:active { transform: translateY(0); }
         .btn-audit:disabled { opacity: 0.8; cursor: wait; transform: none; box-shadow: none; }
 
-        /* Dynamic Results Area */
         #result-area { display: none; margin-top: 25px; text-align: left; animation: slideUp 0.4s ease-out; width: 100%; }
         
-        /* Top Match Card */
         .audit-card { background: #FFF; border-radius: 24px; padding: 35px; border: 1px solid var(--brand-main); box-shadow: var(--shadow-premium); margin-bottom: 30px; position: relative; overflow: hidden; }
         .optimal-badge { position: absolute; top: 0; right: 0; background: var(--brand-main); color: #FFF; font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 800; padding: 8px 16px; border-bottom-left-radius: 16px; text-transform: uppercase; letter-spacing: 1px; }
         .score-big { font-size: 5rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-right: 20px; line-height: 1; letter-spacing: -2px; }
@@ -82,7 +75,6 @@
         .btn-proceed { display: block; background: var(--brand-main); color: white; text-align: center; padding: 20px; border-radius: 12px; text-decoration: none; font-weight: 800; margin-top: 25px; font-size: 1.05rem; transition: 0.2s; font-family: 'Outfit', sans-serif; letter-spacing: 0.5px;}
         .btn-proceed:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(17, 24, 39, 0.3); }
 
-        /* Ranked List Section */
         .ranked-header { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin: 40px 0 20px 0; padding-bottom: 15px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-end;}
         .ranked-header span { font-size: 0.9rem; font-weight: 600; color: var(--text-sub); font-family: 'Plus Jakarta Sans', sans-serif;}
         
@@ -100,17 +92,20 @@
         .row-action::after { content: '→'; transition: 0.2s; }
         .ranked-row:hover .row-action::after { transform: translateX(4px); }
 
-        /* Modals (Fixed to Ardzy Structure) */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(8px); }
         .modal-content { background: white; padding: 40px; border-radius: 24px; max-width: 500px; text-align: left; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); animation: modalPop 0.3s ease-out; }
         
-        /* Strict sizing for modal paragraphs */
+        .modal-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+        .modal-brand svg { height: 35px; width: auto; }
+        .modal-brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.8rem; letter-spacing: -0.5px; color: var(--brand-main); margin: 0; }
+        .modal-header { border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 20px; }
+        #modal-title { font-family: 'Outfit', sans-serif; margin: 0; font-size: 1.2rem; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-sub); }
+        
         #modal-body p { font-size: 0.95rem; line-height: 1.6; margin-top: 0; margin-bottom: 15px; color: var(--text-main); }
         #modal-body p:last-child { margin-bottom: 0; }
         
         @keyframes modalPop { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         
-        /* Footer */
         .site-footer { padding: 40px; text-align: center; color: var(--text-sub); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: auto; width: 100%; font-weight: 600; opacity: 0; animation: revealMain 0.8s ease-out 2.6s forwards; }
         .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .footer-links a { color: var(--text-main); text-decoration: none; font-weight: 700; cursor: pointer; transition: 0.2s; }
@@ -200,15 +195,15 @@
                     <div class="section-title">Required Capabilities</div>
                     <div class="tech-specs-grid">
                         <label class="tech-toggle">
-                            <input type="checkbox" value="Zapier" checked>
+                            <input type="checkbox" id="spec-zapier" value="Zapier" checked>
                             <span>Zapier / APIs</span>
                         </label>
                         <label class="tech-toggle">
-                            <input type="checkbox" value="GDPR">
+                            <input type="checkbox" id="spec-gdpr" value="GDPR">
                             <span>GDPR Ready</span>
                         </label>
                         <label class="tech-toggle">
-                            <input type="checkbox" value="SSO">
+                            <input type="checkbox" id="spec-sso" value="SSO">
                             <span>SSO / SAML Security</span>
                         </label>
                     </div>
@@ -224,18 +219,17 @@
 
     <div id="info-modal" class="modal">
         <div class="modal-content">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
-                <svg viewBox="0 0 1000 800" style="height: 35px; width: auto;" xmlns="http://www.w3.org/2000/svg">
+            <div class="modal-brand">
+                <svg viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
                     <path d="M 338 100 L 863 100 L 663 300 L 843 460 L 843 540 L 663 700 L 138 700 L 338 500 L 158 340 L 158 260 Z" stroke="#111827" stroke-width="85" fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="10" />
                     <polygon points="300.5,280 430.5,280 700.5,520 570.5,520" fill="#111827" />
                 </svg>
-                <h3 style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.8rem; letter-spacing: -0.5px; color: var(--brand-main); margin: 0;">Snexz</h3>
+                <h3 class="modal-brand-name">Snexz</h3>
             </div>
-            
-            <h2 id="modal-title" style="font-family:'Outfit', sans-serif; margin:0 0 15px 0; font-size: 1.5rem; letter-spacing: -0.5px; color: var(--brand-main);"></h2>
-            
+            <div class="modal-header">
+                <h2 id="modal-title"></h2>
+            </div>
             <div id="modal-body"></div>
-            
             <button onclick="closeModal()" style="margin-top:25px; background:var(--text-main); color:white; border:none; padding:15px 30px; border-radius:12px; font-weight:700; cursor:pointer; font-family:'Outfit', sans-serif; letter-spacing: 0.5px; width: 100%;">Close Panel</button>
         </div>
     </div>
@@ -267,15 +261,8 @@
                 const res = await fetch('https://ipapi.co/json/');
                 const data = await res.json();
                 const userCurrency = data.currency;
-                
                 const budgetSelect = document.getElementById('input-budget');
-                const rates = { 
-                    'USD': { sym: '$', mult: 1.25 }, 
-                    'EUR': { sym: '€', mult: 1.17 }, 
-                    'AUD': { sym: 'A$', mult: 1.95 }, 
-                    'CAD': { sym: 'C$', mult: 1.70 } 
-                };
-
+                const rates = { 'USD': { sym: '$', mult: 1.25 }, 'EUR': { sym: '€', mult: 1.17 }, 'AUD': { sym: 'A$', mult: 1.95 }, 'CAD': { sym: 'C$', mult: 1.70 } };
                 if (rates[userCurrency]) {
                     const c = rates[userCurrency];
                     budgetSelect.options[0].text = `${c.sym}0 (Freemium Tools)`;
@@ -283,9 +270,7 @@
                     budgetSelect.options[2].text = `${c.sym}${Math.round(50 * c.mult)} - ${c.sym}${Math.round(200 * c.mult)} / month`;
                     budgetSelect.options[3].text = `${c.sym}${Math.round(200 * c.mult)}+ / month`;
                 }
-            } catch (error) {
-                console.log("Localization deferred to default currency.");
-            }
+            } catch (error) { console.log("Localization deferred to default."); }
         }
         localizeCurrency();
 
@@ -295,8 +280,7 @@
             if(type === 'how') { 
                 t.innerText = "The Decision Engine"; 
                 b.innerHTML = "<p>Snexz operates utilizing <strong>Programmatic Feature Matching</strong>. By bypassing surface-level marketplace marketing, our engine maps your specific industry, scale, and compliance needs directly to verified B2B SaaS architecture.</p><p>We cross-reference budget constraints and operational workflows to establish an optimal software match, saving you hours of research and thousands in mismatched software subscriptions.</p>"; 
-            }
-            else { 
+            } else { 
                 t.innerText = "Privacy Policy"; 
                 b.innerHTML = "<p>Business privacy is a foundational pillar of the Snexz infrastructure. We operate strictly as an analytical proxy; we do not track, store, or monetize individual company data or browsing habits.</p><p>Our engine strictly analyzes the parameters provided during a search request. Communication is secured via industry-standard encryption, ensuring a completely anonymous and private verification experience.</p>"; 
             }
@@ -304,95 +288,118 @@
         }
         function closeModal() { document.getElementById('info-modal').style.display = 'none'; }
 
-        // 4. Dynamic Opacity Calculator for Scores
+        // 4. Dynamic Opacity
         function getScoreColor(score) {
-            if (score >= 90) return `rgba(17, 24, 39, 1)`;     // Solid Charcoal
-            if (score >= 70) return `rgba(17, 24, 39, 0.7)`;   // Faded Charcoal
-            if (score >= 60) return `rgba(17, 24, 39, 0.4)`;   // Light Grey
-            return `rgba(17, 24, 39, 0.15)`;                   // Ghosted Grey for 50 and below
+            if (score >= 90) return `rgba(17, 24, 39, 1)`;     
+            if (score >= 70) return `rgba(17, 24, 39, 0.7)`;   
+            if (score >= 60) return `rgba(17, 24, 39, 0.4)`;   
+            return `rgba(17, 24, 39, 0.15)`;                   
         }
 
-        // 5. Search Engine & Ranking Logic
+        // 5. THE DETERMINISTIC SCORING ENGINE (PartnerStack Database)
+        const softwareDatabase = [
+            { id: 'hubspot', name: 'HubSpot', ind: ['Agency', 'SaaS', 'Ecommerce'], task: ['CRM', 'Marketing'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Free', 'Medium', 'Enterprise'], desc: 'The gold standard CRM and marketing automation suite.', link: 'hubspot.html' },
+            { id: 'monday', name: 'Monday.com', ind: ['Agency', 'SaaS', 'Construction', 'Real Estate'], task: ['Project Management', 'CRM'], size: ['Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium'], desc: 'Highly visual, customizable work OS and project tracker.', link: 'monday.html' },
+            { id: 'shopify', name: 'Shopify', ind: ['Ecommerce'], task: ['Invoicing', 'Marketing'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium', 'Enterprise'], desc: 'The definitive platform for independent retail architecture.', link: 'shopify.html' },
+            { id: 'contractor-foreman', name: 'Contractor Foreman', ind: ['Construction'], task: ['Project Management', 'Invoicing'], size: ['Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'All-in-one management for specialty contractors and builders.', link: 'contractor-foreman.html' },
+            { id: 'quickbooks', name: 'QuickBooks', ind: ['Construction', 'Agency', 'Medical', 'Ecommerce', 'Real Estate', 'Legal', 'SaaS'], task: ['Invoicing'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'Industry-standard accounting and automated billing.', link: 'quickbooks.html' },
+            { id: 'zendesk', name: 'Zendesk', ind: ['SaaS', 'Ecommerce', 'Agency'], task: ['CRM'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Medium', 'Enterprise'], desc: 'Enterprise-grade customer service and ticketing system.', link: 'zendesk.html' },
+            { id: 'highlevel', name: 'HighLevel', ind: ['Agency', 'Real Estate'], task: ['CRM', 'Marketing', 'Booking'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Medium'], desc: 'White-label marketing platform built specifically for agencies.', link: 'highlevel.html' },
+            { id: 'pandadoc', name: 'PandaDoc', ind: ['Legal', 'Agency', 'SaaS', 'Real Estate'], task: ['Project Management', 'CRM'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low', 'Medium'], desc: 'Automated document signing and secure proposal tracking.', link: 'pandadoc.html' },
+            { id: 'katana', name: 'Katana Cloud', ind: ['Ecommerce', 'Construction'], task: ['Project Management', 'Invoicing'], size: ['Small', 'Medium'], budget: ['Medium', 'Enterprise'], desc: 'Advanced manufacturing and inventory management software.', link: 'katana.html' },
+            { id: 'appointy', name: 'Appointy', ind: ['Medical', 'Legal'], task: ['Booking'], size: ['Solo', 'Micro', 'Small'], budget: ['Free', 'Low'], desc: 'HIPAA-compliant patient and client scheduling portal.', link: 'appointy.html' }
+        ];
+
         function startSearch() {
-            const ind = document.getElementById('input-industry').value;
-            const size = document.getElementById('input-size').value;
+            const reqInd = document.getElementById('input-industry').value;
+            const reqTask = document.getElementById('input-task').value;
+            const reqSize = document.getElementById('input-size').value;
+            const reqBudget = document.getElementById('input-budget').value;
             const btn = document.getElementById('audit-btn');
             
+            btn.disabled = true;
             let stage = 0; 
             const stages = ["Querying SaaS database...", "Cross-referencing compliance...", "Calculating ROI metrics...", "Finalizing Match..."];
-            btn.disabled = true;
-            
             const timer = setInterval(() => { 
-                if (stage < stages.length) {
-                    btn.innerText = stages[stage];
-                    stage++;
-                }
+                if (stage < stages.length) { btn.innerText = stages[stage]; stage++; }
             }, 800);
 
             setTimeout(() => {
                 clearInterval(timer);
                 
-                // Dynamic mapping demo based on inputs
-                let topName = "Contractor Foreman";
-                if (ind === "Agency") topName = "HighLevel";
-                if (ind === "Medical") topName = "Appointy";
-                if (ind === "Real Estate") topName = "Buildium";
-                
-                // Injecting the dynamic ranked HTML into the DOM
+                // Mathematical Scoring Algorithm
+                let results = softwareDatabase.map(tool => {
+                    let score = 50; // The floor
+                    
+                    // Industry Match (+25 points) - Heaviest weight
+                    if (tool.ind.includes(reqInd)) score += 25;
+                    else score -= 10; // Penalty for wrong industry
+                    
+                    // Task Match (+15 points)
+                    if (tool.task.includes(reqTask)) score += 15;
+                    
+                    // Size Match (+8 points)
+                    if (tool.size.includes(reqSize)) score += 8;
+                    
+                    // Budget Match logic (+10 points)
+                    const budgetTiers = { 'Free': 0, 'Low': 1, 'Medium': 2, 'Enterprise': 3 };
+                    if (budgetTiers[tool.budget[0]] <= budgetTiers[reqBudget]) score += 10;
+
+                    // Cap bounds
+                    if (score > 98) score = 98;
+                    if (score < 50) score = 50;
+
+                    return { ...tool, score };
+                });
+
+                // Sort by highest score
+                results.sort((a, b) => b.score - a.score);
+                const topTool = results[0];
+                const runnerUps = results.slice(1, 4);
+
+                // Inject Results
                 const resultArea = document.getElementById('result-area');
+                
+                // Build runner-up HTML
+                let runnerUpsHTML = '';
+                runnerUps.forEach(tool => {
+                    const isFiltered = tool.score === 50;
+                    runnerUpsHTML += `
+                        <a href="/${tool.link}" class="ranked-row" ${isFiltered ? 'style="background: #F9FAFB; border-style: dashed;"' : ''}>
+                            <div class="row-left">
+                                <div class="row-score" style="color: ${getScoreColor(tool.score)}">${tool.score}</div>
+                                <div class="row-details">
+                                    <h3 ${isFiltered ? 'style="color: var(--text-sub);"' : ''}>${tool.name}</h3>
+                                    <p style="color: ${isFiltered ? '#9CA3AF' : '#4B5563'};">${isFiltered ? `Incompatible with ${reqInd} workflow.` : tool.desc}</p>
+                                </div>
+                            </div>
+                            <div class="row-action" ${isFiltered ? 'style="color: var(--text-sub);"' : ''}>${isFiltered ? 'Filtered' : 'View Analysis'}</div>
+                        </a>
+                    `;
+                });
+
                 resultArea.innerHTML = `
                     <div class="audit-card">
                         <div class="optimal-badge">#1 Optimal Fit</div>
                         <div style="display:flex; align-items:center; margin-bottom:25px;">
-                            <div class="score-big" style="color: ${getScoreColor(98)}">98</div>
+                            <div class="score-big" style="color: ${getScoreColor(topTool.score)}">${topTool.score}</div>
                             <div>
                                 <div style="font-size:0.8rem; color:var(--text-sub); text-transform:uppercase; font-weight:800; letter-spacing:0.5px; font-family:'Outfit', sans-serif;">Match Score</div>
-                                <div style="font-weight:800; font-size:0.95rem; color:var(--text-main);">Verified for ${ind}</div>
+                                <div style="font-weight:800; font-size:0.95rem; color:var(--text-main);">Verified for ${reqInd}</div>
                             </div>
                         </div>
-                        <div class="metric-row"><span>Recommended Software</span><strong style="font-size:1.1rem;">${topName}</strong></div>
-                        <div class="metric-row"><span>Scale Alignment</span><span style="font-weight:700;">${size} Tier Optimized</span></div>
-                        <a href="/software-template.html" class="btn-proceed">View Architectural Analysis →</a>
+                        <div class="metric-row"><span>Recommended Software</span><strong style="font-size:1.1rem;">${topTool.name}</strong></div>
+                        <div class="metric-row"><span>Scale Alignment</span><span style="font-weight:700;">${reqSize} Tier Optimized</span></div>
+                        <a href="/${topTool.link}" class="btn-proceed">View Architectural Analysis →</a>
                     </div>
 
                     <div class="ranked-header">
                         Complete Matrix Analysis
-                        <span>Showing 4 evaluated systems</span>
+                        <span>Showing top 4 evaluated systems</span>
                     </div>
                     
                     <div class="ranked-list">
-                        <a href="/software-template.html" class="ranked-row">
-                            <div class="row-left">
-                                <div class="row-score" style="color: ${getScoreColor(84)}">84</div>
-                                <div class="row-details">
-                                    <h3>Jobber</h3>
-                                    <p style="color: #4B5563;">Strong alternative. Lacks advanced custom reporting.</p>
-                                </div>
-                            </div>
-                            <div class="row-action">View Analysis</div>
-                        </a>
-
-                        <a href="/software-template.html" class="ranked-row">
-                            <div class="row-left">
-                                <div class="row-score" style="color: ${getScoreColor(62)}">62</div>
-                                <div class="row-details">
-                                    <h3>Buildertrend</h3>
-                                    <p style="color: #6B7280;">Partial match. Exceeds selected budget constraints.</p>
-                                </div>
-                            </div>
-                            <div class="row-action">View Analysis</div>
-                        </a>
-
-                        <a href="/software-template.html" class="ranked-row" style="background: #F9FAFB; border-style: dashed;">
-                            <div class="row-left">
-                                <div class="row-score" style="color: ${getScoreColor(50)}">50</div>
-                                <div class="row-details">
-                                    <h3 style="color: var(--text-sub);">Toast POS</h3>
-                                    <p style="color: #9CA3AF;">Incompatible. System designed for Hospitality, not ${ind}.</p>
-                                </div>
-                            </div>
-                            <div class="row-action" style="color: var(--text-sub);">Filtered</div>
-                        </a>
+                        ${runnerUpsHTML}
                     </div>
                 `;
                 
