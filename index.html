@@ -4,47 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Snexz | SaaS Tool Comparison </title>
+    <title>Snexz | The Ultimate SaaS Tool Search </title>
     <meta name="description" content="Enter your industry and goals into Snexz to instantly discover the best software to run your business.">
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         :root { 
-            --bg: #F0F3F5; 
-            --brand-main: #05203C; /* Skyscanner deep blue */
-            --brand-action: #0062E3; /* Skyscanner bright action blue */
+            --bg: #F9FAFB; 
+            --brand-main: #111827; 
             --text-main: #111827; 
-            --text-sub: #4B5563; 
-            --border: #CBD5E1; 
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-premium: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+            --text-sub: #6B7280; 
+            --border: #E5E7EB; 
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-premium: 0 10px 25px -5px rgba(17, 24, 39, 0.1);
         }
         
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--brand-main); margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         
-        #loader-overlay { position: fixed; inset: 0; background-color: var(--brand-main); z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
-        .loader-svg { width: 120px; height: auto; stroke: #FFF; }
+        #loader-overlay { position: fixed; inset: 0; background-color: var(--bg); z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .loader-svg { width: 120px; height: auto; stroke: var(--brand-main); }
         .loader-svg path { clip-path: inset(0 100% 0 0); animation: wipeRight 1s cubic-bezier(0.76, 0, 0.24, 1) forwards 0.2s; }
-        .loader-svg polygon { opacity: 0; transform: translateY(20px); animation: lockIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.1s forwards; fill: #FFF; }
+        .loader-svg polygon { opacity: 0; transform: translateY(20px); animation: lockIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.1s forwards; fill: var(--brand-main); }
         
         @keyframes wipeRight { to { clip-path: inset(0 0 0 0); } }
         @keyframes lockIn { to { opacity: 1; transform: translateY(0); } }
         
-        main { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; margin-top: 6vh; width: 100%; max-width: 720px; text-align: center; opacity: 0; animation: revealMain 0.8s ease-out 2.6s forwards; }
+        /* Centered Main Container */
+        main { flex: 1; display: flex; flex-direction: column; justify-content: center; margin: auto; width: 100%; max-width: 680px; text-align: center; opacity: 0; animation: revealMain 0.8s ease-out 2.6s forwards; }
         @keyframes revealMain { to { opacity: 1; } }
 
         .brand-header { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 10px; }
-        .logo-svg { height: 45px; width: auto; stroke: #FFF; }
-        .logo-svg polygon { fill: #FFF; }
-        .brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 2.5rem; letter-spacing: -1px; color: #FFF; margin: 0; line-height: 1; }
+        .logo-svg { height: 45px; width: auto; stroke: var(--brand-main); }
+        .logo-svg polygon { fill: var(--brand-main); }
+        .brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 2.8rem; letter-spacing: -1px; color: var(--brand-main); margin: 0; line-height: 1; }
         
-        .tagline { color: #94A3B8; font-size: 1.1rem; margin-bottom: 30px; font-weight: 500; }
+        .tagline { color: var(--text-sub); font-size: 1.1rem; margin-bottom: 30px; font-weight: 500; }
         
-        /* SKYSCANNER UI SEARCH BOX */
         .search-container { background: transparent; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); text-align: left; width: 100%;}
         
-        .input-cluster { background: #FFF; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-premium); margin-bottom: 20px;}
+        .input-cluster { background: #FFF; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-premium); margin-bottom: 20px; border: 1px solid rgba(17,24,39,0.06); }
         
         .input-row { display: flex; width: 100%; border-bottom: 1px solid var(--border); }
         .input-row:last-child { border-bottom: none; }
@@ -53,33 +52,32 @@
         .input-field { flex: 1; position: relative; border-right: 1px solid var(--border); background: #FFF; padding: 12px 16px; transition: 0.2s background; }
         .input-field:last-child { border-right: none; }
         @media (max-width: 600px) { .input-field { border-right: none; border-bottom: 1px solid var(--border); } .input-field:last-child { border-bottom: none; } }
-        .input-field:hover { background: #F8FAFC; }
+        .input-field:hover { background: #F9FAFB; }
         
         .input-field label { font-size: 0.75rem; font-weight: 700; color: var(--text-sub); display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
         
-        select { width: 100%; border: none; padding: 4px 0; font-size: 1.1rem; outline: none; font-family: inherit; background: transparent; color: var(--text-main); cursor: pointer; appearance: none; font-weight: 700; }
-        select:invalid { color: #94A3B8; } 
+        select { width: 100%; border: none; padding: 4px 0; font-size: 1.05rem; outline: none; font-family: inherit; background: transparent; color: var(--text-main); cursor: pointer; appearance: none; font-weight: 700; }
+        select:invalid { color: #9CA3AF; } 
         
         .tech-specs-grid { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;}
         .tech-toggle { display: block; position: relative; cursor: pointer; flex: 1; min-width: 120px;}
         .tech-toggle input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
-        .tech-toggle span { display: block; padding: 12px; text-align: center; border-radius: 12px; font-size: 0.9rem; font-weight: 700; color: #FFF; transition: all 0.2s; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); user-select: none; }
-        .tech-toggle input:checked ~ span { background: #FFF; color: var(--brand-main); border-color: #FFF;}
+        .tech-toggle span { display: block; padding: 14px 12px; text-align: center; border-radius: 12px; font-size: 0.9rem; font-weight: 700; color: var(--text-sub); transition: all 0.2s; background: #FFF; border: 1.5px solid var(--border); user-select: none; box-shadow: var(--shadow-sm); }
+        .tech-toggle input:checked ~ span { background: var(--brand-main); color: #FFF; border-color: var(--brand-main); box-shadow: 0 4px 15px rgba(17, 24, 39, 0.2); }
         
-        .btn-audit { background: var(--brand-action); color: white; border: none; padding: 20px; border-radius: 16px; font-weight: 800; font-size: 1.2rem; cursor: pointer; transition: all 0.2s ease; font-family: 'Outfit', sans-serif; width: 100%; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(0, 98, 227, 0.4); }
-        .btn-audit:hover { background: #0052C2; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0, 98, 227, 0.5); }
+        .btn-audit { background: var(--brand-main); color: white; border: none; padding: 20px; border-radius: 16px; font-weight: 800; font-size: 1.2rem; cursor: pointer; transition: all 0.2s ease; font-family: 'Outfit', sans-serif; width: 100%; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(17, 24, 39, 0.15); }
+        .btn-audit:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(17, 24, 39, 0.25); }
         .btn-audit:active { transform: translateY(0); }
         .btn-audit:disabled { opacity: 0.8; cursor: wait; transform: none; box-shadow: none; }
 
-        /* RESULTS UI - WHITE BACKGROUND FOR THE REST OF PAGE */
-        #result-area { display: none; margin-top: 30px; text-align: left; animation: slideUp 0.4s ease-out; width: 100%; background: var(--bg); padding: 30px; border-radius: 24px; box-sizing: border-box; }
+        #result-area { display: none; margin-top: 10px; text-align: left; animation: slideUp 0.4s ease-out; width: 100%; background: transparent; padding: 0; border-radius: 0; box-sizing: border-box; }
         
-        .audit-card { background: #FFF; border-radius: 20px; padding: 35px; border: 2px solid var(--border); box-shadow: var(--shadow-sm); margin-bottom: 30px; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 15px;}
+        .audit-card { background: #FFF; border-radius: 20px; padding: 35px; border: 1px solid var(--border); box-shadow: var(--shadow-premium); margin-bottom: 30px; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 15px;}
         .brand-header-result { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
         .result-logo-container { display: flex; align-items: center; gap: 15px; }
-        .company-logo { width: 50px; height: 50px; border-radius: 12px; object-fit: contain; border: 1px solid #F1F5F9; padding: 5px; background: #FFF; }
+        .company-logo { width: 55px; height: 55px; border-radius: 12px; object-fit: contain; border: 1px solid var(--border); padding: 6px; background: #FFF; box-shadow: var(--shadow-sm); }
         .result-title h2 { margin: 0; font-family: 'Outfit', sans-serif; font-size: 1.8rem; color: var(--text-main); line-height: 1.1;}
-        .result-title span { font-size: 0.85rem; font-weight: 700; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.5px;}
+        .result-title span { font-size: 0.85rem; font-weight: 800; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.5px;}
         
         .score-pill { display: flex; flex-direction: column; align-items: flex-end; }
         .score-big { font-size: 3.5rem; font-weight: 800; font-family: 'Outfit', sans-serif; line-height: 0.9; letter-spacing: -1px; }
@@ -89,34 +87,44 @@
         .metric-row:last-of-type { border-bottom: none; }
         
         .btn-proceed { display: flex; justify-content: center; align-items: center; gap: 8px; color: white; padding: 18px; border-radius: 12px; text-decoration: none; font-weight: 800; margin-top: 15px; font-size: 1.05rem; transition: 0.2s; font-family: 'Outfit', sans-serif; letter-spacing: 0.5px;}
-        .btn-proceed:hover { transform: translateY(-2px); box-shadow: var(--shadow-premium); }
+        .btn-proceed:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(17, 24, 39, 0.2); }
 
-        .ranked-header { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--text-main); margin: 30px 0 15px 0; display: flex; justify-content: space-between; align-items: flex-end;}
+        .ranked-header { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--text-main); margin: 30px 0 15px 0; display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 10px; border-bottom: 1px solid var(--border);}
         .ranked-header span { font-size: 0.85rem; font-weight: 600; color: var(--text-sub); font-family: 'Plus Jakarta Sans', sans-serif;}
         
         .ranked-list { display: flex; flex-direction: column; gap: 12px; }
         
-        .ranked-row { display: flex; align-items: center; justify-content: space-between; background: #FFF; border: 1px solid var(--border); border-radius: 16px; padding: 15px 20px; transition: 0.2s ease; text-decoration: none; color: inherit; }
-        .ranked-row:hover { border-color: var(--brand-action); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+        .ranked-row { display: flex; align-items: center; justify-content: space-between; background: #FFF; border: 1px solid var(--border); border-radius: 16px; padding: 15px 20px; transition: 0.2s ease; text-decoration: none; color: inherit; box-shadow: var(--shadow-sm); }
+        .ranked-row:hover { border-color: #D1D5DB; transform: translateY(-2px); box-shadow: var(--shadow-premium); }
         
         .row-left { display: flex; align-items: center; gap: 15px; }
-        .row-logo { width: 40px; height: 40px; border-radius: 8px; object-fit: contain; }
+        .row-logo { width: 45px; height: 45px; border-radius: 10px; object-fit: contain; border: 1px solid var(--border); padding: 4px; background: #FFF;}
         .row-details h3 { margin: 0 0 2px 0; font-family: 'Outfit', sans-serif; font-size: 1.1rem; color: var(--text-main); }
         .row-details p { margin: 0; font-size: 0.85rem; font-weight: 500; color: var(--text-sub); }
         
-        .row-score { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 10px;}
-        .row-score svg { color: var(--border); transition: 0.2s;}
-        .ranked-row:hover .row-score svg { color: var(--brand-action); transform: translateX(4px); }
+        .row-score { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; display: flex; align-items: center; gap: 15px;}
+        .row-score svg { color: var(--text-sub); transition: 0.2s;}
+        .ranked-row:hover .row-score svg { color: var(--brand-main); transform: translateX(4px); }
 
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 32, 60, 0.8); z-index: 10000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(8px); }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(17, 24, 39, 0.7); z-index: 10000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(8px); }
         .modal-content { background: white; padding: 40px; border-radius: 24px; max-width: 500px; text-align: left; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); animation: modalPop 0.3s ease-out; color: var(--text-main); }
+        
+        .modal-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+        .modal-brand svg { height: 35px; width: auto; stroke: var(--brand-main); }
+        .modal-brand polygon { fill: var(--brand-main); }
+        .modal-brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.8rem; letter-spacing: -0.5px; color: var(--brand-main); margin: 0; }
+        .modal-header { border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 20px; }
+        #modal-title { font-family: 'Outfit', sans-serif; margin: 0; font-size: 1.2rem; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-sub); }
+        
+        #modal-body p { font-size: 0.95rem; line-height: 1.6; margin-top: 0; margin-bottom: 15px; color: var(--text-main); }
+        #modal-body p:last-child { margin-bottom: 0; }
         
         @keyframes modalPop { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         
-        .site-footer { padding: 40px; text-align: center; color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: auto; width: 100%; font-weight: 500; opacity: 0; animation: revealMain 0.8s ease-out 2.6s forwards; }
+        .site-footer { padding: 40px; text-align: center; color: var(--text-sub); font-size: 0.85rem; margin-top: auto; width: 100%; font-weight: 600; opacity: 0; animation: revealMain 0.8s ease-out 2.6s forwards; border-top: 1px solid var(--border); }
         .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .footer-links a { color: #FFF; text-decoration: none; font-weight: 700; cursor: pointer; transition: 0.2s; }
-        .footer-links a:hover { color: var(--brand-action); }
+        .footer-links a { color: var(--text-main); text-decoration: none; font-weight: 700; cursor: pointer; transition: 0.2s; }
+        .footer-links a:hover { color: var(--text-sub); }
         
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
@@ -220,7 +228,7 @@
                     </label>
                 </div>
 
-                <button class="btn-audit" id="audit-btn" onclick="startSearch()">Search Systems</button>
+                <button class="btn-audit" id="audit-btn" onclick="startSearch()">Search</button>
             </div>
         </div>
 
@@ -230,9 +238,18 @@
 
     <div id="info-modal" class="modal">
         <div class="modal-content">
-            <h2 id="modal-title" style="margin-top:0; font-family:'Outfit', sans-serif;"></h2>
+            <div class="modal-brand">
+                <svg viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 338 100 L 863 100 L 663 300 L 843 460 L 843 540 L 663 700 L 138 700 L 338 500 L 158 340 L 158 260 Z" stroke-width="85" fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="10" />
+                    <polygon points="300.5,280 430.5,280 700.5,520 570.5,520" />
+                </svg>
+                <h3 class="modal-brand-name">Snexz</h3>
+            </div>
+            <div class="modal-header">
+                <h2 id="modal-title"></h2>
+            </div>
             <div id="modal-body"></div>
-            <button onclick="closeModal()" style="margin-top:25px; background:var(--brand-main); color:white; border:none; padding:15px 30px; border-radius:12px; font-weight:700; cursor:pointer; width: 100%;">Close Panel</button>
+            <button onclick="closeModal()" style="margin-top:25px; background:var(--brand-main); color:white; border:none; padding:15px 30px; border-radius:12px; font-weight:700; cursor:pointer; font-family:'Outfit', sans-serif; letter-spacing: 0.5px; width: 100%;">Close Panel</button>
         </div>
     </div>
 
@@ -241,8 +258,10 @@
             <a onclick="openModal('how')">How It Works</a>
             <a onclick="openModal('privacy')">Privacy Policy</a>
             <a href="/industries.html">Software Library</a>
+            <a href="mailto:hello@snexz.com">Contact</a>
         </div>
         <div>&copy; 2026 Snexz. All rights reserved.</div>
+        <div style="max-width:400px; margin:15px auto 0; line-height:1.5; opacity:0.7;"><strong>Earnings Disclosure:</strong> Snexz may earn a commission on qualifying purchases made through our referral links.</div>
     </footer>
 
     <script>
@@ -251,7 +270,7 @@
                 const loader = document.getElementById('loader-overlay');
                 loader.style.opacity = '0';
                 setTimeout(() => { loader.style.visibility = 'hidden'; }, 500);
-            }, 2000); // Sped up the loader for a snappier feel
+            }, 2000); 
         });
 
         async function localizeCurrency() {
@@ -275,16 +294,22 @@
             const m = document.getElementById('info-modal'), t = document.getElementById('modal-title'), b = document.getElementById('modal-body');
             if(type === 'how') { 
                 t.innerText = "The Decision Engine"; 
-                b.innerHTML = "<p>Snexz operates utilizing <strong>Programmatic Feature Matching</strong>. By bypassing surface-level marketplace marketing, our engine maps your specific industry, scale, and compliance needs directly to verified B2B SaaS architecture.</p>"; 
+                b.innerHTML = "<p>Snexz operates utilizing <strong>Programmatic Feature Matching</strong>. By bypassing surface-level marketplace marketing, our engine maps your specific industry, scale, and compliance needs directly to verified B2B SaaS architecture.</p><p>We cross-reference budget constraints and operational workflows to establish an optimal software match, saving you hours of research and thousands in mismatched software subscriptions.</p>"; 
             } else { 
                 t.innerText = "Privacy Policy"; 
-                b.innerHTML = "<p>Business privacy is a foundational pillar of the Snexz infrastructure. We operate strictly as an analytical proxy; we do not track, store, or monetize individual company data or browsing habits.</p>"; 
+                b.innerHTML = "<p>Business privacy is a foundational pillar of the Snexz infrastructure. We operate strictly as an analytical proxy; we do not track, store, or monetize individual company data or browsing habits.</p><p>Our engine strictly analyzes the parameters provided during a search request. Communication is secured via industry-standard encryption, ensuring a completely anonymous and private verification experience.</p>"; 
             }
             m.style.display = 'flex';
         }
         function closeModal() { document.getElementById('info-modal').style.display = 'none'; }
 
-        // NEW: Database includes logo URLs and brand hex colors
+        function getScoreColor(score) {
+            if (score >= 90) return `rgba(17, 24, 39, 1)`;     
+            if (score >= 70) return `rgba(17, 24, 39, 0.7)`;   
+            if (score >= 60) return `rgba(17, 24, 39, 0.4)`;   
+            return `rgba(17, 24, 39, 0.2)`;                   
+        }
+
         const softwareDatabase = [
             { id: 'hubspot', name: 'HubSpot', domain: 'hubspot.com', color: '#ff7a59', ind: ['Agency', 'SaaS', 'Ecommerce', 'Finance', 'Education'], task: ['CRM', 'Marketing', 'Customer Support', 'Analytics'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Free', 'Medium', 'Enterprise'], desc: 'The gold standard CRM and marketing automation suite.', link: 'hubspot.html' },
             { id: 'monday', name: 'Monday.com', domain: 'monday.com', color: '#ff3d57', ind: ['Agency', 'SaaS', 'Construction', 'Real Estate', 'NonProfit'], task: ['Project Management', 'CRM', 'HR'], size: ['Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium'], desc: 'Highly visual, customizable work OS and project tracker.', link: 'monday.html' },
@@ -316,7 +341,7 @@
                 btn.style.backgroundColor = "#EF4444"; 
                 setTimeout(() => {
                     btn.innerText = originalText;
-                    btn.style.backgroundColor = "var(--brand-action)";
+                    btn.style.backgroundColor = "var(--brand-main)";
                 }, 2000);
                 return;
             }
@@ -353,16 +378,20 @@
                 let runnerUpsHTML = '';
                 runnerUps.forEach(tool => {
                     const isFiltered = tool.score === 50;
+                    
+                    // Logo Image Tag with built-in fallback if Clearbit fails
+                    const logoTag = `<img src="https://logo.clearbit.com/${tool.domain}" onerror="this.onerror=null; this.src='https://icon.horse/icon/${tool.domain}';" class="row-logo" alt="${tool.name} logo">`;
+                    
                     runnerUpsHTML += `
-                        <a href="/${tool.link}?score=${tool.score}" class="ranked-row" ${isFiltered ? 'style="background: #F8FAFC; border-color: transparent;"' : `style="border-color: ${tool.color}40;"`}>
+                        <a href="/${tool.link}?score=${tool.score}" class="ranked-row" ${isFiltered ? 'style="background: #F9FAFB; border-color: transparent; box-shadow: none;"' : ''}>
                             <div class="row-left">
-                                <img src="https://logo.clearbit.com/${tool.domain}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'40\\' height=\\'40\\' fill=\\'%23CBD5E1\\'><rect width=\\'40\\' height=\\'40\\' rx=\\'8\\'/></svg>'" class="row-logo" />
+                                ${logoTag}
                                 <div class="row-details">
                                     <h3 ${isFiltered ? 'style="color: var(--text-sub);"' : ''}>${tool.name}</h3>
                                     <p>${isFiltered ? `Lacks native ${reqInd} workflow support.` : tool.desc}</p>
                                 </div>
                             </div>
-                            <div class="row-score" style="color: ${isFiltered ? 'var(--border)' : tool.color};">
+                            <div class="row-score" style="color: ${getScoreColor(tool.score)}; opacity: ${isFiltered ? '0.3' : '1'};">
                                 ${isFiltered ? '' : tool.score}
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             </div>
@@ -370,11 +399,14 @@
                     `;
                 });
 
+                // Top Result Logo with built-in fallback
+                const topLogoTag = `<img src="https://logo.clearbit.com/${topTool.domain}" onerror="this.onerror=null; this.src='https://icon.horse/icon/${topTool.domain}';" class="company-logo" alt="${topTool.name} logo">`;
+
                 resultArea.innerHTML = `
                     <div class="audit-card" style="border-top: 6px solid ${topTool.color};">
                         <div class="brand-header-result">
                             <div class="result-logo-container">
-                                <img src="https://logo.clearbit.com/${topTool.domain}" class="company-logo" onerror="this.style.display='none'">
+                                ${topLogoTag}
                                 <div class="result-title">
                                     <span>Top Recommendation</span>
                                     <h2>${topTool.name}</h2>
@@ -386,9 +418,9 @@
                             </div>
                         </div>
                         
-                        <div style="background: #F8FAFC; border-radius: 12px; padding: 15px 20px;">
-                            <div class="metric-row"><span>Scale Alignment</span><strong>${reqSize} Tier</strong></div>
-                            <div class="metric-row"><span>Industry Compliance</span><strong>${reqInd} Standards</strong></div>
+                        <div style="background: #F9FAFB; border-radius: 12px; padding: 15px 20px; border: 1px solid var(--border);">
+                            <div class="metric-row"><span>Scale Alignment</span><strong style="color: var(--brand-main);">${reqSize} Tier</strong></div>
+                            <div class="metric-row"><span>Industry Compliance</span><strong style="color: var(--brand-main);">${reqInd} Standards</strong></div>
                         </div>
                         
                         <a href="/${topTool.link}?score=${topTool.score}" class="btn-proceed" style="background: ${topTool.color};">
@@ -408,11 +440,8 @@
                 `;
                 
                 document.getElementById('search-box-ui').style.display = 'none';
-                document.querySelector('.brand-header').style.display = 'none';
-                document.querySelector('body').style.background = 'var(--bg)';
-                
                 resultArea.style.display = 'block';
-                btn.innerText = "Search Systems";
+                btn.innerText = "Search";
                 btn.disabled = false;
                 
             }, 2500); 
