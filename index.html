@@ -11,124 +11,130 @@
     
     <style>
         :root { 
-            --bg: #F9FAFB; 
-            --brand-main: #111827; 
+            --bg: #F0F3F5; 
+            --brand-main: #05203C; /* Skyscanner deep blue */
+            --brand-action: #0062E3; /* Skyscanner bright action blue */
             --text-main: #111827; 
-            --text-sub: #6B7280; 
-            --success: #10B981; 
-            --border: #E5E7EB; 
-            --shadow-premium: 0 20px 40px -15px rgba(17, 24, 39, 0.08);
-            --shadow-hover: 0 25px 50px -12px rgba(17, 24, 39, 0.15);
+            --text-sub: #4B5563; 
+            --border: #CBD5E1; 
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-premium: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
         }
         
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--brand-main); margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         
-        #loader-overlay { position: fixed; inset: 0; background-color: var(--bg); z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
-        .loader-svg { width: 120px; height: auto; }
+        #loader-overlay { position: fixed; inset: 0; background-color: var(--brand-main); z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .loader-svg { width: 120px; height: auto; stroke: #FFF; }
         .loader-svg path { clip-path: inset(0 100% 0 0); animation: wipeRight 1s cubic-bezier(0.76, 0, 0.24, 1) forwards 0.2s; }
-        .loader-svg polygon { opacity: 0; transform: translateY(20px); animation: lockIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.1s forwards; }
+        .loader-svg polygon { opacity: 0; transform: translateY(20px); animation: lockIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.1s forwards; fill: #FFF; }
         
         @keyframes wipeRight { to { clip-path: inset(0 0 0 0); } }
         @keyframes lockIn { to { opacity: 1; transform: translateY(0); } }
         
-        main { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; margin-top: 6vh; width: 100%; max-width: 680px; text-align: center; opacity: 0; animation: revealMain 0.8s ease-out 2.6s forwards; }
+        main { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; margin-top: 6vh; width: 100%; max-width: 720px; text-align: center; opacity: 0; animation: revealMain 0.8s ease-out 2.6s forwards; }
         @keyframes revealMain { to { opacity: 1; } }
 
-        .brand-header { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 20px; }
-        .logo-svg { height: 60px; width: auto; }
-        .brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 3.8rem; letter-spacing: -1.5px; color: var(--brand-main); margin: 0; line-height: 1; }
+        .brand-header { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 10px; }
+        .logo-svg { height: 45px; width: auto; stroke: #FFF; }
+        .logo-svg polygon { fill: #FFF; }
+        .brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 2.5rem; letter-spacing: -1px; color: #FFF; margin: 0; line-height: 1; }
         
-        .tagline { color: var(--brand-main); font-size: 1.15rem; margin-bottom: 40px; font-weight: 500; }
+        .tagline { color: #94A3B8; font-size: 1.1rem; margin-bottom: 30px; font-weight: 500; }
         
-        .search-container { background: #FFFFFF; border-radius: 24px; padding: 35px; border: 1px solid rgba(17, 24, 39, 0.06); box-shadow: var(--shadow-premium); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); text-align: left;}
-        .search-container:hover { box-shadow: var(--shadow-hover); border-color: rgba(17, 24, 39, 0.12); }
+        /* SKYSCANNER UI SEARCH BOX */
+        .search-container { background: transparent; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); text-align: left; width: 100%;}
         
-        .form-section { margin-bottom: 25px; }
-        .section-title { font-size: 0.8rem; font-weight: 800; color: var(--text-sub); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 8px; font-family: 'Outfit', sans-serif; }
+        .input-cluster { background: #FFF; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-premium); margin-bottom: 20px;}
         
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
+        .input-row { display: flex; width: 100%; border-bottom: 1px solid var(--border); }
+        .input-row:last-child { border-bottom: none; }
+        @media (max-width: 600px) { .input-row { flex-direction: column; } }
         
-        .form-group label { font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 8px; display: block; }
+        .input-field { flex: 1; position: relative; border-right: 1px solid var(--border); background: #FFF; padding: 12px 16px; transition: 0.2s background; }
+        .input-field:last-child { border-right: none; }
+        @media (max-width: 600px) { .input-field { border-right: none; border-bottom: 1px solid var(--border); } .input-field:last-child { border-bottom: none; } }
+        .input-field:hover { background: #F8FAFC; }
         
-        select { width: 100%; border: 1.5px solid var(--border); padding: 14px 16px; font-size: 1rem; border-radius: 12px; outline: none; font-family: inherit; background-color: #F9FAFB; color: var(--text-main); box-sizing: border-box; transition: 0.2s; cursor: pointer; appearance: none; font-weight: 600; }
-        select:focus { border-color: var(--brand-main); box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.08); background-color: #FFF; }
-        select:invalid { color: var(--text-sub); } 
+        .input-field label { font-size: 0.75rem; font-weight: 700; color: var(--text-sub); display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
         
-        .tech-specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
-        .tech-toggle { display: block; position: relative; cursor: pointer; }
+        select { width: 100%; border: none; padding: 4px 0; font-size: 1.1rem; outline: none; font-family: inherit; background: transparent; color: var(--text-main); cursor: pointer; appearance: none; font-weight: 700; }
+        select:invalid { color: #94A3B8; } 
+        
+        .tech-specs-grid { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;}
+        .tech-toggle { display: block; position: relative; cursor: pointer; flex: 1; min-width: 120px;}
         .tech-toggle input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
-        .tech-toggle span { display: block; padding: 12px 10px; text-align: center; border: 1.5px solid var(--border); border-radius: 10px; font-size: 0.85rem; font-weight: 700; color: var(--text-sub); transition: all 0.2s; background: #F9FAFB; user-select: none; }
-        .tech-toggle input:checked ~ span { background: var(--brand-main); color: #FFF; border-color: var(--brand-main); box-shadow: 0 4px 10px rgba(17, 24, 39, 0.2); }
+        .tech-toggle span { display: block; padding: 12px; text-align: center; border-radius: 12px; font-size: 0.9rem; font-weight: 700; color: #FFF; transition: all 0.2s; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); user-select: none; }
+        .tech-toggle input:checked ~ span { background: #FFF; color: var(--brand-main); border-color: #FFF;}
         
-        .btn-audit { background: var(--brand-main); color: white; border: none; padding: 22px; border-radius: 14px; font-weight: 800; font-size: 1.15rem; cursor: pointer; transition: all 0.2s ease; font-family: 'Outfit', sans-serif; margin-top: 15px; width: 100%; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(17, 24, 39, 0.15); }
-        .btn-audit:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(17, 24, 39, 0.3); }
+        .btn-audit { background: var(--brand-action); color: white; border: none; padding: 20px; border-radius: 16px; font-weight: 800; font-size: 1.2rem; cursor: pointer; transition: all 0.2s ease; font-family: 'Outfit', sans-serif; width: 100%; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(0, 98, 227, 0.4); }
+        .btn-audit:hover { background: #0052C2; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0, 98, 227, 0.5); }
         .btn-audit:active { transform: translateY(0); }
         .btn-audit:disabled { opacity: 0.8; cursor: wait; transform: none; box-shadow: none; }
 
-        #result-area { display: none; margin-top: 25px; text-align: left; animation: slideUp 0.4s ease-out; width: 100%; }
+        /* RESULTS UI - WHITE BACKGROUND FOR THE REST OF PAGE */
+        #result-area { display: none; margin-top: 30px; text-align: left; animation: slideUp 0.4s ease-out; width: 100%; background: var(--bg); padding: 30px; border-radius: 24px; box-sizing: border-box; }
         
-        .audit-card { background: #FFF; border-radius: 24px; padding: 35px; border: 1px solid var(--brand-main); box-shadow: var(--shadow-premium); margin-bottom: 30px; position: relative; overflow: hidden; }
-        .optimal-badge { position: absolute; top: 0; right: 0; background: var(--brand-main); color: #FFF; font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 800; padding: 8px 16px; border-bottom-left-radius: 16px; text-transform: uppercase; letter-spacing: 1px; }
-        .score-big { font-size: 5rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-right: 20px; line-height: 1; letter-spacing: -2px; }
-        .metric-row { display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid #F3F4F6; font-size: 0.95rem; }
+        .audit-card { background: #FFF; border-radius: 20px; padding: 35px; border: 2px solid var(--border); box-shadow: var(--shadow-sm); margin-bottom: 30px; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 15px;}
+        .brand-header-result { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+        .result-logo-container { display: flex; align-items: center; gap: 15px; }
+        .company-logo { width: 50px; height: 50px; border-radius: 12px; object-fit: contain; border: 1px solid #F1F5F9; padding: 5px; background: #FFF; }
+        .result-title h2 { margin: 0; font-family: 'Outfit', sans-serif; font-size: 1.8rem; color: var(--text-main); line-height: 1.1;}
+        .result-title span { font-size: 0.85rem; font-weight: 700; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.5px;}
         
-        .btn-proceed { display: flex; justify-content: center; align-items: center; gap: 8px; background: var(--brand-main); color: white; padding: 20px; border-radius: 12px; text-decoration: none; font-weight: 800; margin-top: 25px; font-size: 1.05rem; transition: 0.2s; font-family: 'Outfit', sans-serif; letter-spacing: 0.5px;}
-        .btn-proceed:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(17, 24, 39, 0.3); }
+        .score-pill { display: flex; flex-direction: column; align-items: flex-end; }
+        .score-big { font-size: 3.5rem; font-weight: 800; font-family: 'Outfit', sans-serif; line-height: 0.9; letter-spacing: -1px; }
+        .score-label { font-size: 0.75rem; font-weight: 800; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.5px; font-family: 'Outfit', sans-serif; }
+        
+        .metric-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #F1F5F9; font-size: 0.95rem; }
+        .metric-row:last-of-type { border-bottom: none; }
+        
+        .btn-proceed { display: flex; justify-content: center; align-items: center; gap: 8px; color: white; padding: 18px; border-radius: 12px; text-decoration: none; font-weight: 800; margin-top: 15px; font-size: 1.05rem; transition: 0.2s; font-family: 'Outfit', sans-serif; letter-spacing: 0.5px;}
+        .btn-proceed:hover { transform: translateY(-2px); box-shadow: var(--shadow-premium); }
 
-        .ranked-header { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin: 40px 0 20px 0; padding-bottom: 15px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-end;}
-        .ranked-header span { font-size: 0.9rem; font-weight: 600; color: var(--text-sub); font-family: 'Plus Jakarta Sans', sans-serif;}
+        .ranked-header { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--text-main); margin: 30px 0 15px 0; display: flex; justify-content: space-between; align-items: flex-end;}
+        .ranked-header span { font-size: 0.85rem; font-weight: 600; color: var(--text-sub); font-family: 'Plus Jakarta Sans', sans-serif;}
         
-        .ranked-list { display: flex; flex-direction: column; gap: 15px; }
+        .ranked-list { display: flex; flex-direction: column; gap: 12px; }
         
-        .ranked-row { display: flex; align-items: center; justify-content: space-between; background: #FFF; border: 1px solid var(--border); border-radius: 16px; padding: 20px 25px; transition: 0.3s ease; text-decoration: none; color: inherit; }
-        .ranked-row:hover { border-color: #D1D5DB; transform: translateX(4px); box-shadow: var(--shadow-sm); }
+        .ranked-row { display: flex; align-items: center; justify-content: space-between; background: #FFF; border: 1px solid var(--border); border-radius: 16px; padding: 15px 20px; transition: 0.2s ease; text-decoration: none; color: inherit; }
+        .ranked-row:hover { border-color: var(--brand-action); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
         
-        .row-left { display: flex; align-items: center; gap: 20px; }
-        .row-score { font-family: 'Outfit', sans-serif; font-size: 2.2rem; font-weight: 800; width: 60px; text-align: center; }
-        .row-details h3 { margin: 0 0 5px 0; font-family: 'Outfit', sans-serif; font-size: 1.2rem; color: var(--text-main); }
-        .row-details p { margin: 0; font-size: 0.9rem; font-weight: 500; }
+        .row-left { display: flex; align-items: center; gap: 15px; }
+        .row-logo { width: 40px; height: 40px; border-radius: 8px; object-fit: contain; }
+        .row-details h3 { margin: 0 0 2px 0; font-family: 'Outfit', sans-serif; font-size: 1.1rem; color: var(--text-main); }
+        .row-details p { margin: 0; font-size: 0.85rem; font-weight: 500; color: var(--text-sub); }
         
-        .row-action { font-weight: 700; font-size: 0.9rem; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
-        .row-action svg { transition: 0.2s; }
-        .ranked-row:hover .row-action svg { transform: translateX(4px); }
+        .row-score { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 10px;}
+        .row-score svg { color: var(--border); transition: 0.2s;}
+        .ranked-row:hover .row-score svg { color: var(--brand-action); transform: translateX(4px); }
 
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(8px); }
-        .modal-content { background: white; padding: 40px; border-radius: 24px; max-width: 500px; text-align: left; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); animation: modalPop 0.3s ease-out; }
-        
-        .modal-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
-        .modal-brand svg { height: 35px; width: auto; }
-        .modal-brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.8rem; letter-spacing: -0.5px; color: var(--brand-main); margin: 0; }
-        .modal-header { border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 20px; }
-        #modal-title { font-family: 'Outfit', sans-serif; margin: 0; font-size: 1.2rem; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-sub); }
-        
-        #modal-body p { font-size: 0.95rem; line-height: 1.6; margin-top: 0; margin-bottom: 15px; color: var(--text-main); }
-        #modal-body p:last-child { margin-bottom: 0; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 32, 60, 0.8); z-index: 10000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(8px); }
+        .modal-content { background: white; padding: 40px; border-radius: 24px; max-width: 500px; text-align: left; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); animation: modalPop 0.3s ease-out; color: var(--text-main); }
         
         @keyframes modalPop { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         
-        .site-footer { padding: 40px; text-align: center; color: var(--text-sub); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: auto; width: 100%; font-weight: 600; opacity: 0; animation: revealMain 0.8s ease-out 2.6s forwards; }
+        .site-footer { padding: 40px; text-align: center; color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: auto; width: 100%; font-weight: 500; opacity: 0; animation: revealMain 0.8s ease-out 2.6s forwards; }
         .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .footer-links a { color: var(--text-main); text-decoration: none; font-weight: 700; cursor: pointer; transition: 0.2s; }
-        .footer-links a:hover { color: var(--text-sub); }
+        .footer-links a { color: #FFF; text-decoration: none; font-weight: 700; cursor: pointer; transition: 0.2s; }
+        .footer-links a:hover { color: var(--brand-action); }
         
-        @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
     <div id="loader-overlay">
         <svg class="loader-svg" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
-            <path d="M 338 100 L 863 100 L 663 300 L 843 460 L 843 540 L 663 700 L 138 700 L 338 500 L 158 340 L 158 260 Z" stroke="#111827" stroke-width="85" fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="10" />
-            <polygon points="300.5,280 430.5,280 700.5,520 570.5,520" fill="#111827" />
+            <path d="M 338 100 L 863 100 L 663 300 L 843 460 L 843 540 L 663 700 L 138 700 L 338 500 L 158 340 L 158 260 Z" stroke-width="85" fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="10" />
+            <polygon points="300.5,280 430.5,280 700.5,520 570.5,520" />
         </svg>
     </div>
 
     <main>
         <div class="brand-header">
             <svg class="logo-svg" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
-                <path d="M 338 100 L 863 100 L 663 300 L 843 460 L 843 540 L 663 700 L 138 700 L 338 500 L 158 340 L 158 260 Z" stroke="#111827" stroke-width="85" fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="10" />
-                <polygon points="300.5,280 430.5,280 700.5,520 570.5,520" fill="#111827" />
+                <path d="M 338 100 L 863 100 L 663 300 L 843 460 L 843 540 L 663 700 L 138 700 L 338 500 L 158 340 L 158 260 Z" stroke-width="85" fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="10" />
+                <polygon points="300.5,280 430.5,280 700.5,520 570.5,520" />
             </svg>
             <h1 class="brand-name">Snexz</h1>
         </div>
@@ -138,10 +144,9 @@
             
             <div class="search-container">
                 
-                <div class="form-section">
-                    <div class="section-title">Business Foundation</div>
-                    <div class="grid-2">
-                        <div class="form-group">
+                <div class="input-cluster">
+                    <div class="input-row">
+                        <div class="input-field">
                             <label>Industry</label>
                             <select id="input-industry" required>
                                 <option value="" disabled selected>Select Industry...</option>
@@ -158,71 +163,64 @@
                                 <option value="NonProfit">Non-Profit & NGO</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label>Primary Operational Goal</label>
+                        <div class="input-field">
+                            <label>Primary Goal</label>
                             <select id="input-task" required>
                                 <option value="" disabled selected>Select Goal...</option>
-                                <option value="CRM">Lead & Pipeline Mgmt (CRM)</option>
+                                <option value="CRM">Lead & Pipeline (CRM)</option>
                                 <option value="Project Management">Task & Project Tracking</option>
-                                <option value="Invoicing">Automated Billing & Finance</option>
+                                <option value="Invoicing">Automated Billing</option>
                                 <option value="Booking">Client Scheduling</option>
-                                <option value="HR">HR, Payroll & Recruiting</option>
+                                <option value="HR">HR & Payroll</option>
                                 <option value="Marketing">Marketing Automation</option>
-                                <option value="Customer Support">Customer Support & Helpdesk</option>
-                                <option value="Inventory">E-commerce & Inventory</option>
-                                <option value="Analytics">Data Analytics & Reporting</option>
-                                <option value="Document">Document Management & E-Sign</option>
+                                <option value="Customer Support">Helpdesk / Tickets</option>
+                                <option value="Inventory">E-commerce Inventory</option>
+                                <option value="Analytics">Data & Reporting</option>
+                                <option value="Document">Document & E-Sign</option>
                             </select>
                         </div>
                     </div>
-                </div>
-
-                <div class="form-section">
-                    <div class="section-title">Scale & Deployment</div>
-                    <div class="grid-2">
-                        <div class="form-group">
-                            <label>Company Size</label>
+                    <div class="input-row">
+                        <div class="input-field">
+                            <label>Team Size</label>
                             <select id="input-size" required>
                                 <option value="" disabled selected>Select Size...</option>
-                                <option value="Solo">Solo Founder / Freelancer</option>
+                                <option value="Solo">Solo / Freelancer</option>
                                 <option value="Micro">2 - 10 Employees</option>
                                 <option value="Small">11 - 50 Employees</option>
                                 <option value="Medium">51 - 200 Employees</option>
                                 <option value="Enterprise">200+ Employees</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label>Monthly Software Budget</label>
+                        <div class="input-field">
+                            <label>Monthly Budget</label>
                             <select id="input-budget" required>
                                 <option value="" disabled selected>Select Budget...</option>
-                                <option value="Free">£0 (Freemium Tools)</option>
-                                <option value="Low">£10 - £50 / month</option>
-                                <option value="Medium">£50 - £200 / month</option>
-                                <option value="Enterprise">£200+ / month</option>
+                                <option value="Free">£0 (Freemium)</option>
+                                <option value="Low">£10 - £50</option>
+                                <option value="Medium">£50 - £200</option>
+                                <option value="Enterprise">£200+</option>
                             </select>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-section">
-                    <div class="section-title">Required Capabilities</div>
-                    <div class="tech-specs-grid">
-                        <label class="tech-toggle">
-                            <input type="checkbox" id="spec-zapier" value="Zapier" checked>
-                            <span>Zapier / APIs</span>
-                        </label>
-                        <label class="tech-toggle">
-                            <input type="checkbox" id="spec-gdpr" value="GDPR">
-                            <span>GDPR Ready</span>
-                        </label>
-                        <label class="tech-toggle">
-                            <input type="checkbox" id="spec-sso" value="SSO">
-                            <span>SSO / SAML Security</span>
-                        </label>
-                    </div>
+                <div class="tech-specs-grid">
+                    <label class="tech-toggle">
+                        <input type="checkbox" id="spec-zapier" value="Zapier" checked>
+                        <span>Zapier / APIs</span>
+                    </label>
+                    <label class="tech-toggle">
+                        <input type="checkbox" id="spec-gdpr" value="GDPR">
+                        <span>GDPR Ready</span>
+                    </label>
+                    <label class="tech-toggle">
+                        <input type="checkbox" id="spec-sso" value="SSO">
+                        <span>SSO Security</span>
+                    </label>
                 </div>
 
-                <button class="btn-audit" id="audit-btn" onclick="startSearch()">Search</button>
+                <button class="btn-audit" id="audit-btn" onclick="startSearch()">Search Systems</button>
             </div>
         </div>
 
@@ -232,18 +230,9 @@
 
     <div id="info-modal" class="modal">
         <div class="modal-content">
-            <div class="modal-brand">
-                <svg viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 338 100 L 863 100 L 663 300 L 843 460 L 843 540 L 663 700 L 138 700 L 338 500 L 158 340 L 158 260 Z" stroke="#111827" stroke-width="85" fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="10" />
-                    <polygon points="300.5,280 430.5,280 700.5,520 570.5,520" fill="#111827" />
-                </svg>
-                <h3 class="modal-brand-name">Snexz</h3>
-            </div>
-            <div class="modal-header">
-                <h2 id="modal-title"></h2>
-            </div>
+            <h2 id="modal-title" style="margin-top:0; font-family:'Outfit', sans-serif;"></h2>
             <div id="modal-body"></div>
-            <button onclick="closeModal()" style="margin-top:25px; background:var(--text-main); color:white; border:none; padding:15px 30px; border-radius:12px; font-weight:700; cursor:pointer; font-family:'Outfit', sans-serif; letter-spacing: 0.5px; width: 100%;">Close Panel</button>
+            <button onclick="closeModal()" style="margin-top:25px; background:var(--brand-main); color:white; border:none; padding:15px 30px; border-radius:12px; font-weight:700; cursor:pointer; width: 100%;">Close Panel</button>
         </div>
     </div>
 
@@ -252,10 +241,8 @@
             <a onclick="openModal('how')">How It Works</a>
             <a onclick="openModal('privacy')">Privacy Policy</a>
             <a href="/industries.html">Software Library</a>
-            <a href="mailto:hello@snexz.com">Contact</a>
         </div>
         <div>&copy; 2026 Snexz. All rights reserved.</div>
-        <div style="max-width:400px; margin:15px auto 0; line-height:1.5; opacity:0.7;"><strong>Earnings Disclosure:</strong> Snexz may earn a commission on qualifying purchases made through our referral links.</div>
     </footer>
 
     <script>
@@ -264,7 +251,7 @@
                 const loader = document.getElementById('loader-overlay');
                 loader.style.opacity = '0';
                 setTimeout(() => { loader.style.visibility = 'hidden'; }, 500);
-            }, 2800);
+            }, 2000); // Sped up the loader for a snappier feel
         });
 
         async function localizeCurrency() {
@@ -276,9 +263,9 @@
                 const rates = { 'USD': { sym: '$', mult: 1.25 }, 'EUR': { sym: '€', mult: 1.17 }, 'AUD': { sym: 'A$', mult: 1.95 }, 'CAD': { sym: 'C$', mult: 1.70 } };
                 if (rates[userCurrency]) {
                     const c = rates[userCurrency];
-                    budgetSelect.options[1].text = `${c.sym}${Math.round(10 * c.mult)} - ${c.sym}${Math.round(50 * c.mult)} / month`;
-                    budgetSelect.options[2].text = `${c.sym}${Math.round(50 * c.mult)} - ${c.sym}${Math.round(200 * c.mult)} / month`;
-                    budgetSelect.options[3].text = `${c.sym}${Math.round(200 * c.mult)}+ / month`;
+                    budgetSelect.options[1].text = `${c.sym}${Math.round(10 * c.mult)} - ${c.sym}${Math.round(50 * c.mult)}`;
+                    budgetSelect.options[2].text = `${c.sym}${Math.round(50 * c.mult)} - ${c.sym}${Math.round(200 * c.mult)}`;
+                    budgetSelect.options[3].text = `${c.sym}${Math.round(200 * c.mult)}+`;
                 }
             } catch (error) { console.log("Localization deferred to default."); }
         }
@@ -288,38 +275,32 @@
             const m = document.getElementById('info-modal'), t = document.getElementById('modal-title'), b = document.getElementById('modal-body');
             if(type === 'how') { 
                 t.innerText = "The Decision Engine"; 
-                b.innerHTML = "<p>Snexz operates utilizing <strong>Programmatic Feature Matching</strong>. By bypassing surface-level marketplace marketing, our engine maps your specific industry, scale, and compliance needs directly to verified B2B SaaS architecture.</p><p>We cross-reference budget constraints and operational workflows to establish an optimal software match, saving you hours of research and thousands in mismatched software subscriptions.</p>"; 
+                b.innerHTML = "<p>Snexz operates utilizing <strong>Programmatic Feature Matching</strong>. By bypassing surface-level marketplace marketing, our engine maps your specific industry, scale, and compliance needs directly to verified B2B SaaS architecture.</p>"; 
             } else { 
                 t.innerText = "Privacy Policy"; 
-                b.innerHTML = "<p>Business privacy is a foundational pillar of the Snexz infrastructure. We operate strictly as an analytical proxy; we do not track, store, or monetize individual company data or browsing habits.</p><p>Our engine strictly analyzes the parameters provided during a search request. Communication is secured via industry-standard encryption, ensuring a completely anonymous and private verification experience.</p>"; 
+                b.innerHTML = "<p>Business privacy is a foundational pillar of the Snexz infrastructure. We operate strictly as an analytical proxy; we do not track, store, or monetize individual company data or browsing habits.</p>"; 
             }
             m.style.display = 'flex';
         }
         function closeModal() { document.getElementById('info-modal').style.display = 'none'; }
 
-        function getScoreColor(score) {
-            if (score >= 90) return `rgba(17, 24, 39, 1)`;     
-            if (score >= 70) return `rgba(17, 24, 39, 0.7)`;   
-            if (score >= 60) return `rgba(17, 24, 39, 0.4)`;   
-            return `rgba(17, 24, 39, 0.15)`;                   
-        }
-
+        // NEW: Database includes logo URLs and brand hex colors
         const softwareDatabase = [
-            { id: 'hubspot', name: 'HubSpot', ind: ['Agency', 'SaaS', 'Ecommerce', 'Finance', 'Education'], task: ['CRM', 'Marketing', 'Customer Support', 'Analytics'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Free', 'Medium', 'Enterprise'], desc: 'The gold standard CRM and marketing automation suite.', link: 'hubspot.html' },
-            { id: 'monday', name: 'Monday.com', ind: ['Agency', 'SaaS', 'Construction', 'Real Estate', 'NonProfit'], task: ['Project Management', 'CRM', 'HR'], size: ['Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium'], desc: 'Highly visual, customizable work OS and project tracker.', link: 'monday.html' },
-            { id: 'shopify', name: 'Shopify', ind: ['Ecommerce', 'Hospitality'], task: ['Invoicing', 'Marketing', 'Inventory'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium', 'Enterprise'], desc: 'The definitive platform for independent retail architecture.', link: 'shopify.html' },
-            { id: 'contractor-foreman', name: 'Contractor Foreman', ind: ['Construction'], task: ['Project Management', 'Invoicing'], size: ['Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'All-in-one management for specialty contractors and builders.', link: 'contractor-foreman.html' },
-            { id: 'quickbooks', name: 'QuickBooks', ind: ['Construction', 'Agency', 'Medical', 'Ecommerce', 'Real Estate', 'Legal', 'SaaS', 'Finance', 'NonProfit'], task: ['Invoicing', 'Analytics'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'Industry-standard accounting and automated billing.', link: 'quickbooks.html' },
-            { id: 'zendesk', name: 'Zendesk', ind: ['SaaS', 'Ecommerce', 'Agency', 'Hospitality', 'Education'], task: ['CRM', 'Customer Support'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Medium', 'Enterprise'], desc: 'Enterprise-grade customer service and ticketing system.', link: 'zendesk.html' },
-            { id: 'highlevel', name: 'HighLevel', ind: ['Agency', 'Real Estate'], task: ['CRM', 'Marketing', 'Booking'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Medium'], desc: 'White-label marketing platform built specifically for agencies.', link: 'highlevel.html' },
-            { id: 'pandadoc', name: 'PandaDoc', ind: ['Legal', 'Agency', 'SaaS', 'Real Estate', 'Finance'], task: ['Project Management', 'CRM', 'Document'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low', 'Medium'], desc: 'Automated document signing and secure proposal tracking.', link: 'pandadoc.html' },
-            { id: 'katana', name: 'Katana Cloud', ind: ['Ecommerce', 'Construction'], task: ['Project Management', 'Invoicing', 'Inventory'], size: ['Small', 'Medium'], budget: ['Medium', 'Enterprise'], desc: 'Advanced manufacturing and inventory management software.', link: 'katana.html' },
-            { id: 'appointy', name: 'Appointy', ind: ['Medical', 'Legal', 'Hospitality'], task: ['Booking'], size: ['Solo', 'Micro', 'Small'], budget: ['Free', 'Low'], desc: 'HIPAA-compliant patient and client scheduling portal.', link: 'appointy.html' },
-            { id: 'notion', name: 'Notion', ind: ['Agency', 'SaaS', 'Education', 'NonProfit'], task: ['Project Management', 'Document'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low'], desc: 'Highly flexible, all-in-one workspace for documents and wikis.', link: 'notion.html' },
-            { id: 'brevo', name: 'Brevo (Sendinblue)', ind: ['Ecommerce', 'Agency', 'Hospitality', 'NonProfit'], task: ['Marketing', 'CRM'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low', 'Medium'], desc: 'Affordable, scalable email marketing and automation platform.', link: 'brevo.html' },
-            { id: 'slack', name: 'Slack', ind: ['SaaS', 'Agency', 'Ecommerce', 'NonProfit', 'Education'], task: ['Project Management', 'Customer Support'], size: ['Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low', 'Medium', 'Enterprise'], desc: 'The industry-standard hub for team communication and workflows.', link: 'slack.html' },
-            { id: 'dropbox', name: 'Dropbox', ind: ['Construction', 'Agency', 'Legal', 'Real Estate', 'Education'], task: ['Document', 'Project Management'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low', 'Medium'], desc: 'AI-enhanced workspace and secure cloud file-sharing architecture.', link: 'dropbox.html' },
-            { id: 'activecampaign', name: 'ActiveCampaign', ind: ['Agency', 'SaaS', 'Ecommerce', 'Education'], task: ['Marketing', 'CRM'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Medium', 'Enterprise'], desc: 'Deep marketing automation and customer experience platform.', link: 'activecampaign.html' }
+            { id: 'hubspot', name: 'HubSpot', domain: 'hubspot.com', color: '#ff7a59', ind: ['Agency', 'SaaS', 'Ecommerce', 'Finance', 'Education'], task: ['CRM', 'Marketing', 'Customer Support', 'Analytics'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Free', 'Medium', 'Enterprise'], desc: 'The gold standard CRM and marketing automation suite.', link: 'hubspot.html' },
+            { id: 'monday', name: 'Monday.com', domain: 'monday.com', color: '#ff3d57', ind: ['Agency', 'SaaS', 'Construction', 'Real Estate', 'NonProfit'], task: ['Project Management', 'CRM', 'HR'], size: ['Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium'], desc: 'Highly visual, customizable work OS and project tracker.', link: 'monday.html' },
+            { id: 'shopify', name: 'Shopify', domain: 'shopify.com', color: '#95bf47', ind: ['Ecommerce', 'Hospitality'], task: ['Invoicing', 'Marketing', 'Inventory'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium', 'Enterprise'], desc: 'The definitive platform for independent retail architecture.', link: 'shopify.html' },
+            { id: 'contractor-foreman', name: 'Contractor Foreman', domain: 'contractorforeman.com', color: '#f39c12', ind: ['Construction'], task: ['Project Management', 'Invoicing'], size: ['Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'All-in-one management for specialty contractors and builders.', link: 'contractor-foreman.html' },
+            { id: 'quickbooks', name: 'QuickBooks', domain: 'quickbooks.intuit.com', color: '#2ca01c', ind: ['Construction', 'Agency', 'Medical', 'Ecommerce', 'Real Estate', 'Legal', 'SaaS', 'Finance', 'NonProfit'], task: ['Invoicing', 'Analytics'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'Industry-standard accounting and automated billing.', link: 'quickbooks.html' },
+            { id: 'zendesk', name: 'Zendesk', domain: 'zendesk.com', color: '#03363d', ind: ['SaaS', 'Ecommerce', 'Agency', 'Hospitality', 'Education'], task: ['CRM', 'Customer Support'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Medium', 'Enterprise'], desc: 'Enterprise-grade customer service and ticketing system.', link: 'zendesk.html' },
+            { id: 'highlevel', name: 'HighLevel', domain: 'gohighlevel.com', color: '#1052E6', ind: ['Agency', 'Real Estate'], task: ['CRM', 'Marketing', 'Booking'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Medium'], desc: 'White-label marketing platform built specifically for agencies.', link: 'highlevel.html' },
+            { id: 'pandadoc', name: 'PandaDoc', domain: 'pandadoc.com', color: '#00a85d', ind: ['Legal', 'Agency', 'SaaS', 'Real Estate', 'Finance'], task: ['Project Management', 'CRM', 'Document'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low', 'Medium'], desc: 'Automated document signing and secure proposal tracking.', link: 'pandadoc.html' },
+            { id: 'katana', name: 'Katana', domain: 'katanamrp.com', color: '#000000', ind: ['Ecommerce', 'Construction'], task: ['Project Management', 'Invoicing', 'Inventory'], size: ['Small', 'Medium'], budget: ['Medium', 'Enterprise'], desc: 'Advanced manufacturing and inventory management software.', link: 'katana.html' },
+            { id: 'appointy', name: 'Appointy', domain: 'appointy.com', color: '#446eed', ind: ['Medical', 'Legal', 'Hospitality'], task: ['Booking'], size: ['Solo', 'Micro', 'Small'], budget: ['Free', 'Low'], desc: 'HIPAA-compliant patient and client scheduling portal.', link: 'appointy.html' },
+            { id: 'notion', name: 'Notion', domain: 'notion.so', color: '#000000', ind: ['Agency', 'SaaS', 'Education', 'NonProfit'], task: ['Project Management', 'Document'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low'], desc: 'Highly flexible, all-in-one workspace for documents and wikis.', link: 'notion.html' },
+            { id: 'brevo', name: 'Brevo', domain: 'brevo.com', color: '#0092ff', ind: ['Ecommerce', 'Agency', 'Hospitality', 'NonProfit'], task: ['Marketing', 'CRM'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low', 'Medium'], desc: 'Affordable, scalable email marketing and automation platform.', link: 'brevo.html' },
+            { id: 'slack', name: 'Slack', domain: 'slack.com', color: '#4a154b', ind: ['SaaS', 'Agency', 'Ecommerce', 'NonProfit', 'Education'], task: ['Project Management', 'Customer Support'], size: ['Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low', 'Medium', 'Enterprise'], desc: 'The industry-standard hub for team communication and workflows.', link: 'slack.html' },
+            { id: 'dropbox', name: 'Dropbox', domain: 'dropbox.com', color: '#0061ff', ind: ['Construction', 'Agency', 'Legal', 'Real Estate', 'Education'], task: ['Document', 'Project Management'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low', 'Medium'], desc: 'AI-enhanced workspace and secure cloud file-sharing architecture.', link: 'dropbox.html' },
+            { id: 'activecampaign', name: 'ActiveCampaign', domain: 'activecampaign.com', color: '#356ae6', ind: ['Agency', 'SaaS', 'Ecommerce', 'Education'], task: ['Marketing', 'CRM'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Medium', 'Enterprise'], desc: 'Deep marketing automation and customer experience platform.', link: 'activecampaign.html' }
         ];
 
         function startSearch() {
@@ -331,11 +312,11 @@
             if (!reqInd || !reqTask || !reqSize || !reqBudget) {
                 const btn = document.getElementById('audit-btn');
                 const originalText = btn.innerText;
-                btn.innerText = "Please select all options";
+                btn.innerText = "Please complete all fields";
                 btn.style.backgroundColor = "#EF4444"; 
                 setTimeout(() => {
                     btn.innerText = originalText;
-                    btn.style.backgroundColor = "var(--brand-main)";
+                    btn.style.backgroundColor = "var(--brand-action)";
                 }, 2000);
                 return;
             }
@@ -343,30 +324,23 @@
             const btn = document.getElementById('audit-btn');
             btn.disabled = true;
             let stage = 0; 
-            const stages = ["Querying SaaS database...", "Cross-referencing compliance...", "Calculating ROI metrics...", "Finalizing Match..."];
+            const stages = ["Searching architecture...", "Mapping workflows...", "Finalizing Match..."];
             const timer = setInterval(() => { 
                 if (stage < stages.length) { btn.innerText = stages[stage]; stage++; }
-            }, 800);
+            }, 600);
 
             setTimeout(() => {
                 clearInterval(timer);
                 
                 let results = softwareDatabase.map(tool => {
                     let score = 50; 
-                    
-                    if (tool.ind.includes(reqInd)) score += 25;
-                    else score -= 10; 
-                    
+                    if (tool.ind.includes(reqInd)) score += 25; else score -= 10; 
                     if (tool.task.includes(reqTask)) score += 15;
-                    
                     if (tool.size.includes(reqSize)) score += 8;
-                    
                     const budgetTiers = { 'Free': 0, 'Low': 1, 'Medium': 2, 'Enterprise': 3 };
                     if (budgetTiers[tool.budget[0]] <= budgetTiers[reqBudget]) score += 10;
-
                     if (score > 98) score = 98;
                     if (score < 50) score = 50;
-
                     return { ...tool, score };
                 });
 
@@ -380,37 +354,46 @@
                 runnerUps.forEach(tool => {
                     const isFiltered = tool.score === 50;
                     runnerUpsHTML += `
-                        <a href="/${tool.link}?score=${tool.score}" class="ranked-row" ${isFiltered ? 'style="background: #F9FAFB; border-style: dashed;"' : ''}>
+                        <a href="/${tool.link}?score=${tool.score}" class="ranked-row" ${isFiltered ? 'style="background: #F8FAFC; border-color: transparent;"' : `style="border-color: ${tool.color}40;"`}>
                             <div class="row-left">
-                                <div class="row-score" style="color: ${getScoreColor(tool.score)}">${tool.score}</div>
+                                <img src="https://logo.clearbit.com/${tool.domain}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'40\\' height=\\'40\\' fill=\\'%23CBD5E1\\'><rect width=\\'40\\' height=\\'40\\' rx=\\'8\\'/></svg>'" class="row-logo" />
                                 <div class="row-details">
                                     <h3 ${isFiltered ? 'style="color: var(--text-sub);"' : ''}>${tool.name}</h3>
-                                    <p style="color: ${isFiltered ? '#9CA3AF' : '#4B5563'};">${isFiltered ? `Incompatible with ${reqInd} workflow.` : tool.desc}</p>
+                                    <p>${isFiltered ? `Lacks native ${reqInd} workflow support.` : tool.desc}</p>
                                 </div>
                             </div>
-                            <div class="row-action" ${isFiltered ? 'style="color: var(--text-sub);"' : ''}>
-                                ${isFiltered ? 'Filtered' : 'View Analysis'}
-                                ${!isFiltered ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>` : ''}
+                            <div class="row-score" style="color: ${isFiltered ? 'var(--border)' : tool.color};">
+                                ${isFiltered ? '' : tool.score}
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             </div>
                         </a>
                     `;
                 });
 
                 resultArea.innerHTML = `
-                    <div class="audit-card">
-                        <div class="optimal-badge">#1 Optimal Fit</div>
-                        <div style="display:flex; align-items:center; margin-bottom:25px;">
-                            <div class="score-big" style="color: ${getScoreColor(topTool.score)}">${topTool.score}</div>
-                            <div>
-                                <div style="font-size:0.8rem; color:var(--text-sub); text-transform:uppercase; font-weight:800; letter-spacing:0.5px; font-family:'Outfit', sans-serif;">Snexz Score</div>
-                                <div style="font-weight:800; font-size:0.95rem; color:var(--text-main);">Verified for ${reqInd}</div>
+                    <div class="audit-card" style="border-top: 6px solid ${topTool.color};">
+                        <div class="brand-header-result">
+                            <div class="result-logo-container">
+                                <img src="https://logo.clearbit.com/${topTool.domain}" class="company-logo" onerror="this.style.display='none'">
+                                <div class="result-title">
+                                    <span>Top Recommendation</span>
+                                    <h2>${topTool.name}</h2>
+                                </div>
+                            </div>
+                            <div class="score-pill">
+                                <div class="score-big" style="color: ${topTool.color};">${topTool.score}</div>
+                                <div class="score-label">Snexz Score</div>
                             </div>
                         </div>
-                        <div class="metric-row"><span>Recommended Software</span><strong style="font-size:1.1rem;">${topTool.name}</strong></div>
-                        <div class="metric-row"><span>Scale Alignment</span><span style="font-weight:700;">${reqSize} Tier Optimized</span></div>
-                        <a href="/${topTool.link}?score=${topTool.score}" class="btn-proceed">
+                        
+                        <div style="background: #F8FAFC; border-radius: 12px; padding: 15px 20px;">
+                            <div class="metric-row"><span>Scale Alignment</span><strong>${reqSize} Tier</strong></div>
+                            <div class="metric-row"><span>Industry Compliance</span><strong>${reqInd} Standards</strong></div>
+                        </div>
+                        
+                        <a href="/${topTool.link}?score=${topTool.score}" class="btn-proceed" style="background: ${topTool.color};">
                             View Analysis 
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 5px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
                     </div>
 
@@ -425,11 +408,14 @@
                 `;
                 
                 document.getElementById('search-box-ui').style.display = 'none';
+                document.querySelector('.brand-header').style.display = 'none';
+                document.querySelector('body').style.background = 'var(--bg)';
+                
                 resultArea.style.display = 'block';
-                btn.innerText = "Search";
+                btn.innerText = "Search Systems";
                 btn.disabled = false;
                 
-            }, 3500); 
+            }, 2500); 
         }
     </script>
 </body>
