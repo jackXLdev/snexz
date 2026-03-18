@@ -30,14 +30,14 @@
         @keyframes wipeRight { to { clip-path: inset(0 0 0 0); } }
         @keyframes lockIn { to { opacity: 1; transform: translateY(0); } }
         
-        /* Lowered Main Container */
-        main { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; margin-top: 12vh; width: 100%; max-width: 680px; text-align: center; opacity: 0; animation: revealMain 0.8s ease-out 2.6s forwards; }
+        /* Lowered Main Container (16vh instead of 12vh) */
+        main { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; margin-top: 16vh; width: 100%; max-width: 680px; text-align: center; opacity: 0; animation: revealMain 0.8s ease-out 2.6s forwards; }
         @keyframes revealMain { to { opacity: 1; } }
 
         .brand-header { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 12px; }
-        .logo-svg { height: 65px; width: auto; stroke: var(--brand-main); }
+        .logo-svg { height: 75px; width: auto; stroke: var(--brand-main); }
         .logo-svg polygon { fill: var(--brand-main); }
-        .brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 3.8rem; letter-spacing: -1.5px; color: var(--brand-main); margin: 0; line-height: 1; }
+        .brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 4rem; letter-spacing: -1.5px; color: var(--brand-main); margin: 0; line-height: 1; }
         
         /* Darker, bolder tagline */
         .tagline { color: var(--text-main); font-size: 1.15rem; margin-bottom: 35px; font-weight: 600; }
@@ -73,7 +73,12 @@
 
         #result-area { display: none; margin-top: 10px; text-align: left; animation: slideUp 0.4s ease-out; width: 100%; background: transparent; padding: 0; border-radius: 0; box-sizing: border-box; }
         
-        .audit-card { background: #FFF; border-radius: 20px; padding: 35px; border: 1px solid var(--brand-main); box-shadow: var(--shadow-premium); margin-bottom: 30px; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 15px;}
+        .btn-back { display: flex; align-items: center; gap: 8px; background: none; border: none; color: var(--text-main); font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; cursor: pointer; padding: 0; margin-bottom: 25px; transition: 0.2s; }
+        .btn-back:hover { color: var(--text-sub); transform: translateX(-4px); }
+
+        /* Normal thin outline for the top result */
+        .audit-card { background: #FFF; border-radius: 20px; padding: 35px; border: 1px solid var(--border); box-shadow: var(--shadow-premium); margin-bottom: 30px; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 15px;}
+        
         .brand-header-result { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
         .result-logo-container { display: flex; align-items: center; gap: 15px; }
         .company-logo { width: 55px; height: 55px; border-radius: 12px; object-fit: contain; border: 1px solid var(--border); padding: 6px; background: #FFF; box-shadow: var(--shadow-sm); }
@@ -107,17 +112,19 @@
         .row-score svg { color: var(--text-sub); transition: 0.2s;}
         .ranked-row:hover .row-score svg { color: var(--brand-main); transform: translateX(4px); }
 
+        /* Modal styling updated for clean charcoal typography */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(17, 24, 39, 0.7); z-index: 10000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(8px); }
         .modal-content { background: white; padding: 40px; border-radius: 24px; max-width: 500px; text-align: left; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); animation: modalPop 0.3s ease-out; color: var(--text-main); }
         
         .modal-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
         .modal-brand svg { height: 35px; width: auto; stroke: var(--brand-main); }
         .modal-brand polygon { fill: var(--brand-main); }
-        .modal-brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.8rem; letter-spacing: -0.5px; color: var(--brand-main); margin: 0; }
-        .modal-header { border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 20px; }
-        #modal-title { font-family: 'Outfit', sans-serif; margin: 0; font-size: 1.2rem; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-sub); }
+        .modal-brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 2rem; letter-spacing: -0.5px; color: var(--brand-main); margin: 0; }
         
-        #modal-body p { font-size: 0.95rem; line-height: 1.6; margin-top: 0; margin-bottom: 15px; color: var(--text-main); }
+        .modal-header { margin-bottom: 15px; }
+        #modal-title { font-family: 'Outfit', sans-serif; margin: 0; font-size: 1.6rem; color: var(--brand-main); font-weight: 800; letter-spacing: -0.5px; }
+        
+        #modal-body p { font-size: 1rem; line-height: 1.6; margin-top: 0; margin-bottom: 15px; color: var(--text-sub); }
         #modal-body p:last-child { margin-bottom: 0; }
         
         @keyframes modalPop { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
@@ -303,6 +310,12 @@
             m.style.display = 'flex';
         }
         function closeModal() { document.getElementById('info-modal').style.display = 'none'; }
+        
+        // Function to let users edit their search without wiping out their inputs
+        function editSearch() {
+            document.getElementById('result-area').style.display = 'none';
+            document.getElementById('search-box-ui').style.display = 'block';
+        }
 
         function getScoreColor(score) {
             if (score >= 90) return `rgba(17, 24, 39, 1)`;     
@@ -361,7 +374,6 @@
                 let results = softwareDatabase.map(tool => {
                     let score = 50; 
                     
-                    // Added a tiny tie-breaker based on tool ID length so scores don't cluster identically
                     score += (tool.id.length % 4); 
 
                     if (tool.ind.includes(reqInd)) score += 25; else score -= 10; 
@@ -385,7 +397,8 @@
                 runnerUps.forEach(tool => {
                     const isFiltered = tool.score === 50;
                     
-                    const logoTag = `<img src="https://logo.clearbit.com/${tool.domain}" onerror="this.onerror=null; this.src='https://icon.horse/icon/${tool.domain}';" class="row-logo" alt="${tool.name} logo">`;
+                    // Uses Clearbit, with a bulletproof fallback to UI Avatars if the logo isn't found
+                    const logoTag = `<img src="https://logo.clearbit.com/${tool.domain}" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(tool.name)}&background=F1F5F9&color=111827&bold=true';" class="row-logo" alt="${tool.name} logo">`;
                     
                     runnerUpsHTML += `
                         <a href="/${tool.link}?score=${tool.score}" class="ranked-row" ${isFiltered ? 'style="background: #F9FAFB; border-color: transparent; box-shadow: none;"' : ''}>
@@ -404,10 +417,15 @@
                     `;
                 });
 
-                const topLogoTag = `<img src="https://logo.clearbit.com/${topTool.domain}" onerror="this.onerror=null; this.src='https://icon.horse/icon/${topTool.domain}';" class="company-logo" alt="${topTool.name} logo">`;
+                const topLogoTag = `<img src="https://logo.clearbit.com/${topTool.domain}" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(topTool.name)}&background=F1F5F9&color=111827&bold=true';" class="company-logo" alt="${topTool.name} logo">`;
 
                 resultArea.innerHTML = `
-                    <div class="audit-card" style="border-top: 6px solid var(--brand-main);">
+                    <button onclick="editSearch()" class="btn-back">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back to Search
+                    </button>
+
+                    <div class="audit-card">
                         <div class="brand-header-result">
                             <div class="result-logo-container">
                                 ${topLogoTag}
@@ -417,7 +435,7 @@
                                 </div>
                             </div>
                             <div class="score-pill">
-                                <div class="score-big" style="color: var(--brand-main);">${topTool.score}</div>
+                                <div class="score-big">${topTool.score}</div>
                                 <div class="score-label">Snexz Score</div>
                             </div>
                         </div>
@@ -427,7 +445,7 @@
                             <div class="metric-row"><span>Industry Compliance</span><strong style="color: var(--brand-main);">${reqInd} Standards</strong></div>
                         </div>
                         
-                        <a href="/${topTool.link}?score=${topTool.score}" class="btn-proceed" style="background: var(--brand-main);">
+                        <a href="/${topTool.link}?score=${topTool.score}" class="btn-proceed">
                             View Analysis 
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
