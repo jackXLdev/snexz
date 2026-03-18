@@ -35,13 +35,21 @@
         main { flex: 1; width: 100%; max-width: 1100px; display: flex; flex-direction: column; animation: fadeUp 0.6s ease-out; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        .page-header { margin-bottom: 40px; }
+        .page-header { margin-bottom: 30px; }
         .page-title { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 3rem; letter-spacing: -1px; color: var(--brand-main); margin: 0 0 10px 0; line-height: 1.1; }
         .page-subtitle { color: var(--text-sub); font-size: 1.15rem; font-weight: 500; margin: 0; }
 
+        /* Interactive Filter Bar */
+        .filter-container { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; margin-bottom: 30px; scrollbar-width: none; -ms-overflow-style: none; }
+        .filter-container::-webkit-scrollbar { display: none; }
+        .filter-btn { background: #FFF; border: 1px solid var(--border); color: var(--text-sub); font-weight: 700; font-size: 0.9rem; padding: 10px 16px; border-radius: 12px; cursor: pointer; transition: 0.2s; white-space: nowrap; font-family: 'Plus Jakarta Sans', sans-serif; box-shadow: var(--shadow-sm); display: flex; align-items: center; gap: 6px; }
+        .filter-btn:hover { border-color: #D1D5DB; transform: translateY(-2px); color: var(--text-main); }
+        .filter-btn.active { background: var(--brand-main); color: #FFF; border-color: var(--brand-main); box-shadow: 0 4px 15px rgba(17, 24, 39, 0.2); transform: translateY(-2px); }
+
         .library-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; margin-bottom: 60px; }
         
-        .lib-card { background: #FFF; border-radius: 20px; padding: 25px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-decoration: none; display: flex; flex-direction: column; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; }
+        .lib-card { background: #FFF; border-radius: 20px; padding: 25px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-decoration: none; display: flex; flex-direction: column; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; animation: fadeIn 0.4s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         .lib-card:hover { border-color: var(--brand-main); box-shadow: var(--shadow-premium); transform: translateY(-4px); }
         
         .card-top { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
@@ -56,6 +64,8 @@
         
         .card-arrow { color: var(--text-sub); transition: 0.2s; display: flex; align-items: center; }
         .lib-card:hover .card-arrow { color: var(--brand-main); transform: translateX(4px); }
+
+        .no-results { display: none; text-align: center; padding: 40px; color: var(--text-sub); font-weight: 600; font-size: 1.1rem; grid-column: 1 / -1; }
 
         .site-footer { padding: 40px 0; text-align: center; color: var(--text-sub); font-size: 0.85rem; border-top: 1px solid var(--border); width: 100%; max-width: 1100px; font-weight: 600; margin-top: auto; }
         .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
@@ -75,7 +85,7 @@
         </a>
         <a href="/" class="nav-back">
             <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></span> 
-            Engine
+            Back to Engine
         </a>
     </nav>
 
@@ -85,189 +95,20 @@
             <p class="page-subtitle">Browse our verified database of B2B SaaS architecture.</p>
         </div>
 
-        <div class="library-grid">
-            
-            <a href="hubspot.html" class="lib-card">
-                <div class="card-top">
-                    <img src="https://logo.clearbit.com/hubspot.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://hubspot.com&size=128';" class="card-logo" alt="HubSpot logo">
-                    <h2 class="card-title">HubSpot</h2>
-                </div>
-                <p class="card-desc">The gold standard CRM and marketing automation suite.</p>
-                <div class="card-bottom">
-                    <div class="card-tags"><span class="tag">Sales</span><span class="tag">Marketing</span></div>
-                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </div>
-            </a>
-
-            <a href="monday.html" class="lib-card">
-                <div class="card-top">
-                    <img src="https://logo.clearbit.com/monday.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://monday.com&size=128';" class="card-logo" alt="Monday.com logo">
-                    <h2 class="card-title">Monday.com</h2>
-                </div>
-                <p class="card-desc">Highly visual, customizable work OS and project tracker.</p>
-                <div class="card-bottom">
-                    <div class="card-tags"><span class="tag">Project Mgmt</span><span class="tag">Ops</span></div>
-                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </div>
-            </a>
-
-            <a href="shopify.html" class="lib-card">
-                <div class="card-top">
-                    <img src="https://logo.clearbit.com/shopify.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://shopify.com&size=128';" class="card-logo" alt="Shopify logo">
-                    <h2 class="card-title">Shopify</h2>
-                </div>
-                <p class="card-desc">The definitive platform for independent retail architecture.</p>
-                <div class="card-bottom">
-                    <div class="card-tags"><span class="tag">E-Commerce</span><span class="tag">Retail</span></div>
-                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </div>
-            </a>
-
-            <a href="contractor-foreman.html" class="lib-card">
-                <div class="card-top">
-                    <img src="https://logo.clearbit.com/contractorforeman.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://contractorforeman.com&size=128';" class="card-logo" alt="Contractor Foreman logo">
-                    <h2 class="card-title">Contractor Foreman</h2>
-                </div>
-                <p class="card-desc">All-in-one management for specialty contractors and builders.</p>
-                <div class="card-bottom">
-                    <div class="card-tags"><span class="tag">Construction</span></div>
-                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </div>
-            </a>
-
-            <a href="quickbooks.html" class="lib-card">
-                <div class="card-top">
-                    <img src="https://logo.clearbit.com/quickbooks.intuit.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://quickbooks.intuit.com&size=128';" class="card-logo" alt="QuickBooks logo">
-                    <h2 class="card-title">QuickBooks</h2>
-                </div>
-                <p class="card-desc">Industry-standard accounting and automated billing.</p>
-                <div class="card-bottom">
-                    <div class="card-tags"><span class="tag">Finance</span><span class="tag">Billing</span></div>
-                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </div>
-            </a>
-
-            <a href="zendesk.html" class="lib-card">
-                <div class="card-top">
-                    <img src="https://logo.clearbit.com/zendesk.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://zendesk.com&size=128';" class="card-logo" alt="Zendesk logo">
-                    <h2 class="card-title">Zendesk</h2>
-                </div>
-                <p class="card-desc">Enterprise-grade customer service and ticketing system.</p>
-                <div class="card-bottom">
-                    <div class="card-tags"><span class="tag">Support</span><span class="tag">CRM</span></div>
-                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </div>
-            </a>
-
-            <a href="highlevel.html" class="lib-card">
-                <div class="card-top">
-                    <img src="https://logo.clearbit.com/gohighlevel.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://gohighlevel.com&size=128';" class="card-logo" alt="HighLevel logo">
-                    <h2 class="card-title">HighLevel</h2>
-                </div>
-                <p class="card-desc">White-label marketing platform built specifically for agencies.</p>
-                <div class="card-bottom">
-                    <div class="card-tags"><span class="tag">Agency</span><span class="tag">Marketing</span></div>
-                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </div>
-            </a>
-
-            <a href="pandadoc.html" class="lib-card">
-                <div class="card-top">
-                    <img src="https://logo.clearbit.com/pandadoc.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://pandadoc.com&size=128';" class="card-logo" alt="PandaDoc logo">
-                    <h2 class="card-title">PandaDoc</h2>
-                </div>
-                <p class="card-desc">Automated document signing and secure proposal tracking.</p>
-                <div class="card-bottom">
-                    <div class="card-tags"><span class="tag">Legal</span><span class="tag">Sales</span></div>
-                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </div>
-            </a>
-
-            <a href="katana.html" class="lib-card">
-                <div class="card-top">
-                    <img src="https://logo.clearbit.com/katanamrp.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://katanamrp.com&size=128';" class="card-logo" alt="Katana logo">
-                    <h2 class="card-title">Katana</h2>
-                </div>
-                <p class="card-desc">Advanced manufacturing and inventory management software.</p>
-                <div class="card-bottom">
-                    <div class="card-tags"><span class="tag">Inventory</span><span class="tag">Mfg</span></div>
-                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </div>
-            </a>
-
-            <a href="appointy.html" class="lib-card">
-                <div class="card-top">
-                    <img src="https://logo.clearbit.com/appointy.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://appointy.com&size=128';" class="card-logo" alt="Appointy logo">
-                    <h2 class="card-title">Appointy</h2>
-                </div>
-                <p class="card-desc">HIPAA-compliant patient and client scheduling portal.</p>
-                <div class="card-bottom">
-                    <div class="card-tags"><span class="tag">Booking</span><span class="tag">Medical</span></div>
-                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </div>
-            </a>
-
-            <a href="notion.html" class="lib-card">
-                <div class="card-top">
-                    <img src="https://logo.clearbit.com/notion.so" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://notion.so&size=128';" class="card-logo" alt="Notion logo">
-                    <h2 class="card-title">Notion</h2>
-                </div>
-                <p class="card-desc">Highly flexible, all-in-one workspace for documents and wikis.</p>
-                <div class="card-bottom">
-                    <div class="card-tags"><span class="tag">Workspace</span><span class="tag">Docs</span></div>
-                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </div>
-            </a>
-
-            <a href="brevo.html" class="lib-card">
-                <div class="card-top">
-                    <img src="https://logo.clearbit.com/brevo.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://brevo.com&size=128';" class="card-logo" alt="Brevo logo">
-                    <h2 class="card-title">Brevo</h2>
-                </div>
-                <p class="card-desc">Affordable, scalable email marketing and automation platform.</p>
-                <div class="card-bottom">
-                    <div class="card-tags"><span class="tag">Marketing</span><span class="tag">Email</span></div>
-                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </div>
-            </a>
-
-            <a href="slack.html" class="lib-card">
-                <div class="card-top">
-                    <img src="https://logo.clearbit.com/slack.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://slack.com&size=128';" class="card-logo" alt="Slack logo">
-                    <h2 class="card-title">Slack</h2>
-                </div>
-                <p class="card-desc">The industry-standard hub for team communication and workflows.</p>
-                <div class="card-bottom">
-                    <div class="card-tags"><span class="tag">Comms</span><span class="tag">Internal</span></div>
-                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </div>
-            </a>
-
-            <a href="dropbox.html" class="lib-card">
-                <div class="card-top">
-                    <img src="https://logo.clearbit.com/dropbox.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://dropbox.com&size=128';" class="card-logo" alt="Dropbox logo">
-                    <h2 class="card-title">Dropbox</h2>
-                </div>
-                <p class="card-desc">AI-enhanced workspace and secure cloud file-sharing architecture.</p>
-                <div class="card-bottom">
-                    <div class="card-tags"><span class="tag">Storage</span><span class="tag">Cloud</span></div>
-                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </div>
-            </a>
-
-            <a href="activecampaign.html" class="lib-card">
-                <div class="card-top">
-                    <img src="https://logo.clearbit.com/activecampaign.com" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://activecampaign.com&size=128';" class="card-logo" alt="ActiveCampaign logo">
-                    <h2 class="card-title">ActiveCampaign</h2>
-                </div>
-                <p class="card-desc">Deep marketing automation and customer experience platform.</p>
-                <div class="card-bottom">
-                    <div class="card-tags"><span class="tag">Marketing</span><span class="tag">CRM</span></div>
-                    <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </div>
-            </a>
-
+        <div class="filter-container" id="filter-bar">
+            <button class="filter-btn active" onclick="filterLibrary('All')">All Systems</button>
+            <button class="filter-btn" onclick="filterLibrary('Construction')">🏗️ Construction</button>
+            <button class="filter-btn" onclick="filterLibrary('Agency')">📈 Agency</button>
+            <button class="filter-btn" onclick="filterLibrary('Ecommerce')">🛒 E-Commerce</button>
+            <button class="filter-btn" onclick="filterLibrary('Medical')">⚕️ Medical</button>
+            <button class="filter-btn" onclick="filterLibrary('SaaS')">💻 Tech / SaaS</button>
+            <button class="filter-btn" onclick="filterLibrary('Real Estate')">🏢 Real Estate</button>
+            <button class="filter-btn" onclick="filterLibrary('Finance')">📊 Finance</button>
         </div>
+
+        <div class="library-grid" id="library-grid">
+            </div>
+        <div class="no-results" id="no-results">No systems currently verified for this exact category.</div>
     </main>
 
     <footer class="site-footer">
@@ -278,5 +119,95 @@
         <div>&copy; 2026 Snexz. All rights reserved.</div>
     </footer>
 
+    <script>
+        // Database with Custom Logo overrides for problematic domains
+        const softwareDatabase = [
+            { id: 'hubspot', name: 'HubSpot', domain: 'hubspot.com', ind: ['Agency', 'SaaS', 'Ecommerce', 'Finance'], desc: 'The gold standard CRM and marketing automation suite.', link: 'hubspot.html', tags: ['Sales', 'Marketing'] },
+            { id: 'monday', name: 'Monday.com', domain: 'monday.com', ind: ['Agency', 'SaaS', 'Construction', 'Real Estate'], desc: 'Highly visual, customizable work OS and project tracker.', link: 'monday.html', tags: ['Project Mgmt', 'Ops'] },
+            { id: 'shopify', name: 'Shopify', domain: 'shopify.com', ind: ['Ecommerce'], desc: 'The definitive platform for independent retail architecture.', link: 'shopify.html', tags: ['E-Commerce', 'Retail'] },
+            { id: 'contractor-foreman', name: 'Contractor Foreman', domain: 'contractorforeman.com', ind: ['Construction'], desc: 'All-in-one management for specialty contractors and builders.', link: 'contractor-foreman.html', tags: ['Construction', 'Ops'] },
+            { id: 'quickbooks', name: 'QuickBooks', domain: 'quickbooks.intuit.com', ind: ['Construction', 'Agency', 'Medical', 'Ecommerce', 'Real Estate', 'SaaS', 'Finance'], desc: 'Industry-standard accounting and automated billing.', link: 'quickbooks.html', tags: ['Finance', 'Billing'] },
+            { id: 'zendesk', name: 'Zendesk', domain: 'zendesk.com', ind: ['SaaS', 'Ecommerce', 'Agency'], desc: 'Enterprise-grade customer service and ticketing system.', link: 'zendesk.html', tags: ['Support', 'CRM'] },
+            { id: 'highlevel', name: 'HighLevel', domain: 'gohighlevel.com', ind: ['Agency', 'Real Estate'], desc: 'White-label marketing platform built specifically for agencies.', link: 'highlevel.html', tags: ['Agency', 'Marketing'] },
+            { id: 'pandadoc', name: 'PandaDoc', domain: 'pandadoc.com', ind: ['Agency', 'SaaS', 'Real Estate', 'Finance'], desc: 'Automated document signing and secure proposal tracking.', link: 'pandadoc.html', tags: ['Legal', 'Sales'] },
+            { id: 'katana', name: 'Katana Cloud', domain: 'katanamrp.com', ind: ['Ecommerce', 'Construction'], desc: 'Advanced manufacturing and inventory management software.', link: 'katana.html', tags: ['Inventory', 'Mfg'] },
+            
+            // Appointy has a known pixelation issue with clearbit/favicons. Hardcoding a reliable URL override.
+            { id: 'appointy', name: 'Appointy', domain: 'appointy.com', customLogo: 'https://cdn.iconscout.com/icon/free/png-256/free-appointy-3628628-3029853.png', ind: ['Medical', 'Hospitality'], desc: 'HIPAA-compliant patient and client scheduling portal.', link: 'appointy.html', tags: ['Booking', 'Medical'] },
+            
+            { id: 'notion', name: 'Notion', domain: 'notion.so', ind: ['Agency', 'SaaS'], desc: 'Highly flexible, all-in-one workspace for documents and wikis.', link: 'notion.html', tags: ['Workspace', 'Docs'] },
+            
+            // Brevo has a known pixelation issue. Hardcoding official vector format.
+            { id: 'brevo', name: 'Brevo', domain: 'brevo.com', customLogo: 'https://cdn.worldvectorlogo.com/logos/brevo-1.svg', ind: ['Ecommerce', 'Agency'], desc: 'Affordable, scalable email marketing and automation platform.', link: 'brevo.html', tags: ['Marketing', 'Email'] },
+            
+            { id: 'slack', name: 'Slack', domain: 'slack.com', ind: ['SaaS', 'Agency', 'Ecommerce'], desc: 'The industry-standard hub for team communication and workflows.', link: 'slack.html', tags: ['Comms', 'Internal'] },
+            { id: 'dropbox', name: 'Dropbox', domain: 'dropbox.com', ind: ['Construction', 'Agency', 'Real Estate'], desc: 'AI-enhanced workspace and secure cloud file-sharing architecture.', link: 'dropbox.html', tags: ['Storage', 'Cloud'] },
+            { id: 'activecampaign', name: 'ActiveCampaign', domain: 'activecampaign.com', ind: ['Agency', 'SaaS', 'Ecommerce'], desc: 'Deep marketing automation and customer experience platform.', link: 'activecampaign.html', tags: ['Marketing', 'CRM'] }
+        ];
+
+        function renderGrid(filterIndustry = 'All') {
+            const grid = document.getElementById('library-grid');
+            const noResults = document.getElementById('no-results');
+            grid.innerHTML = ''; // Clear current grid
+
+            let filteredTools = softwareDatabase.filter(tool => {
+                if (filterIndustry === 'All') return true;
+                return tool.ind.includes(filterIndustry);
+            });
+
+            if (filteredTools.length === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+                
+                filteredTools.forEach((tool, index) => {
+                    // Logic to use customLogo if it exists, otherwise use Clearbit with fallback
+                    let logoSource = '';
+                    if (tool.customLogo) {
+                        logoSource = `<img src="${tool.customLogo}" class="card-logo" alt="${tool.name} logo">`;
+                    } else {
+                        logoSource = `<img src="https://logo.clearbit.com/${tool.domain}" onerror="this.onerror=null; this.src='https://icon.horse/icon/${tool.domain}';" class="card-logo" alt="${tool.name} logo">`;
+                    }
+
+                    let tagsHTML = tool.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+                    
+                    // Stagger the animation slightly for a premium feel
+                    let delay = index * 0.05;
+
+                    grid.innerHTML += `
+                        <a href="${tool.link}" class="lib-card" style="animation-delay: ${delay}s;">
+                            <div class="card-top">
+                                ${logoSource}
+                                <h2 class="card-title">${tool.name}</h2>
+                            </div>
+                            <p class="card-desc">${tool.desc}</p>
+                            <div class="card-bottom">
+                                <div class="card-tags">${tagsHTML}</div>
+                                <div class="card-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                            </div>
+                        </a>
+                    `;
+                });
+            }
+        }
+
+        function filterLibrary(industry) {
+            // Update active state on buttons
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Find the clicked button and make it active
+            const clickedBtn = Array.from(buttons).find(btn => btn.innerText.includes(industry) || (industry === 'All' && btn.innerText === 'All Systems'));
+            if (clickedBtn) clickedBtn.classList.add('active');
+
+            // Re-render the grid
+            renderGrid(industry);
+        }
+
+        // Initialize the grid on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderGrid('All');
+        });
+    </script>
 </body>
 </html>
