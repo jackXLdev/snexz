@@ -68,10 +68,10 @@
         .btn-audit:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(17, 24, 39, 0.25); }
         .btn-audit:active { transform: translateY(0); }
         
-        /* New Progress Bar Styles */
+        /* Progress Bar */
         .progress-wrapper { display: none; margin-top: 15px; width: 100%; }
         .progress-container { background: #E5E7EB; border-radius: 12px; height: 10px; overflow: hidden; width: 100%; margin-bottom: 12px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
-        .progress-bar { height: 100%; width: 0%; background: var(--brand-main); transition: width 0.1s linear; border-radius: 12px; }
+        .progress-bar { height: 100%; width: 0%; background: var(--brand-main); transition: width 0.2s ease-out; border-radius: 12px; }
         .progress-text { font-size: 0.85rem; font-weight: 800; color: var(--brand-main); text-transform: uppercase; letter-spacing: 0.5px; font-family: 'Outfit', sans-serif; text-align: center; animation: pulseText 1.5s infinite ease-in-out;}
         @keyframes pulseText { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
 
@@ -126,8 +126,8 @@
         .modal-header { margin-bottom: 15px; }
         #modal-title { font-family: 'Outfit', sans-serif; margin: 0; font-size: 1.6rem; color: var(--brand-main); font-weight: 800; letter-spacing: -0.5px; }
         
-        /* Updated Modal Font to charcoal, larger size, stronger weight */
-        #modal-body p { font-size: 1.05rem; font-weight: 500; line-height: 1.6; margin-top: 0; margin-bottom: 15px; color: var(--text-main); }
+        /* Restored Modal Font to the crisp charcoal styling */
+        #modal-body p { font-size: 0.95rem; font-weight: 400; line-height: 1.6; margin-top: 0; margin-bottom: 15px; color: var(--brand-main); }
         #modal-body p:last-child { margin-bottom: 0; }
         
         @keyframes modalPop { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
@@ -321,12 +321,10 @@
         }
         function closeModal() { document.getElementById('info-modal').style.display = 'none'; }
         
-        // Function to let users edit their search without wiping out their inputs
         function editSearch() {
             document.getElementById('result-area').style.display = 'none';
             document.getElementById('search-box-ui').style.display = 'block';
             
-            // Reset button and progress bar
             document.getElementById('audit-btn').style.display = 'block';
             document.getElementById('audit-btn').disabled = false;
             document.getElementById('progress-wrapper').style.display = 'none';
@@ -376,7 +374,6 @@
                 return;
             }
 
-            // Hide button, show progress bar
             document.getElementById('audit-btn').style.display = 'none';
             const progressWrapper = document.getElementById('progress-wrapper');
             const progressBar = document.getElementById('progress-bar');
@@ -399,28 +396,40 @@
             let currentStage = 0;
             progressText.innerText = stages[0];
 
-            // 10 second timer (100 steps of 100ms)
-            const intervalTime = 100;
-            const totalSteps = 10000 / intervalTime;
-            let currentStep = 0;
+            function processStep() {
+                // Random jump between 1% and 7%
+                let jump = Math.floor(Math.random() * 7) + 1;
+                
+                // Random pause between 100ms and 700ms
+                let pause = Math.floor(Math.random() * 600) + 100;
 
-            const timer = setInterval(() => {
-                currentStep++;
-                progress = (currentStep / totalSteps) * 100;
+                // 15% chance to "hang" for an extra 800ms to simulate heavy data processing
+                if (Math.random() > 0.85) pause += 800; 
+
+                progress += jump;
+
+                if (progress >= 100) {
+                    progress = 100;
+                    progressBar.style.width = '100%';
+                    setTimeout(() => {
+                        showResults(reqInd, reqTask, reqSize, reqBudget);
+                    }, 400);
+                    return;
+                }
+
                 progressBar.style.width = `${progress}%`;
 
-                // Update text based on progress percentage
                 const stageIndex = Math.floor((progress / 100) * stages.length);
                 if (stageIndex < stages.length && currentStage !== stageIndex) {
                     currentStage = stageIndex;
                     progressText.innerText = stages[currentStage];
                 }
 
-                if (currentStep >= totalSteps) {
-                    clearInterval(timer);
-                    showResults(reqInd, reqTask, reqSize, reqBudget);
-                }
-            }, intervalTime);
+                setTimeout(processStep, pause);
+            }
+            
+            // Start the randomized progress
+            processStep();
         }
 
         function showResults(reqInd, reqTask, reqSize, reqBudget) {
@@ -450,7 +459,7 @@
             runnerUps.forEach(tool => {
                 const isFiltered = tool.score === 50;
                 
-                // Fallback is now the official Google Favicon API
+                // Uses Clearbit, with bulletproof fallback to Google's official Favicon API
                 const logoTag = `<img src="https://logo.clearbit.com/${tool.domain}" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${tool.domain}&size=128';" class="row-logo" alt="${tool.name} logo">`;
                 
                 runnerUpsHTML += `
