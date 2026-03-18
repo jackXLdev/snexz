@@ -53,7 +53,7 @@
         
         select { width: 100%; border: 1.5px solid var(--border); padding: 14px 16px; font-size: 1rem; border-radius: 12px; outline: none; font-family: inherit; background-color: #F9FAFB; color: var(--text-main); box-sizing: border-box; transition: 0.2s; cursor: pointer; appearance: none; font-weight: 600; }
         select:focus { border-color: var(--brand-main); box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.08); background-color: #FFF; }
-        select:invalid { color: var(--text-sub); } /* Styles the placeholder text */
+        select:invalid { color: var(--text-sub); } 
         
         .tech-specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
         .tech-toggle { display: block; position: relative; cursor: pointer; }
@@ -259,7 +259,6 @@
     </footer>
 
     <script>
-        // 1. Loader Logic
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const loader = document.getElementById('loader-overlay');
@@ -268,7 +267,6 @@
             }, 2800);
         });
 
-        // 2. Global Currency Localization Logic
         async function localizeCurrency() {
             try {
                 const res = await fetch('https://ipapi.co/json/');
@@ -286,7 +284,6 @@
         }
         localizeCurrency();
 
-        // 3. Modal Logic
         function openModal(type) {
             const m = document.getElementById('info-modal'), t = document.getElementById('modal-title'), b = document.getElementById('modal-body');
             if(type === 'how') { 
@@ -300,7 +297,6 @@
         }
         function closeModal() { document.getElementById('info-modal').style.display = 'none'; }
 
-        // 4. Dynamic Opacity
         function getScoreColor(score) {
             if (score >= 90) return `rgba(17, 24, 39, 1)`;     
             if (score >= 70) return `rgba(17, 24, 39, 0.7)`;   
@@ -308,7 +304,6 @@
             return `rgba(17, 24, 39, 0.15)`;                   
         }
 
-        // 5. THE DETERMINISTIC SCORING ENGINE (PartnerStack Database)
         const softwareDatabase = [
             { id: 'hubspot', name: 'HubSpot', ind: ['Agency', 'SaaS', 'Ecommerce', 'Finance', 'Education'], task: ['CRM', 'Marketing', 'Customer Support', 'Analytics'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Free', 'Medium', 'Enterprise'], desc: 'The gold standard CRM and marketing automation suite.', link: 'hubspot.html' },
             { id: 'monday', name: 'Monday.com', ind: ['Agency', 'SaaS', 'Construction', 'Real Estate', 'NonProfit'], task: ['Project Management', 'CRM', 'HR'], size: ['Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium'], desc: 'Highly visual, customizable work OS and project tracker.', link: 'monday.html' },
@@ -319,7 +314,12 @@
             { id: 'highlevel', name: 'HighLevel', ind: ['Agency', 'Real Estate'], task: ['CRM', 'Marketing', 'Booking'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Medium'], desc: 'White-label marketing platform built specifically for agencies.', link: 'highlevel.html' },
             { id: 'pandadoc', name: 'PandaDoc', ind: ['Legal', 'Agency', 'SaaS', 'Real Estate', 'Finance'], task: ['Project Management', 'CRM', 'Document'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low', 'Medium'], desc: 'Automated document signing and secure proposal tracking.', link: 'pandadoc.html' },
             { id: 'katana', name: 'Katana Cloud', ind: ['Ecommerce', 'Construction'], task: ['Project Management', 'Invoicing', 'Inventory'], size: ['Small', 'Medium'], budget: ['Medium', 'Enterprise'], desc: 'Advanced manufacturing and inventory management software.', link: 'katana.html' },
-            { id: 'appointy', name: 'Appointy', ind: ['Medical', 'Legal', 'Hospitality'], task: ['Booking'], size: ['Solo', 'Micro', 'Small'], budget: ['Free', 'Low'], desc: 'HIPAA-compliant patient and client scheduling portal.', link: 'appointy.html' }
+            { id: 'appointy', name: 'Appointy', ind: ['Medical', 'Legal', 'Hospitality'], task: ['Booking'], size: ['Solo', 'Micro', 'Small'], budget: ['Free', 'Low'], desc: 'HIPAA-compliant patient and client scheduling portal.', link: 'appointy.html' },
+            { id: 'notion', name: 'Notion', ind: ['Agency', 'SaaS', 'Education', 'NonProfit'], task: ['Project Management', 'Document'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low'], desc: 'Highly flexible, all-in-one workspace for documents and wikis.', link: 'notion.html' },
+            { id: 'brevo', name: 'Brevo (Sendinblue)', ind: ['Ecommerce', 'Agency', 'Hospitality', 'NonProfit'], task: ['Marketing', 'CRM'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low', 'Medium'], desc: 'Affordable, scalable email marketing and automation platform.', link: 'brevo.html' },
+            { id: 'slack', name: 'Slack', ind: ['SaaS', 'Agency', 'Ecommerce', 'NonProfit', 'Education'], task: ['Project Management', 'Customer Support'], size: ['Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low', 'Medium', 'Enterprise'], desc: 'The industry-standard hub for team communication and workflows.', link: 'slack.html' },
+            { id: 'dropbox', name: 'Dropbox', ind: ['Construction', 'Agency', 'Legal', 'Real Estate', 'Education'], task: ['Document', 'Project Management'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low', 'Medium'], desc: 'AI-enhanced workspace and secure cloud file-sharing architecture.', link: 'dropbox.html' },
+            { id: 'activecampaign', name: 'ActiveCampaign', ind: ['Agency', 'SaaS', 'Ecommerce', 'Education'], task: ['Marketing', 'CRM'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Medium', 'Enterprise'], desc: 'Deep marketing automation and customer experience platform.', link: 'activecampaign.html' }
         ];
 
         function startSearch() {
@@ -328,12 +328,11 @@
             const reqSize = document.getElementById('input-size').value;
             const reqBudget = document.getElementById('input-budget').value;
             
-            // Basic Form Validation
             if (!reqInd || !reqTask || !reqSize || !reqBudget) {
                 const btn = document.getElementById('audit-btn');
                 const originalText = btn.innerText;
                 btn.innerText = "Please select all options";
-                btn.style.backgroundColor = "#EF4444"; // Warning Red
+                btn.style.backgroundColor = "#EF4444"; 
                 setTimeout(() => {
                     btn.innerText = originalText;
                     btn.style.backgroundColor = "var(--brand-main)";
@@ -352,40 +351,31 @@
             setTimeout(() => {
                 clearInterval(timer);
                 
-                // Mathematical Scoring Algorithm
                 let results = softwareDatabase.map(tool => {
-                    let score = 50; // The floor
+                    let score = 50; 
                     
-                    // Industry Match (+25 points) - Heaviest weight
                     if (tool.ind.includes(reqInd)) score += 25;
-                    else score -= 10; // Penalty for wrong industry
+                    else score -= 10; 
                     
-                    // Task Match (+15 points)
                     if (tool.task.includes(reqTask)) score += 15;
                     
-                    // Size Match (+8 points)
                     if (tool.size.includes(reqSize)) score += 8;
                     
-                    // Budget Match logic (+10 points)
                     const budgetTiers = { 'Free': 0, 'Low': 1, 'Medium': 2, 'Enterprise': 3 };
                     if (budgetTiers[tool.budget[0]] <= budgetTiers[reqBudget]) score += 10;
 
-                    // Cap bounds
                     if (score > 98) score = 98;
                     if (score < 50) score = 50;
 
                     return { ...tool, score };
                 });
 
-                // Sort by highest score
                 results.sort((a, b) => b.score - a.score);
                 const topTool = results[0];
                 const runnerUps = results.slice(1, 4);
 
-                // Inject Results
                 const resultArea = document.getElementById('result-area');
                 
-                // Build runner-up HTML
                 let runnerUpsHTML = '';
                 runnerUps.forEach(tool => {
                     const isFiltered = tool.score === 50;
