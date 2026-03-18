@@ -53,6 +53,7 @@
         
         select { width: 100%; border: 1.5px solid var(--border); padding: 14px 16px; font-size: 1rem; border-radius: 12px; outline: none; font-family: inherit; background-color: #F9FAFB; color: var(--text-main); box-sizing: border-box; transition: 0.2s; cursor: pointer; appearance: none; font-weight: 600; }
         select:focus { border-color: var(--brand-main); box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.08); background-color: #FFF; }
+        select:invalid { color: var(--text-sub); } /* Styles the placeholder text */
         
         .tech-specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
         .tech-toggle { display: block; position: relative; cursor: pointer; }
@@ -138,11 +139,12 @@
             <div class="search-container">
                 
                 <div class="form-section">
-                    <div class="section-title">Core Architecture</div>
+                    <div class="section-title">Business Foundation</div>
                     <div class="grid-2">
                         <div class="form-group">
                             <label>Industry</label>
-                            <select id="input-industry">
+                            <select id="input-industry" required>
+                                <option value="" disabled selected>Select Industry...</option>
                                 <option value="Construction">Construction & Trades</option>
                                 <option value="Agency">Marketing & Digital Agency</option>
                                 <option value="Medical">Medical & Dental</option>
@@ -150,17 +152,26 @@
                                 <option value="Real Estate">Real Estate & Property</option>
                                 <option value="Legal">Legal & Professional</option>
                                 <option value="SaaS">SaaS & Tech Startup</option>
+                                <option value="Hospitality">Hospitality & Events</option>
+                                <option value="Finance">Financial Services & Accounting</option>
+                                <option value="Education">Education & E-Learning</option>
+                                <option value="NonProfit">Non-Profit & NGO</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Primary Operational Goal</label>
-                            <select id="input-task">
+                            <select id="input-task" required>
+                                <option value="" disabled selected>Select Goal...</option>
                                 <option value="CRM">Lead & Pipeline Mgmt (CRM)</option>
                                 <option value="Project Management">Task & Project Tracking</option>
                                 <option value="Invoicing">Automated Billing & Finance</option>
                                 <option value="Booking">Client Scheduling</option>
                                 <option value="HR">HR, Payroll & Recruiting</option>
                                 <option value="Marketing">Marketing Automation</option>
+                                <option value="Customer Support">Customer Support & Helpdesk</option>
+                                <option value="Inventory">E-commerce & Inventory</option>
+                                <option value="Analytics">Data Analytics & Reporting</option>
+                                <option value="Document">Document Management & E-Sign</option>
                             </select>
                         </div>
                     </div>
@@ -171,7 +182,8 @@
                     <div class="grid-2">
                         <div class="form-group">
                             <label>Company Size</label>
-                            <select id="input-size">
+                            <select id="input-size" required>
+                                <option value="" disabled selected>Select Size...</option>
                                 <option value="Solo">Solo Founder / Freelancer</option>
                                 <option value="Micro">2 - 10 Employees</option>
                                 <option value="Small">11 - 50 Employees</option>
@@ -181,7 +193,8 @@
                         </div>
                         <div class="form-group">
                             <label>Monthly Software Budget</label>
-                            <select id="input-budget">
+                            <select id="input-budget" required>
+                                <option value="" disabled selected>Select Budget...</option>
                                 <option value="Free">£0 (Freemium Tools)</option>
                                 <option value="Low">£10 - £50 / month</option>
                                 <option value="Medium">£50 - £200 / month</option>
@@ -265,7 +278,6 @@
                 const rates = { 'USD': { sym: '$', mult: 1.25 }, 'EUR': { sym: '€', mult: 1.17 }, 'AUD': { sym: 'A$', mult: 1.95 }, 'CAD': { sym: 'C$', mult: 1.70 } };
                 if (rates[userCurrency]) {
                     const c = rates[userCurrency];
-                    budgetSelect.options[0].text = `${c.sym}0 (Freemium Tools)`;
                     budgetSelect.options[1].text = `${c.sym}${Math.round(10 * c.mult)} - ${c.sym}${Math.round(50 * c.mult)} / month`;
                     budgetSelect.options[2].text = `${c.sym}${Math.round(50 * c.mult)} - ${c.sym}${Math.round(200 * c.mult)} / month`;
                     budgetSelect.options[3].text = `${c.sym}${Math.round(200 * c.mult)}+ / month`;
@@ -298,16 +310,16 @@
 
         // 5. THE DETERMINISTIC SCORING ENGINE (PartnerStack Database)
         const softwareDatabase = [
-            { id: 'hubspot', name: 'HubSpot', ind: ['Agency', 'SaaS', 'Ecommerce'], task: ['CRM', 'Marketing'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Free', 'Medium', 'Enterprise'], desc: 'The gold standard CRM and marketing automation suite.', link: 'hubspot.html' },
-            { id: 'monday', name: 'Monday.com', ind: ['Agency', 'SaaS', 'Construction', 'Real Estate'], task: ['Project Management', 'CRM'], size: ['Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium'], desc: 'Highly visual, customizable work OS and project tracker.', link: 'monday.html' },
-            { id: 'shopify', name: 'Shopify', ind: ['Ecommerce'], task: ['Invoicing', 'Marketing'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium', 'Enterprise'], desc: 'The definitive platform for independent retail architecture.', link: 'shopify.html' },
+            { id: 'hubspot', name: 'HubSpot', ind: ['Agency', 'SaaS', 'Ecommerce', 'Finance', 'Education'], task: ['CRM', 'Marketing', 'Customer Support', 'Analytics'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Free', 'Medium', 'Enterprise'], desc: 'The gold standard CRM and marketing automation suite.', link: 'hubspot.html' },
+            { id: 'monday', name: 'Monday.com', ind: ['Agency', 'SaaS', 'Construction', 'Real Estate', 'NonProfit'], task: ['Project Management', 'CRM', 'HR'], size: ['Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium'], desc: 'Highly visual, customizable work OS and project tracker.', link: 'monday.html' },
+            { id: 'shopify', name: 'Shopify', ind: ['Ecommerce', 'Hospitality'], task: ['Invoicing', 'Marketing', 'Inventory'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium', 'Enterprise'], desc: 'The definitive platform for independent retail architecture.', link: 'shopify.html' },
             { id: 'contractor-foreman', name: 'Contractor Foreman', ind: ['Construction'], task: ['Project Management', 'Invoicing'], size: ['Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'All-in-one management for specialty contractors and builders.', link: 'contractor-foreman.html' },
-            { id: 'quickbooks', name: 'QuickBooks', ind: ['Construction', 'Agency', 'Medical', 'Ecommerce', 'Real Estate', 'Legal', 'SaaS'], task: ['Invoicing'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'Industry-standard accounting and automated billing.', link: 'quickbooks.html' },
-            { id: 'zendesk', name: 'Zendesk', ind: ['SaaS', 'Ecommerce', 'Agency'], task: ['CRM'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Medium', 'Enterprise'], desc: 'Enterprise-grade customer service and ticketing system.', link: 'zendesk.html' },
+            { id: 'quickbooks', name: 'QuickBooks', ind: ['Construction', 'Agency', 'Medical', 'Ecommerce', 'Real Estate', 'Legal', 'SaaS', 'Finance', 'NonProfit'], task: ['Invoicing', 'Analytics'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'Industry-standard accounting and automated billing.', link: 'quickbooks.html' },
+            { id: 'zendesk', name: 'Zendesk', ind: ['SaaS', 'Ecommerce', 'Agency', 'Hospitality', 'Education'], task: ['CRM', 'Customer Support'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Medium', 'Enterprise'], desc: 'Enterprise-grade customer service and ticketing system.', link: 'zendesk.html' },
             { id: 'highlevel', name: 'HighLevel', ind: ['Agency', 'Real Estate'], task: ['CRM', 'Marketing', 'Booking'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Medium'], desc: 'White-label marketing platform built specifically for agencies.', link: 'highlevel.html' },
-            { id: 'pandadoc', name: 'PandaDoc', ind: ['Legal', 'Agency', 'SaaS', 'Real Estate'], task: ['Project Management', 'CRM'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low', 'Medium'], desc: 'Automated document signing and secure proposal tracking.', link: 'pandadoc.html' },
-            { id: 'katana', name: 'Katana Cloud', ind: ['Ecommerce', 'Construction'], task: ['Project Management', 'Invoicing'], size: ['Small', 'Medium'], budget: ['Medium', 'Enterprise'], desc: 'Advanced manufacturing and inventory management software.', link: 'katana.html' },
-            { id: 'appointy', name: 'Appointy', ind: ['Medical', 'Legal'], task: ['Booking'], size: ['Solo', 'Micro', 'Small'], budget: ['Free', 'Low'], desc: 'HIPAA-compliant patient and client scheduling portal.', link: 'appointy.html' }
+            { id: 'pandadoc', name: 'PandaDoc', ind: ['Legal', 'Agency', 'SaaS', 'Real Estate', 'Finance'], task: ['Project Management', 'CRM', 'Document'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low', 'Medium'], desc: 'Automated document signing and secure proposal tracking.', link: 'pandadoc.html' },
+            { id: 'katana', name: 'Katana Cloud', ind: ['Ecommerce', 'Construction'], task: ['Project Management', 'Invoicing', 'Inventory'], size: ['Small', 'Medium'], budget: ['Medium', 'Enterprise'], desc: 'Advanced manufacturing and inventory management software.', link: 'katana.html' },
+            { id: 'appointy', name: 'Appointy', ind: ['Medical', 'Legal', 'Hospitality'], task: ['Booking'], size: ['Solo', 'Micro', 'Small'], budget: ['Free', 'Low'], desc: 'HIPAA-compliant patient and client scheduling portal.', link: 'appointy.html' }
         ];
 
         function startSearch() {
@@ -315,8 +327,21 @@
             const reqTask = document.getElementById('input-task').value;
             const reqSize = document.getElementById('input-size').value;
             const reqBudget = document.getElementById('input-budget').value;
-            const btn = document.getElementById('audit-btn');
             
+            // Basic Form Validation
+            if (!reqInd || !reqTask || !reqSize || !reqBudget) {
+                const btn = document.getElementById('audit-btn');
+                const originalText = btn.innerText;
+                btn.innerText = "Please select all options";
+                btn.style.backgroundColor = "#EF4444"; // Warning Red
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.backgroundColor = "var(--brand-main)";
+                }, 2000);
+                return;
+            }
+
+            const btn = document.getElementById('audit-btn');
             btn.disabled = true;
             let stage = 0; 
             const stages = ["Querying SaaS database...", "Cross-referencing compliance...", "Calculating ROI metrics...", "Finalizing Match..."];
