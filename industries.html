@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Software Library | Snexz</title>
-    <meta name="description" content="Browse the Snexz verified database of B2B SaaS architecture.">
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
     
@@ -37,31 +36,39 @@
         .page-title { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 3rem; letter-spacing: -1px; color: var(--brand-main); margin: 0 0 10px 0; line-height: 1.1; }
         .page-subtitle { color: var(--text-sub); font-size: 1.15rem; font-weight: 500; margin: 0; }
 
-        /* Industry Symbols */
-        .filter-container { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 15px; margin-bottom: 30px; scrollbar-width: none; }
+        /* Filter Bar & Industry Symbols */
+        .filter-container { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 15px; margin-bottom: 30px; scrollbar-width: none; width: 100%; }
         .filter-container::-webkit-scrollbar { display: none; }
         
-        .filter-btn { background: #FFF; border: 1px solid var(--border); color: var(--text-sub); font-weight: 700; font-size: 0.9rem; padding: 10px 18px; border-radius: 12px; cursor: pointer; transition: 0.2s; white-space: nowrap; display: flex; align-items: center; gap: 10px; box-shadow: var(--shadow-sm); }
+        .filter-btn { background: #FFF; border: 1px solid var(--border); color: var(--text-sub); font-weight: 700; font-size: 0.85rem; padding: 10px 16px; border-radius: 12px; cursor: pointer; transition: 0.2s; white-space: nowrap; display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow-sm); }
         .filter-btn:hover { border-color: var(--brand-main); color: var(--text-main); }
         .filter-btn.active { background: var(--brand-main); color: #FFF; border-color: var(--brand-main); }
 
-        /* The Custom Symbols */
-        .symbol { width: 18px; height: 18px; border: 2px solid currentColor; border-radius: 3px; display: inline-block; position: relative; }
-        .symbol-agency { border-radius: 50%; }
-        .symbol-agency::after { content: ''; position: absolute; top: 3px; left: 3px; width: 8px; height: 8px; background: currentColor; border-radius: 50%; }
-        .symbol-const { clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); }
-        .symbol-ecom { width: 18px; height: 12px; margin-top: 4px; }
-        .symbol-ecom::after { content: ''; position: absolute; top: -5px; left: 4px; width: 6px; height: 4px; border: 2px solid currentColor; border-bottom: none; border-radius: 4px 4px 0 0; }
-        .symbol-med { border: none; height: 18px; width: 18px; background: linear-gradient(90deg, transparent 7px, currentColor 7px, currentColor 11px, transparent 11px), linear-gradient(0deg, transparent 7px, currentColor 7px, currentColor 11px, transparent 11px); }
-        .filter-btn.active .symbol { color: #FFF; }
+        /* Symbol Engine */
+        .symbol { width: 14px; height: 14px; border: 2px solid currentColor; display: inline-block; flex-shrink: 0; }
+        .sym-all { border-radius: 2px; border-style: double; }
+        .sym-con { clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); }
+        .sym-age { border-radius: 50%; }
+        .sym-med { border: none; background: linear-gradient(90deg, transparent 5px, currentColor 5px, currentColor 9px, transparent 9px), linear-gradient(0deg, transparent 5px, currentColor 5px, currentColor 9px, transparent 9px); }
+        .sym-eco { border-radius: 0; width: 14px; height: 10px; border-top: none; position: relative; }
+        .sym-eco::after { content: ''; position: absolute; top: -4px; left: 3px; width: 4px; height: 3px; border: 2px solid currentColor; border-bottom: none; border-radius: 3px 3px 0 0; }
+        .sym-rea { border-bottom: 3px solid currentColor; border-top: none; border-left: none; border-right: none; position: relative; height: 14px; }
+        .sym-rea::after { content: ''; position: absolute; top: 0; left: 3px; width: 8px; height: 10px; border: 2px solid currentColor; border-bottom: none; }
+        .sym-leg { border: none; width: 14px; height: 14px; background: currentColor; clip-path: polygon(0 0, 100% 0, 100% 20%, 60% 20%, 60% 100%, 40% 100%, 40% 20%, 0 20%); }
+        .sym-saa { border-radius: 3px; position: relative; }
+        .sym-saa::after { content: ''; position: absolute; top: 4px; left: 3px; width: 4px; height: 2px; background: currentColor; }
+        .sym-hos { border-radius: 50% 50% 0 0; }
+        .sym-fin { transform: rotate(45deg); }
+        .sym-edu { border: none; background: currentColor; clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
+        .sym-non { border-radius: 50%; border-style: dotted; }
 
-        .library-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; margin-bottom: 60px; }
+        .library-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; margin-bottom: 60px; width: 100%; }
         
         .lib-card { background: #FFF; border-radius: 20px; padding: 25px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-decoration: none; display: flex; flex-direction: column; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .lib-card:hover { border-color: var(--brand-main); box-shadow: var(--shadow-premium); transform: translateY(-4px); }
         
         .card-top { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
-        .card-logo { width: 50px; height: 50px; border-radius: 12px; object-fit: contain; border: 1px solid var(--border); padding: 5px; background: #FFF; }
+        .card-logo { width: 45px; height: 45px; border-radius: 10px; object-fit: contain; border: 1px solid var(--border); padding: 5px; background: #FFF; }
         .card-title { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin: 0; }
         
         .card-desc { color: var(--text-sub); font-size: 0.95rem; line-height: 1.5; margin: 0 0 20px 0; flex: 1; }
@@ -93,11 +100,18 @@
         </div>
 
         <div class="filter-container">
-            <button class="filter-btn active" onclick="filterLibrary('All')">All Systems</button>
-            <button class="filter-btn" onclick="filterLibrary('Construction')"><span class="symbol symbol-const"></span> Construction</button>
-            <button class="filter-btn" onclick="filterLibrary('Agency')"><span class="symbol symbol-agency"></span> Agency</button>
-            <button class="filter-btn" onclick="filterLibrary('Ecommerce')"><span class="symbol symbol-ecom"></span> E-Commerce</button>
-            <button class="filter-btn" onclick="filterLibrary('Medical')"><span class="symbol symbol-med"></span> Medical</button>
+            <button class="filter-btn active" onclick="filterLibrary('All')"><span class="symbol sym-all"></span> All</button>
+            <button class="filter-btn" onclick="filterLibrary('Construction')"><span class="symbol sym-con"></span> Construction</button>
+            <button class="filter-btn" onclick="filterLibrary('Agency')"><span class="symbol sym-age"></span> Agency</button>
+            <button class="filter-btn" onclick="filterLibrary('Medical')"><span class="symbol sym-med"></span> Medical</button>
+            <button class="filter-btn" onclick="filterLibrary('Ecommerce')"><span class="symbol sym-eco"></span> Ecommerce</button>
+            <button class="filter-btn" onclick="filterLibrary('Real Estate')"><span class="symbol sym-rea"></span> Real Estate</button>
+            <button class="filter-btn" onclick="filterLibrary('Legal')"><span class="symbol sym-leg"></span> Legal</button>
+            <button class="filter-btn" onclick="filterLibrary('SaaS')"><span class="symbol sym-saa"></span> SaaS</button>
+            <button class="filter-btn" onclick="filterLibrary('Hospitality')"><span class="symbol sym-hos"></span> Hospitality</button>
+            <button class="filter-btn" onclick="filterLibrary('Finance')"><span class="symbol sym-fin"></span> Finance</button>
+            <button class="filter-btn" onclick="filterLibrary('Education')"><span class="symbol sym-edu"></span> Education</button>
+            <button class="filter-btn" onclick="filterLibrary('NonProfit')"><span class="symbol sym-non"></span> NonProfit</button>
         </div>
 
         <div class="library-grid" id="library-grid"></div>
@@ -109,32 +123,31 @@
 
     <script>
         const softwareDatabase = [
-            { id: 'hubspot', name: 'HubSpot', domain: 'hubspot.com', ind: ['Agency', 'SaaS', 'Ecommerce'], desc: 'The gold standard CRM and marketing automation suite.', link: 'hubspot.html', tags: ['Sales', 'Marketing'] },
-            { id: 'monday', name: 'Monday.com', domain: 'monday.com', ind: ['Agency', 'SaaS', 'Construction'], desc: 'Highly visual, customizable work OS and project tracker.', link: 'monday.html', tags: ['Project Mgmt'] },
-            { id: 'shopify', name: 'Shopify', domain: 'shopify.com', ind: ['Ecommerce'], desc: 'The definitive platform for independent retail architecture.', link: 'shopify.html', tags: ['E-Commerce'] },
+            { id: 'hubspot', name: 'HubSpot', domain: 'hubspot.com', ind: ['Agency', 'SaaS', 'Ecommerce', 'Finance', 'Education'], desc: 'The gold standard CRM and marketing automation suite.', link: 'hubspot.html', tags: ['Sales', 'Marketing'] },
+            { id: 'monday', name: 'Monday.com', domain: 'monday.com', ind: ['Agency', 'SaaS', 'Construction', 'Real Estate', 'NonProfit'], desc: 'Highly visual, customizable work OS and project tracker.', link: 'monday.html', tags: ['Project Mgmt'] },
+            { id: 'shopify', name: 'Shopify', domain: 'shopify.com', ind: ['Ecommerce', 'Hospitality'], desc: 'The definitive platform for independent retail architecture.', link: 'shopify.html', tags: ['E-Commerce'] },
             { id: 'contractor-foreman', name: 'Contractor Foreman', domain: 'contractorforeman.com', ind: ['Construction'], desc: 'All-in-one management for specialty contractors.', link: 'contractor-foreman.html', tags: ['Construction'] },
-            { id: 'quickbooks', name: 'QuickBooks', domain: 'quickbooks.intuit.com', ind: ['Construction', 'Agency', 'Medical', 'Ecommerce', 'Finance'], desc: 'Industry-standard accounting and automated billing.', link: 'quickbooks.html', tags: ['Finance'] },
-            { id: 'zendesk', name: 'Zendesk', domain: 'zendesk.com', ind: ['SaaS', 'Ecommerce', 'Agency'], desc: 'Enterprise-grade customer service and ticketing system.', link: 'zendesk.html', tags: ['Support'] },
-            
-            // HARDCODED GUARANTEED LOGOS FOR TROUBLE TOOLS
-            { id: 'highlevel', name: 'HighLevel', domain: 'gohighlevel.com', customLogo: 'https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_9e317070104764b88a916723e743a654/highlevel.png', ind: ['Agency'], desc: 'Marketing platform built specifically for agencies.', link: 'highlevel.html', tags: ['Agency'] },
-            { id: 'appointy', name: 'Appointy', domain: 'appointy.com', customLogo: 'https://www.appointy.com/wp-content/uploads/2018/11/Appointy-Logo-1.png', ind: ['Medical'], desc: 'HIPAA-compliant patient scheduling portal.', link: 'appointy.html', tags: ['Booking'] },
-            { id: 'brevo', name: 'Brevo', domain: 'brevo.com', customLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Brevo_Logo.svg/2560px-Brevo_Logo.svg.png', ind: ['Ecommerce', 'Agency'], desc: 'Affordable, scalable email marketing platform.', link: 'brevo.html', tags: ['Marketing'] },
-            
-            { id: 'notion', name: 'Notion', domain: 'notion.so', ind: ['Agency', 'SaaS'], desc: 'All-in-one workspace for documents and wikis.', link: 'notion.html', tags: ['Workspace'] },
-            { id: 'slack', name: 'Slack', domain: 'slack.com', ind: ['SaaS', 'Agency'], desc: 'The hub for team communication and workflows.', link: 'slack.html', tags: ['Comms'] },
-            { id: 'dropbox', name: 'Dropbox', domain: 'dropbox.com', ind: ['Construction', 'Agency'], desc: 'AI-enhanced secure cloud file-sharing.', link: 'dropbox.html', tags: ['Storage'] }
+            { id: 'quickbooks', name: 'QuickBooks', domain: 'quickbooks.intuit.com', ind: ['Construction', 'Agency', 'Medical', 'Ecommerce', 'Real Estate', 'Legal', 'SaaS', 'Finance', 'NonProfit'], desc: 'Industry-standard accounting and automated billing.', link: 'quickbooks.html', tags: ['Finance'] },
+            { id: 'zendesk', name: 'Zendesk', domain: 'zendesk.com', ind: ['SaaS', 'Ecommerce', 'Agency', 'Hospitality', 'Education'], desc: 'Enterprise-grade customer service and ticketing system.', link: 'zendesk.html', tags: ['Support'] },
+            { id: 'highlevel', name: 'HighLevel', domain: 'gohighlevel.com', customLogo: 'https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_9e317070104764b88a916723e743a654/highlevel.png', ind: ['Agency', 'Real Estate'], desc: 'Marketing platform built specifically for agencies.', link: 'highlevel.html', tags: ['Agency'] },
+            { id: 'pandadoc', name: 'PandaDoc', domain: 'pandadoc.com', ind: ['Legal', 'Agency', 'SaaS', 'Real Estate', 'Finance'], desc: 'Automated document signing and secure proposal tracking.', link: 'pandadoc.html', tags: ['Legal', 'Sales'] },
+            { id: 'katana', name: 'Katana Cloud', domain: 'katanamrp.com', ind: ['Ecommerce', 'Construction'], desc: 'Advanced manufacturing and inventory management software.', link: 'katana.html', tags: ['Inventory'] },
+            { id: 'appointy', name: 'Appointy', domain: 'appointy.com', customLogo: 'https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/appointy.svg', ind: ['Medical', 'Legal', 'Hospitality'], desc: 'HIPAA-compliant patient scheduling portal.', link: 'appointy.html', tags: ['Booking'] },
+            { id: 'notion', name: 'Notion', domain: 'notion.so', ind: ['Agency', 'SaaS', 'Education', 'NonProfit'], desc: 'All-in-one workspace for documents and wikis.', link: 'notion.html', tags: ['Workspace'] },
+            { id: 'brevo', name: 'Brevo', domain: 'brevo.com', customLogo: 'https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/brevo.svg', ind: ['Ecommerce', 'Agency', 'Hospitality', 'NonProfit'], desc: 'Affordable, scalable email marketing platform.', link: 'brevo.html', tags: ['Marketing'] },
+            { id: 'slack', name: 'Slack', domain: 'slack.com', ind: ['SaaS', 'Agency', 'Ecommerce', 'NonProfit', 'Education'], desc: 'The hub for team communication and workflows.', link: 'slack.html', tags: ['Comms'] },
+            { id: 'dropbox', name: 'Dropbox', domain: 'dropbox.com', ind: ['Construction', 'Agency', 'Legal', 'Real Estate', 'Education'], desc: 'AI-enhanced secure cloud file-sharing.', link: 'dropbox.html', tags: ['Storage'] },
+            { id: 'activecampaign', name: 'ActiveCampaign', domain: 'activecampaign.com', ind: ['Agency', 'SaaS', 'Ecommerce', 'Education'], desc: 'Deep marketing automation and customer experience platform.', link: 'activecampaign.html', tags: ['Marketing'] }
         ];
 
         function renderGrid(filterIndustry = 'All') {
             const grid = document.getElementById('library-grid');
             grid.innerHTML = '';
-
             let filteredTools = softwareDatabase.filter(tool => filterIndustry === 'All' || tool.ind.includes(filterIndustry));
 
             filteredTools.forEach(tool => {
-                // FIXED LOGO LOGIC
-                const logoSrc = tool.customLogo ? tool.customLogo : `https://logo.clearbit.com/${tool.domain}?size=100`;
+                // FORCE HIGH-RES LOGO PATHS
+                let logoSrc = tool.customLogo ? tool.customLogo : `https://logo.clearbit.com/${tool.domain}?size=250`;
                 
                 grid.innerHTML += `
                     <a href="${tool.link}" class="lib-card">
