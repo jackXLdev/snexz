@@ -30,7 +30,6 @@
         @keyframes wipeRight { to { clip-path: inset(0 0 0 0); } }
         @keyframes lockIn { to { opacity: 1; transform: translateY(0); } }
         
-        /* Lowered Main Container (16vh instead of 12vh) */
         main { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; margin-top: 16vh; width: 100%; max-width: 680px; text-align: center; opacity: 0; animation: revealMain 0.8s ease-out 2.6s forwards; }
         @keyframes revealMain { to { opacity: 1; } }
 
@@ -39,7 +38,6 @@
         .logo-svg polygon { fill: var(--brand-main); }
         .brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 4rem; letter-spacing: -1.5px; color: var(--brand-main); margin: 0; line-height: 1; }
         
-        /* Darker, bolder tagline */
         .tagline { color: var(--text-main); font-size: 1.15rem; margin-bottom: 35px; font-weight: 600; }
         
         .search-container { background: transparent; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); text-align: left; width: 100%;}
@@ -69,14 +67,19 @@
         .btn-audit { background: var(--brand-main); color: white; border: none; padding: 20px; border-radius: 16px; font-weight: 800; font-size: 1.2rem; cursor: pointer; transition: all 0.2s ease; font-family: 'Outfit', sans-serif; width: 100%; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(17, 24, 39, 0.15); }
         .btn-audit:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(17, 24, 39, 0.25); }
         .btn-audit:active { transform: translateY(0); }
-        .btn-audit:disabled { opacity: 0.8; cursor: wait; transform: none; box-shadow: none; }
+        
+        /* New Progress Bar Styles */
+        .progress-wrapper { display: none; margin-top: 15px; width: 100%; }
+        .progress-container { background: #E5E7EB; border-radius: 12px; height: 10px; overflow: hidden; width: 100%; margin-bottom: 12px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
+        .progress-bar { height: 100%; width: 0%; background: var(--brand-main); transition: width 0.1s linear; border-radius: 12px; }
+        .progress-text { font-size: 0.85rem; font-weight: 800; color: var(--brand-main); text-transform: uppercase; letter-spacing: 0.5px; font-family: 'Outfit', sans-serif; text-align: center; animation: pulseText 1.5s infinite ease-in-out;}
+        @keyframes pulseText { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
 
         #result-area { display: none; margin-top: 10px; text-align: left; animation: slideUp 0.4s ease-out; width: 100%; background: transparent; padding: 0; border-radius: 0; box-sizing: border-box; }
         
         .btn-back { display: flex; align-items: center; gap: 8px; background: none; border: none; color: var(--text-main); font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; cursor: pointer; padding: 0; margin-bottom: 25px; transition: 0.2s; }
         .btn-back:hover { color: var(--text-sub); transform: translateX(-4px); }
 
-        /* Normal thin outline for the top result */
         .audit-card { background: #FFF; border-radius: 20px; padding: 35px; border: 1px solid var(--border); box-shadow: var(--shadow-premium); margin-bottom: 30px; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 15px;}
         
         .brand-header-result { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
@@ -112,7 +115,6 @@
         .row-score svg { color: var(--text-sub); transition: 0.2s;}
         .ranked-row:hover .row-score svg { color: var(--brand-main); transform: translateX(4px); }
 
-        /* Modal styling updated for clean charcoal typography */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(17, 24, 39, 0.7); z-index: 10000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(8px); }
         .modal-content { background: white; padding: 40px; border-radius: 24px; max-width: 500px; text-align: left; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); animation: modalPop 0.3s ease-out; color: var(--text-main); }
         
@@ -124,7 +126,8 @@
         .modal-header { margin-bottom: 15px; }
         #modal-title { font-family: 'Outfit', sans-serif; margin: 0; font-size: 1.6rem; color: var(--brand-main); font-weight: 800; letter-spacing: -0.5px; }
         
-        #modal-body p { font-size: 1rem; line-height: 1.6; margin-top: 0; margin-bottom: 15px; color: var(--text-sub); }
+        /* Updated Modal Font to charcoal, larger size, stronger weight */
+        #modal-body p { font-size: 1.05rem; font-weight: 500; line-height: 1.6; margin-top: 0; margin-bottom: 15px; color: var(--text-main); }
         #modal-body p:last-child { margin-bottom: 0; }
         
         @keyframes modalPop { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
@@ -237,6 +240,13 @@
                 </div>
 
                 <button class="btn-audit" id="audit-btn" onclick="startSearch()">Search</button>
+                
+                <div class="progress-wrapper" id="progress-wrapper">
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+                    <div class="progress-text" id="progress-text">Initializing Engine...</div>
+                </div>
             </div>
         </div>
 
@@ -315,6 +325,12 @@
         function editSearch() {
             document.getElementById('result-area').style.display = 'none';
             document.getElementById('search-box-ui').style.display = 'block';
+            
+            // Reset button and progress bar
+            document.getElementById('audit-btn').style.display = 'block';
+            document.getElementById('audit-btn').disabled = false;
+            document.getElementById('progress-wrapper').style.display = 'none';
+            document.getElementById('progress-bar').style.width = '0%';
         }
 
         function getScoreColor(score) {
@@ -360,113 +376,146 @@
                 return;
             }
 
-            const btn = document.getElementById('audit-btn');
-            btn.disabled = true;
-            let stage = 0; 
-            const stages = ["Searching architecture...", "Mapping workflows...", "Finalizing Match..."];
-            const timer = setInterval(() => { 
-                if (stage < stages.length) { btn.innerText = stages[stage]; stage++; }
-            }, 600);
+            // Hide button, show progress bar
+            document.getElementById('audit-btn').style.display = 'none';
+            const progressWrapper = document.getElementById('progress-wrapper');
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            progressWrapper.style.display = 'block';
 
-            setTimeout(() => {
-                clearInterval(timer);
+            const stages = [
+                "Initializing engine...",
+                "Querying SaaS database...",
+                "Analyzing industry compliance...",
+                "Evaluating scale constraints...",
+                "Cross-referencing budget...",
+                "Calculating ROI metrics...",
+                "Testing API integrations...",
+                "Compiling decision matrix...",
+                "Finalizing optimal match..."
+            ];
+
+            let progress = 0;
+            let currentStage = 0;
+            progressText.innerText = stages[0];
+
+            // 10 second timer (100 steps of 100ms)
+            const intervalTime = 100;
+            const totalSteps = 10000 / intervalTime;
+            let currentStep = 0;
+
+            const timer = setInterval(() => {
+                currentStep++;
+                progress = (currentStep / totalSteps) * 100;
+                progressBar.style.width = `${progress}%`;
+
+                // Update text based on progress percentage
+                const stageIndex = Math.floor((progress / 100) * stages.length);
+                if (stageIndex < stages.length && currentStage !== stageIndex) {
+                    currentStage = stageIndex;
+                    progressText.innerText = stages[currentStage];
+                }
+
+                if (currentStep >= totalSteps) {
+                    clearInterval(timer);
+                    showResults(reqInd, reqTask, reqSize, reqBudget);
+                }
+            }, intervalTime);
+        }
+
+        function showResults(reqInd, reqTask, reqSize, reqBudget) {
+            let results = softwareDatabase.map(tool => {
+                let score = 50; 
                 
-                let results = softwareDatabase.map(tool => {
-                    let score = 50; 
-                    
-                    score += (tool.id.length % 4); 
+                score += (tool.id.length % 4); 
 
-                    if (tool.ind.includes(reqInd)) score += 25; else score -= 10; 
-                    if (tool.task.includes(reqTask)) score += 15;
-                    if (tool.size.includes(reqSize)) score += 8;
-                    const budgetTiers = { 'Free': 0, 'Low': 1, 'Medium': 2, 'Enterprise': 3 };
-                    if (budgetTiers[tool.budget[0]] <= budgetTiers[reqBudget]) score += 10;
-                    
-                    if (score > 98) score = 98;
-                    if (score < 50) score = 50;
-                    return { ...tool, score };
-                });
-
-                results.sort((a, b) => b.score - a.score);
-                const topTool = results[0];
-                const runnerUps = results.slice(1, 4);
-
-                const resultArea = document.getElementById('result-area');
+                if (tool.ind.includes(reqInd)) score += 25; else score -= 10; 
+                if (tool.task.includes(reqTask)) score += 15;
+                if (tool.size.includes(reqSize)) score += 8;
+                const budgetTiers = { 'Free': 0, 'Low': 1, 'Medium': 2, 'Enterprise': 3 };
+                if (budgetTiers[tool.budget[0]] <= budgetTiers[reqBudget]) score += 10;
                 
-                let runnerUpsHTML = '';
-                runnerUps.forEach(tool => {
-                    const isFiltered = tool.score === 50;
-                    
-                    // Uses Clearbit, with a bulletproof fallback to UI Avatars if the logo isn't found
-                    const logoTag = `<img src="https://logo.clearbit.com/${tool.domain}" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(tool.name)}&background=F1F5F9&color=111827&bold=true';" class="row-logo" alt="${tool.name} logo">`;
-                    
-                    runnerUpsHTML += `
-                        <a href="/${tool.link}?score=${tool.score}" class="ranked-row" ${isFiltered ? 'style="background: #F9FAFB; border-color: transparent; box-shadow: none;"' : ''}>
-                            <div class="row-left">
-                                ${logoTag}
-                                <div class="row-details">
-                                    <h3 ${isFiltered ? 'style="color: var(--text-sub);"' : ''}>${tool.name}</h3>
-                                    <p>${isFiltered ? `Lacks native ${reqInd} workflow support.` : tool.desc}</p>
-                                </div>
-                            </div>
-                            <div class="row-score" style="color: ${getScoreColor(tool.score)}; opacity: ${isFiltered ? '0.3' : '1'};">
-                                ${isFiltered ? '' : tool.score}
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </div>
-                        </a>
-                    `;
-                });
+                if (score > 98) score = 98;
+                if (score < 50) score = 50;
+                return { ...tool, score };
+            });
 
-                const topLogoTag = `<img src="https://logo.clearbit.com/${topTool.domain}" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(topTool.name)}&background=F1F5F9&color=111827&bold=true';" class="company-logo" alt="${topTool.name} logo">`;
+            results.sort((a, b) => b.score - a.score);
+            const topTool = results[0];
+            const runnerUps = results.slice(1, 4);
 
-                resultArea.innerHTML = `
-                    <button onclick="editSearch()" class="btn-back">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                        Back to Search
-                    </button>
-
-                    <div class="audit-card">
-                        <div class="brand-header-result">
-                            <div class="result-logo-container">
-                                ${topLogoTag}
-                                <div class="result-title">
-                                    <span>Top Recommendation</span>
-                                    <h2>${topTool.name}</h2>
-                                </div>
-                            </div>
-                            <div class="score-pill">
-                                <div class="score-big">${topTool.score}</div>
-                                <div class="score-label">Snexz Score</div>
+            const resultArea = document.getElementById('result-area');
+            
+            let runnerUpsHTML = '';
+            runnerUps.forEach(tool => {
+                const isFiltered = tool.score === 50;
+                
+                // Fallback is now the official Google Favicon API
+                const logoTag = `<img src="https://logo.clearbit.com/${tool.domain}" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${tool.domain}&size=128';" class="row-logo" alt="${tool.name} logo">`;
+                
+                runnerUpsHTML += `
+                    <a href="/${tool.link}?score=${tool.score}" class="ranked-row" ${isFiltered ? 'style="background: #F9FAFB; border-color: transparent; box-shadow: none;"' : ''}>
+                        <div class="row-left">
+                            ${logoTag}
+                            <div class="row-details">
+                                <h3 ${isFiltered ? 'style="color: var(--text-sub);"' : ''}>${tool.name}</h3>
+                                <p>${isFiltered ? `Lacks native ${reqInd} workflow support.` : tool.desc}</p>
                             </div>
                         </div>
-                        
-                        <div style="background: #F9FAFB; border-radius: 12px; padding: 15px 20px; border: 1px solid var(--border);">
-                            <div class="metric-row"><span>Scale Alignment</span><strong style="color: var(--brand-main);">${reqSize} Tier</strong></div>
-                            <div class="metric-row"><span>Industry Compliance</span><strong style="color: var(--brand-main);">${reqInd} Standards</strong></div>
-                        </div>
-                        
-                        <a href="/${topTool.link}?score=${topTool.score}" class="btn-proceed">
-                            View Analysis 
+                        <div class="row-score" style="color: ${getScoreColor(tool.score)}; opacity: ${isFiltered ? '0.3' : '1'};">
+                            ${isFiltered ? '' : tool.score}
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
+                `;
+            });
 
-                    <div class="ranked-header">
-                        Other Tools Analysed
-                        <span>Showing top 4 evaluated systems</span>
+            const topLogoTag = `<img src="https://logo.clearbit.com/${topTool.domain}" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${topTool.domain}&size=128';" class="company-logo" alt="${topTool.name} logo">`;
+
+            resultArea.innerHTML = `
+                <button onclick="editSearch()" class="btn-back">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Back to Search
+                </button>
+
+                <div class="audit-card">
+                    <div class="brand-header-result">
+                        <div class="result-logo-container">
+                            ${topLogoTag}
+                            <div class="result-title">
+                                <span>Top Recommendation</span>
+                                <h2>${topTool.name}</h2>
+                            </div>
+                        </div>
+                        <div class="score-pill">
+                            <div class="score-big">${topTool.score}</div>
+                            <div class="score-label">Snexz Score</div>
+                        </div>
                     </div>
                     
-                    <div class="ranked-list">
-                        ${runnerUpsHTML}
+                    <div style="background: #F9FAFB; border-radius: 12px; padding: 15px 20px; border: 1px solid var(--border);">
+                        <div class="metric-row"><span>Scale Alignment</span><strong style="color: var(--brand-main);">${reqSize} Tier</strong></div>
+                        <div class="metric-row"><span>Industry Compliance</span><strong style="color: var(--brand-main);">${reqInd} Standards</strong></div>
                     </div>
-                `;
+                    
+                    <a href="/${topTool.link}?score=${topTool.score}" class="btn-proceed">
+                        View Analysis 
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <div class="ranked-header">
+                    Other Tools Analysed
+                    <span>Showing top 4 evaluated systems</span>
+                </div>
                 
-                document.getElementById('search-box-ui').style.display = 'none';
-                resultArea.style.display = 'block';
-                btn.innerText = "Search";
-                btn.disabled = false;
-                
-            }, 2500); 
+                <div class="ranked-list">
+                    ${runnerUpsHTML}
+                </div>
+            `;
+            
+            document.getElementById('search-box-ui').style.display = 'none';
+            resultArea.style.display = 'block';
         }
     </script>
 </body>
