@@ -36,17 +36,18 @@
         .page-title { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 3rem; letter-spacing: -1px; color: var(--brand-main); margin: 0; line-height: 1.1; }
         .page-subtitle { color: var(--text-sub); font-size: 1.15rem; font-weight: 500; margin: 10px 0 0 0; }
 
-        /* Fixed Filter Bar: Now wraps so nothing is cut off */
+        /* Filter Bar & Industry Symbols: Now wraps so nothing is cut off */
         .filter-container { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; width: 100%; justify-content: flex-start; }
         
         .filter-btn { background: #FFF; border: 1px solid var(--border); color: var(--text-sub); font-weight: 700; font-size: 0.85rem; padding: 10px 16px; border-radius: 12px; cursor: pointer; transition: 0.2s; white-space: nowrap; display: flex; align-items: center; gap: 10px; box-shadow: var(--shadow-sm); }
         .filter-btn:hover { border-color: var(--brand-main); color: var(--text-main); }
         .filter-btn.active { background: var(--brand-main); color: #FFF; border-color: var(--brand-main); }
 
-        /* Symbol Engine: Hammer/Spanner style for Construction */
+        /* FIXED CSS Symbols & SVGs */
+        .symbol-svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
         .symbol { width: 14px; height: 14px; border: 2px solid currentColor; display: inline-block; flex-shrink: 0; position: relative; }
         .sym-all { border-radius: 2px; border-style: double; }
-        .sym-con { border: none; background: currentColor; clip-path: polygon(10% 80%, 10% 100%, 30% 100%, 30% 80%, 100% 10%, 90% 0%, 0% 90%); } /* Wrench/Spanner shape */
+        /* sym-con removed, now using SVG in the button */
         .sym-age { border-radius: 50%; }
         .sym-med { border: none; background: linear-gradient(90deg, transparent 5px, currentColor 5px, currentColor 9px, transparent 9px), linear-gradient(0deg, transparent 5px, currentColor 5px, currentColor 9px, transparent 9px); }
         .sym-eco { border-radius: 0; width: 14px; height: 10px; border-top: none; position: relative; }
@@ -100,7 +101,10 @@
 
         <div class="filter-container">
             <button class="filter-btn active" onclick="filterLibrary('All')"><span class="symbol sym-all"></span> All</button>
-            <button class="filter-btn" onclick="filterLibrary('Construction')"><span class="symbol sym-con"></span> Construction</button>
+            <button class="filter-btn" onclick="filterLibrary('Construction')">
+                <svg class="symbol-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M504.6 153.2c-15.3-15.3-40.1-15.3-55.4 0l-160.7 160.7-56.6-56.6 160.7-160.7c15.3-15.3 15.3-40.1 0-55.4-15.3-15.3-40.1-15.3-55.4 0L176.5 201.9c-23.7 23.7-36.8 55.3-36.8 88.9s13.1 65.2 36.8 88.9l56.6 56.6 56.6 56.6c23.7 23.7 55.3 36.8 88.9 36.8s65.2-13.1 88.9-36.8l200-200c15.4-15.3 15.4-40.1.1-55.4zM368.1 432c-23.7 0-46-9.2-62.8-26L160.7 261.4c-34.6-34.6-34.6-91 0-125.6 16.7-16.7 39.1-26 62.8-26 23.7 0 46 9.2 62.8 26l144.6 144.6c34.6 34.6 34.6 91 0 125.6-16.8 16.8-39.1 26-62.8 26z"/><path d="M110.6 231.1l56.6-56.6 28.3 28.3-56.6 56.6z"/><path d="M82.3 259.4l56.6-56.6 28.3 28.3-56.6 56.6z"/><path d="M54.1 287.7L110.6 231.1l28.3 28.3-56.6 56.6z"/><path d="M25.8 316L82.3 259.4l28.3 28.3-56.6 56.6z"/><path d="M208 64c-35.3 0-64 28.7-64 64s28.7 64 64 64 64-28.7 64-64-28.7-64-64-64zm0 96c-17.6 0-32-14.4-32-32s14.4-32 32-32 32 14.4 32 32-14.4 32-32 32z"/></svg> 
+                Construction
+            </button>
             <button class="filter-btn" onclick="filterLibrary('Agency')"><span class="symbol sym-age"></span> Agency</button>
             <button class="filter-btn" onclick="filterLibrary('Medical')"><span class="symbol sym-med"></span> Medical</button>
             <button class="filter-btn" onclick="filterLibrary('Ecommerce')"><span class="symbol sym-eco"></span> Ecommerce</button>
@@ -129,9 +133,11 @@
             { id: 'quickbooks', name: 'QuickBooks', domain: 'quickbooks.intuit.com', ind: ['Construction', 'Agency', 'Medical', 'Ecommerce', 'Real Estate', 'Legal', 'SaaS', 'Finance', 'NonProfit'], desc: 'Industry-standard accounting and automated billing.', link: 'quickbooks.html', tags: ['Finance'] },
             { id: 'zendesk', name: 'Zendesk', domain: 'zendesk.com', ind: ['SaaS', 'Ecommerce', 'Agency', 'Hospitality', 'Education'], desc: 'Enterprise-grade customer service and ticketing system.', link: 'zendesk.html', tags: ['Support'] },
             
-            // CRISP OFFICIAL HIGH-RES LOGO PATHS
-            { id: 'highlevel', name: 'HighLevel', domain: 'gohighlevel.com', customLogo: 'https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_9e317070104764b88a916723e743a654/highlevel.png', ind: ['Agency', 'Real Estate'], desc: 'Marketing platform built specifically for agencies.', link: 'highlevel.html', tags: ['Agency'] },
-            { id: 'appointy', name: 'Appointy', domain: 'appointy.com', customLogo: 'https://cdn-1.webcatalog.io/catalog/appointy/appointy-icon-filled-256.png?v=1714774395893', ind: ['Medical', 'Legal', 'Hospitality'], desc: 'HIPAA-compliant patient scheduling portal.', link: 'appointy.html', tags: ['Booking'] },
+            // BULLETPROOF HIGH-RES COLOUR LOGOS (tailored logic)
+            { id: 'highlevel', name: 'HighLevel', domain: 'gohighlevel.com', customLogo: 'https://logo.clearbit.com/gohighlevel.com?format=png', ind: ['Agency', 'Real Estate'], desc: 'Marketing platform built specifically for agencies.', link: 'highlevel.html', tags: ['Agency'] },
+            { id: 'appointy', name: 'Appointy', domain: 'appointy.com', customLogo: 'https://logovector.net/wp-content/uploads/2019/10/appointy-logo.png', ind: ['Medical', 'Legal', 'Hospitality'], desc: 'HIPAA-compliant patient scheduling portal.', link: 'appointy.html', tags: ['Booking'] },
+            
+            // FIXED: Brevo logo pulls official, colorful full vector asset
             { id: 'brevo', name: 'Brevo', domain: 'brevo.com', customLogo: 'https://cdn.worldvectorlogo.com/logos/brevo-1.svg', ind: ['Ecommerce', 'Agency', 'Hospitality', 'NonProfit'], desc: 'Affordable, scalable email marketing platform.', link: 'brevo.html', tags: ['Marketing'] },
             
             { id: 'notion', name: 'Notion', domain: 'notion.so', ind: ['Agency', 'SaaS', 'Education', 'NonProfit'], desc: 'All-in-one workspace for documents and wikis.', link: 'notion.html', tags: ['Workspace'] },
@@ -146,13 +152,13 @@
             let filteredTools = softwareDatabase.filter(tool => filterIndustry === 'All' || tool.ind.includes(filterIndustry));
 
             filteredTools.forEach(tool => {
-                // FALLBACK LOGIC: First customLogo, then high-res clearbit, then favicon
+                // FORCE HIGH-RES LOGO PATHS (Tailored for full branding, not tiny favicons)
                 let logoSrc = tool.customLogo ? tool.customLogo : `https://logo.clearbit.com/${tool.domain}?size=250`;
                 
                 grid.innerHTML += `
                     <a href="${tool.link}" class="lib-card">
                         <div class="card-top">
-                            <img src="${logoSrc}" onerror="this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${tool.domain}&size=128';" class="card-logo" alt="${tool.name}">
+                            <img src="${logoSrc}" onerror="this.src='https://cdn-1.webcatalog.io/catalog/${tool.id}/${tool.id}-icon.png';" class="card-logo" alt="${tool.name}">
                             <h2 class="card-title">${tool.name}</h2>
                         </div>
                         <p class="card-desc">${tool.desc}</p>
