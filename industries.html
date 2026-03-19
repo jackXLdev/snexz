@@ -33,21 +33,20 @@
         @keyframes fadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
         .page-header { margin-bottom: 30px; }
-        .page-title { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 3rem; letter-spacing: -1px; color: var(--brand-main); margin: 0 0 10px 0; line-height: 1.1; }
-        .page-subtitle { color: var(--text-sub); font-size: 1.15rem; font-weight: 500; margin: 0; }
+        .page-title { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 3rem; letter-spacing: -1px; color: var(--brand-main); margin: 0; line-height: 1.1; }
+        .page-subtitle { color: var(--text-sub); font-size: 1.15rem; font-weight: 500; margin: 10px 0 0 0; }
 
-        /* Filter Bar & Industry Symbols */
-        .filter-container { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 15px; margin-bottom: 30px; scrollbar-width: none; width: 100%; }
-        .filter-container::-webkit-scrollbar { display: none; }
+        /* Fixed Filter Bar: Now wraps so nothing is cut off */
+        .filter-container { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; width: 100%; justify-content: flex-start; }
         
-        .filter-btn { background: #FFF; border: 1px solid var(--border); color: var(--text-sub); font-weight: 700; font-size: 0.85rem; padding: 10px 16px; border-radius: 12px; cursor: pointer; transition: 0.2s; white-space: nowrap; display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow-sm); }
+        .filter-btn { background: #FFF; border: 1px solid var(--border); color: var(--text-sub); font-weight: 700; font-size: 0.85rem; padding: 10px 16px; border-radius: 12px; cursor: pointer; transition: 0.2s; white-space: nowrap; display: flex; align-items: center; gap: 10px; box-shadow: var(--shadow-sm); }
         .filter-btn:hover { border-color: var(--brand-main); color: var(--text-main); }
         .filter-btn.active { background: var(--brand-main); color: #FFF; border-color: var(--brand-main); }
 
-        /* Symbol Engine */
-        .symbol { width: 14px; height: 14px; border: 2px solid currentColor; display: inline-block; flex-shrink: 0; }
+        /* Symbol Engine: Hammer/Spanner style for Construction */
+        .symbol { width: 14px; height: 14px; border: 2px solid currentColor; display: inline-block; flex-shrink: 0; position: relative; }
         .sym-all { border-radius: 2px; border-style: double; }
-        .sym-con { clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); }
+        .sym-con { border: none; background: currentColor; clip-path: polygon(10% 80%, 10% 100%, 30% 100%, 30% 80%, 100% 10%, 90% 0%, 0% 90%); } /* Wrench/Spanner shape */
         .sym-age { border-radius: 50%; }
         .sym-med { border: none; background: linear-gradient(90deg, transparent 5px, currentColor 5px, currentColor 9px, transparent 9px), linear-gradient(0deg, transparent 5px, currentColor 5px, currentColor 9px, transparent 9px); }
         .sym-eco { border-radius: 0; width: 14px; height: 10px; border-top: none; position: relative; }
@@ -129,15 +128,16 @@
             { id: 'contractor-foreman', name: 'Contractor Foreman', domain: 'contractorforeman.com', ind: ['Construction'], desc: 'All-in-one management for specialty contractors.', link: 'contractor-foreman.html', tags: ['Construction'] },
             { id: 'quickbooks', name: 'QuickBooks', domain: 'quickbooks.intuit.com', ind: ['Construction', 'Agency', 'Medical', 'Ecommerce', 'Real Estate', 'Legal', 'SaaS', 'Finance', 'NonProfit'], desc: 'Industry-standard accounting and automated billing.', link: 'quickbooks.html', tags: ['Finance'] },
             { id: 'zendesk', name: 'Zendesk', domain: 'zendesk.com', ind: ['SaaS', 'Ecommerce', 'Agency', 'Hospitality', 'Education'], desc: 'Enterprise-grade customer service and ticketing system.', link: 'zendesk.html', tags: ['Support'] },
+            
+            // CRISP OFFICIAL HIGH-RES LOGO PATHS
             { id: 'highlevel', name: 'HighLevel', domain: 'gohighlevel.com', customLogo: 'https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_9e317070104764b88a916723e743a654/highlevel.png', ind: ['Agency', 'Real Estate'], desc: 'Marketing platform built specifically for agencies.', link: 'highlevel.html', tags: ['Agency'] },
-            { id: 'pandadoc', name: 'PandaDoc', domain: 'pandadoc.com', ind: ['Legal', 'Agency', 'SaaS', 'Real Estate', 'Finance'], desc: 'Automated document signing and secure proposal tracking.', link: 'pandadoc.html', tags: ['Legal', 'Sales'] },
-            { id: 'katana', name: 'Katana Cloud', domain: 'katanamrp.com', ind: ['Ecommerce', 'Construction'], desc: 'Advanced manufacturing and inventory management software.', link: 'katana.html', tags: ['Inventory'] },
-            { id: 'appointy', name: 'Appointy', domain: 'appointy.com', customLogo: 'https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/appointy.svg', ind: ['Medical', 'Legal', 'Hospitality'], desc: 'HIPAA-compliant patient scheduling portal.', link: 'appointy.html', tags: ['Booking'] },
+            { id: 'appointy', name: 'Appointy', domain: 'appointy.com', customLogo: 'https://cdn-1.webcatalog.io/catalog/appointy/appointy-icon-filled-256.png?v=1714774395893', ind: ['Medical', 'Legal', 'Hospitality'], desc: 'HIPAA-compliant patient scheduling portal.', link: 'appointy.html', tags: ['Booking'] },
+            { id: 'brevo', name: 'Brevo', domain: 'brevo.com', customLogo: 'https://cdn.worldvectorlogo.com/logos/brevo-1.svg', ind: ['Ecommerce', 'Agency', 'Hospitality', 'NonProfit'], desc: 'Affordable, scalable email marketing platform.', link: 'brevo.html', tags: ['Marketing'] },
+            
             { id: 'notion', name: 'Notion', domain: 'notion.so', ind: ['Agency', 'SaaS', 'Education', 'NonProfit'], desc: 'All-in-one workspace for documents and wikis.', link: 'notion.html', tags: ['Workspace'] },
-            { id: 'brevo', name: 'Brevo', domain: 'brevo.com', customLogo: 'https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/brevo.svg', ind: ['Ecommerce', 'Agency', 'Hospitality', 'NonProfit'], desc: 'Affordable, scalable email marketing platform.', link: 'brevo.html', tags: ['Marketing'] },
             { id: 'slack', name: 'Slack', domain: 'slack.com', ind: ['SaaS', 'Agency', 'Ecommerce', 'NonProfit', 'Education'], desc: 'The hub for team communication and workflows.', link: 'slack.html', tags: ['Comms'] },
             { id: 'dropbox', name: 'Dropbox', domain: 'dropbox.com', ind: ['Construction', 'Agency', 'Legal', 'Real Estate', 'Education'], desc: 'AI-enhanced secure cloud file-sharing.', link: 'dropbox.html', tags: ['Storage'] },
-            { id: 'activecampaign', name: 'ActiveCampaign', domain: 'activecampaign.com', ind: ['Agency', 'SaaS', 'Ecommerce', 'Education'], desc: 'Deep marketing automation and customer experience platform.', link: 'activecampaign.html', tags: ['Marketing'] }
+            { id: 'activecampaign', name: 'ActiveCampaign', domain: 'activecampaign.com', ind: ['Agency', 'SaaS', 'Ecommerce', 'Education'], desc: 'Deep marketing automation platform.', link: 'activecampaign.html', tags: ['Marketing'] }
         ];
 
         function renderGrid(filterIndustry = 'All') {
@@ -146,7 +146,7 @@
             let filteredTools = softwareDatabase.filter(tool => filterIndustry === 'All' || tool.ind.includes(filterIndustry));
 
             filteredTools.forEach(tool => {
-                // FORCE HIGH-RES LOGO PATHS
+                // FALLBACK LOGIC: First customLogo, then high-res clearbit, then favicon
                 let logoSrc = tool.customLogo ? tool.customLogo : `https://logo.clearbit.com/${tool.domain}?size=250`;
                 
                 grid.innerHTML += `
