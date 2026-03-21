@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Snexz | SaaS Tool Comparison </title>
+    <title>Snexz | SaaS Tool Comparison</title>
     <meta name="description" content="Enter your industry and goals into Snexz to instantly discover the best software to run your business.">
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
@@ -126,7 +125,6 @@
         .modal-header { margin-bottom: 15px; }
         #modal-title { font-family: 'Outfit', sans-serif; margin: 0; font-size: 1.6rem; color: var(--brand-main); font-weight: 800; letter-spacing: -0.5px; }
         
-        /* Restored Modal Font to the crisp charcoal styling */
         #modal-body p { font-size: 0.95rem; font-weight: 400; line-height: 1.6; margin-top: 0; margin-bottom: 15px; color: var(--brand-main); }
         #modal-body p:last-child { margin-bottom: 0; }
         
@@ -139,14 +137,6 @@
         
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
-    
-    <!-- Vercel Web Analytics -->
-    <script>
-        window.va = window.va || function () { 
-            (window.vaq = window.vaq || []).push(arguments); 
-        };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -343,7 +333,7 @@
             if (score >= 90) return `rgba(17, 24, 39, 1)`;     
             if (score >= 70) return `rgba(17, 24, 39, 0.7)`;   
             if (score >= 60) return `rgba(17, 24, 39, 0.4)`;   
-            return `rgba(17, 24, 39, 0.2)`;                   
+            return `rgba(17, 24, 39, 0.2)`;                    
         }
 
         const softwareDatabase = [
@@ -405,13 +395,9 @@
             progressText.innerText = stages[0];
 
             function processStep() {
-                // Random jump between 1% and 7%
                 let jump = Math.floor(Math.random() * 7) + 1;
-                
-                // Random pause between 100ms and 700ms
                 let pause = Math.floor(Math.random() * 600) + 100;
 
-                // 15% chance to "hang" for an extra 800ms to simulate heavy data processing
                 if (Math.random() > 0.85) pause += 800; 
 
                 progress += jump;
@@ -436,7 +422,6 @@
                 setTimeout(processStep, pause);
             }
             
-            // Start the randomized progress
             processStep();
         }
 
@@ -467,7 +452,6 @@
             runnerUps.forEach(tool => {
                 const isFiltered = tool.score === 50;
                 
-                // Uses Clearbit, with bulletproof fallback to Google's official Favicon API
                 const logoTag = `<img src="https://logo.clearbit.com/${tool.domain}" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${tool.domain}&size=128';" class="row-logo" alt="${tool.name} logo">`;
                 
                 runnerUpsHTML += `
