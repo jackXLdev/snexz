@@ -48,8 +48,9 @@
         
         /* Interactive Score Box */
         .score-box { text-align: right; display: flex; flex-direction: column; align-items: flex-end; }
-        .score-number { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 4.5rem; line-height: 0.9; letter-spacing: -2px; transition: all 0.2s ease; color: var(--brand-main); display: inline-block; }
-        .score-box:hover .score-number { transform: scale(1.08) rotate(2deg); text-shadow: 0 10px 20px rgba(17,24,39,0.15); }
+        .score-number { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 4.5rem; line-height: 0.9; letter-spacing: -2px; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); color: var(--brand-main); display: inline-block; }
+        /* Clean, subtle lift on hover instead of tilt/glow */
+        .score-box:hover .score-number { transform: translateY(-4px); }
         .score-text { font-size: 0.8rem; font-weight: 800; color: var(--text-sub); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
 
         /* The Perfect Cube Layout */
@@ -88,8 +89,9 @@
         .stat-label { font-size: 0.75rem; font-weight: 700; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.5px; }
         .stat-value { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--text-main); }
         
+        /* Removed dark hover glow from the button */
         .btn-offer { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; background: var(--brand-main); color: white; padding: 18px; border-radius: 12px; font-weight: 800; font-family: 'Outfit', sans-serif; text-decoration: none; font-size: 1.15rem; transition: 0.2s; box-shadow: 0 4px 15px rgba(17, 24, 39, 0.15); letter-spacing: 0.5px; }
-        .btn-offer:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(17, 24, 39, 0.25); }
+        .btn-offer:hover { transform: translateY(-2px); }
         
         .offer-secure { display: flex; justify-content: center; align-items: center; gap: 6px; margin-top: 15px; font-size: 0.85rem; font-weight: 600; color: var(--text-sub); }
 
@@ -311,7 +313,7 @@
                 }
             }, interval);
 
-            // 2. Animate Capability Matrix (Fixed typo)
+            // 2. Animate Capability Matrix
             setTimeout(() => {
                 const fills = document.querySelectorAll('.metric-fill');
                 fills.forEach(fill => {
