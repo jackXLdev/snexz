@@ -67,7 +67,6 @@
         .btn-audit:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(17, 24, 39, 0.25); }
         .btn-audit:active { transform: translateY(0); }
         
-        /* Progress Bar */
         .progress-wrapper { display: none; margin-top: 15px; width: 100%; }
         .progress-container { background: #E5E7EB; border-radius: 12px; height: 10px; overflow: hidden; width: 100%; margin-bottom: 12px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
         .progress-bar { height: 100%; width: 0%; background: var(--brand-main); transition: width 0.2s ease-out; border-radius: 12px; }
@@ -137,6 +136,13 @@
         
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
+    
+    <script>
+        window.va = window.va || function () { 
+            (window.vaq = window.vaq || []).push(arguments); 
+        };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -347,6 +353,7 @@
             { id: 'pandadoc', name: 'PandaDoc', domain: 'pandadoc.com', ind: ['Legal', 'Agency', 'SaaS', 'Real Estate', 'Finance'], task: ['Project Management', 'CRM', 'Document'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low', 'Medium'], desc: 'Automated document signing and secure proposal tracking.', link: 'pandadoc.html' },
             { id: 'katana', name: 'Katana Cloud', domain: 'katanamrp.com', ind: ['Ecommerce', 'Construction'], task: ['Project Management', 'Invoicing', 'Inventory'], size: ['Small', 'Medium'], budget: ['Medium', 'Enterprise'], desc: 'Advanced manufacturing and inventory management software.', link: 'katana.html' },
             { id: 'appointy', name: 'Appointy', domain: 'appointy.com', ind: ['Medical', 'Legal', 'Hospitality'], task: ['Booking'], size: ['Solo', 'Micro', 'Small'], budget: ['Free', 'Low'], desc: 'HIPAA-compliant patient and client scheduling portal.', link: 'appointy.html' },
+            { id: 'calendly', name: 'Calendly', domain: 'calendly.com', ind: ['Agency', 'SaaS', 'Medical', 'Real Estate', 'Education'], task: ['Booking'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low'], desc: 'Automated scheduling and calendar synchronization platform.', link: 'calendly.html' },
             { id: 'notion', name: 'Notion', domain: 'notion.so', ind: ['Agency', 'SaaS', 'Education', 'NonProfit'], task: ['Project Management', 'Document'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low'], desc: 'Highly flexible, all-in-one workspace for documents and wikis.', link: 'notion.html' },
             { id: 'brevo', name: 'Brevo', domain: 'brevo.com', ind: ['Ecommerce', 'Agency', 'Hospitality', 'NonProfit'], task: ['Marketing', 'CRM'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low', 'Medium'], desc: 'Affordable, scalable email marketing and automation platform.', link: 'brevo.html' },
             { id: 'slack', name: 'Slack', domain: 'slack.com', ind: ['SaaS', 'Agency', 'Ecommerce', 'NonProfit', 'Education'], task: ['Project Management', 'Customer Support'], size: ['Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low', 'Medium', 'Enterprise'], desc: 'The industry-standard hub for team communication and workflows.', link: 'slack.html' },
