@@ -16,6 +16,8 @@
             --border: #E5E7EB; 
             --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             --shadow-premium: 0 10px 25px -5px rgba(17, 24, 39, 0.1);
+            /* Unified UI Design System */
+            --bar-thickness: 6px;
         }
         
         * { box-sizing: border-box; }
@@ -65,7 +67,8 @@
         .metric { margin-bottom: 12px; transition: transform 0.2s; cursor: default; }
         .metric:hover { transform: translateX(5px); }
         .metric-label { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px; }
-        .metric-track { width: 100%; height: 8px; background: #E5E7EB; border-radius: 4px; overflow: hidden; }
+        /* Unified Bar Thickness applied here */
+        .metric-track { width: 100%; height: var(--bar-thickness); background: #E5E7EB; border-radius: 4px; overflow: hidden; }
         .metric-fill { height: 100%; background: var(--brand-main); width: 0%; border-radius: 4px; transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); }
 
         .offer-box { background: #F9FAFB; border: 1px solid var(--border); border-radius: 16px; padding: 25px; margin-bottom: 35px; width: 100%; }
@@ -97,9 +100,9 @@
         .eval-card:hover .icon-tick { transform: scale(1.3) rotate(15deg); }
         .eval-card:hover .icon-cross { transform: scale(1.3) rotate(-15deg); color: var(--text-main); opacity: 1; }
 
-        /* Highly Interactive, Sleek Conclusion Link */
-        .btn-conclude { margin-top: 30px; display: inline-flex; align-items: center; gap: 8px; color: var(--brand-main); text-decoration: none; font-weight: 800; font-size: 0.95rem; position: relative; padding-bottom: 4px; overflow: hidden; }
-        .btn-conclude::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--brand-main); transform: translateX(-100%); transition: transform 0.3s ease; }
+        /* Unified Bar Thickness applied to the interactive conclusion link */
+        .btn-conclude { margin-top: 30px; display: inline-flex; align-items: center; gap: 8px; color: var(--brand-main); text-decoration: none; font-weight: 800; font-size: 0.95rem; position: relative; padding-bottom: 10px; overflow: hidden; }
+        .btn-conclude::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: var(--bar-thickness); background: var(--brand-main); border-radius: 4px; transform: translateX(-101%); transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
         .btn-conclude:hover::after { transform: translateX(0); }
         .btn-conclude svg { transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .btn-conclude:hover svg { transform: translateX(5px); }
