@@ -35,7 +35,7 @@
         @keyframes fadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Premium Charcoal Hero Banner */
-        .tool-hero { display: flex; align-items: center; justify-content: space-between; background: #FFF; padding: 40px; border-radius: 24px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); margin-bottom: 30px; flex-wrap: wrap; gap: 20px; }
+        .tool-hero { display: flex; align-items: center; justify-content: space-between; background: #FFF; padding: 40px; border-radius: 24px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); margin-bottom: 30px; flex-wrap: wrap; gap: 20px; border-top: 6px solid var(--brand-main); }
         .hero-left { display: flex; align-items: center; gap: 25px; }
         .tool-logo { width: 85px; height: 85px; border-radius: 16px; object-fit: contain; border: 1px solid var(--border); padding: 10px; background: #FFF; box-shadow: var(--shadow-sm); }
         .tool-title { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 3rem; letter-spacing: -1px; color: var(--text-main); margin: 0; line-height: 1; }
@@ -43,29 +43,45 @@
         
         /* Dynamic Score Box */
         .score-box { text-align: right; display: flex; flex-direction: column; align-items: flex-end; }
-        .score-number { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 4.5rem; line-height: 0.9; letter-spacing: -2px; transition: color 0.3s ease; }
+        .score-number { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 4.5rem; line-height: 0.9; letter-spacing: -2px; transition: color 0.3s ease; color: var(--brand-main); }
         .score-text { font-size: 0.8rem; font-weight: 800; color: var(--text-sub); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
 
         /* The Perfect Cube Layout */
         .cube-grid { display: grid; grid-template-columns: 1fr 2.2fr; gap: 30px; margin-bottom: 60px; }
         @media (max-width: 800px) { .cube-grid { grid-template-columns: 1fr; } }
         
-        .cube-panel { background: #FFF; border-radius: 24px; padding: 35px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+        .cube-panel { background: #FFF; border-radius: 24px; padding: 35px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; }
         
         .panel-header { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--text-main); margin: 0 0 25px 0; padding-bottom: 15px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
         
-        /* Specs List */
+        /* Specs List with SVGs */
         .spec-list { list-style: none; padding: 0; margin: 0 0 35px 0; display: flex; flex-direction: column; gap: 15px; }
         .spec-item { display: flex; justify-content: space-between; align-items: center; font-size: 0.95rem; font-weight: 600; color: var(--text-sub); }
-        .spec-value { font-weight: 800; color: var(--text-main); background: #F3F4F6; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; }
-        .spec-value.highlight { background: var(--brand-main); color: #FFF; }
+        .spec-value { display: flex; align-items: center; gap: 6px; font-weight: 800; color: var(--text-main); background: #F3F4F6; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; }
+        .icon-tick-small { color: var(--text-main); width: 16px; height: 16px; }
+        .icon-cross-small { color: var(--text-sub); width: 16px; height: 16px; opacity: 0.7; }
 
-        /* Capability Matrix (The WOW Factor) */
+        /* Capability Matrix (5 Bars) */
         .matrix-title { font-size: 0.8rem; font-weight: 800; color: var(--text-sub); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
         .metric { margin-bottom: 15px; }
         .metric-label { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px; }
         .metric-track { width: 100%; height: 8px; background: #E5E7EB; border-radius: 4px; overflow: hidden; }
         .metric-fill { height: 100%; background: var(--brand-main); width: 0%; border-radius: 4px; transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); }
+
+        /* Highly Visible Affiliate Offer Box */
+        .offer-box { background: #F9FAFB; border: 1px solid var(--border); border-radius: 16px; padding: 25px; margin-bottom: 35px; }
+        .offer-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px; }
+        @media (max-width: 600px) { .offer-stats { grid-template-columns: 1fr; gap: 10px; } }
+        .stat-item { display: flex; flex-direction: column; gap: 4px; border-right: 1px solid var(--border); }
+        .stat-item:last-child { border-right: none; }
+        @media (max-width: 600px) { .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 10px; } .stat-item:last-child { border-bottom: none; padding-bottom: 0; } }
+        .stat-label { font-size: 0.75rem; font-weight: 700; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat-value { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--text-main); }
+        
+        .btn-offer { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; background: var(--brand-main); color: white; padding: 18px; border-radius: 12px; font-weight: 800; font-family: 'Outfit', sans-serif; text-decoration: none; font-size: 1.15rem; transition: 0.2s; box-shadow: 0 4px 15px rgba(17, 24, 39, 0.15); letter-spacing: 0.5px; }
+        .btn-offer:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(17, 24, 39, 0.25); }
+        
+        .offer-secure { display: flex; justify-content: center; align-items: center; gap: 6px; margin-top: 15px; font-size: 0.85rem; font-weight: 600; color: var(--text-sub); }
 
         /* Analysis Text */
         .prose p { font-size: 1.05rem; line-height: 1.7; color: var(--text-sub); margin-top: 0; margin-bottom: 20px; font-weight: 500;}
@@ -78,17 +94,12 @@
         .eval-col { display: flex; flex-direction: column; gap: 12px; }
         .eval-header { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text-main); margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
         
-        .eval-card { background: #F9FAFB; border: 1px solid var(--border); padding: 16px; border-radius: 12px; display: flex; gap: 12px; align-items: flex-start; transition: 0.2s; cursor: default; }
-        .eval-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); border-color: #D1D5DB; background: #FFF; }
+        .eval-card { background: #F9FAFB; border: 1px solid var(--border); padding: 16px; border-radius: 12px; display: flex; gap: 12px; align-items: flex-start; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+        .eval-card:hover { transform: translateY(-4px) scale(1.02); box-shadow: var(--shadow-premium); border-color: var(--brand-main); background: #FFF; }
         .eval-card p { margin: 0; font-size: 0.9rem; line-height: 1.4; color: var(--text-main); font-weight: 600; }
         
         .icon-tick { color: var(--text-main); flex-shrink: 0; }
         .icon-cross { color: var(--text-sub); flex-shrink: 0; opacity: 0.7; }
-
-        /* Affiliate CTA */
-        .cta-box { margin-top: 45px; display: flex; justify-content: flex-start; border-top: 1px solid var(--border); padding-top: 30px;}
-        .btn-affiliate { display: inline-flex; justify-content: center; align-items: center; gap: 10px; background: var(--brand-main); color: white; padding: 18px 35px; border-radius: 14px; text-decoration: none; font-weight: 800; font-size: 1.1rem; transition: 0.2s; font-family: 'Outfit', sans-serif; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(17, 24, 39, 0.15); }
-        .btn-affiliate:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(17, 24, 39, 0.25); }
 
         .site-footer { padding: 40px 0; text-align: center; color: var(--text-sub); font-size: 0.85rem; border-top: 1px solid var(--border); width: 100%; max-width: 1100px; font-weight: 600; margin-top: auto; }
     </style>
@@ -114,7 +125,7 @@
             </div>
             <div class="score-box">
                 <div class="score-number" id="dynamic-score">98</div>
-                <div class="score-text">Match Score</div>
+                <div class="score-text">Snexz Score</div>
             </div>
         </div>
 
@@ -127,10 +138,25 @@
                 </h2>
                 <ul class="spec-list">
                     <li class="spec-item">Primary Function <span class="spec-value">CRM & Marketing</span></li>
-                    <li class="spec-item">Pricing Model <span class="spec-value">Freemium to Ent.</span></li>
                     <li class="spec-item">Target Scale <span class="spec-value">Medium to Large</span></li>
-                    <li class="spec-item">API Ecosystem <span class="spec-value highlight">Extensive</span></li>
-                    <li class="spec-item">Compliance <span class="spec-value">GDPR Ready</span></li>
+                    <li class="spec-item">Single Sign-On (SSO) 
+                        <span class="spec-value">
+                            <svg class="icon-tick-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            Available
+                        </span>
+                    </li>
+                    <li class="spec-item">API Ecosystem 
+                        <span class="spec-value">
+                            <svg class="icon-tick-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            Native Zapier
+                        </span>
+                    </li>
+                    <li class="spec-item">Compliance 
+                        <span class="spec-value">
+                            <svg class="icon-tick-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            GDPR Ready
+                        </span>
+                    </li>
                 </ul>
 
                 <div class="matrix-title">Capability Matrix</div>
@@ -148,15 +174,45 @@
                     <div class="metric-track"><div class="metric-fill" data-target="90%"></div></div>
                 </div>
                 <div class="metric">
+                    <div class="metric-label"><span>Integration Depth</span><span>88%</span></div>
+                    <div class="metric-track"><div class="metric-fill" data-target="88%"></div></div>
+                </div>
+                <div class="metric">
                     <div class="metric-label"><span>Cost Efficiency (Scale)</span><span>65%</span></div>
                     <div class="metric-track"><div class="metric-fill" data-target="65%" style="background: var(--text-sub);"></div></div>
                 </div>
             </div>
 
-            <div class="cube-panel prose">
-                <h2 class="panel-header">
+            <div class="cube-panel prose" style="padding-top: 25px;">
+                
+                <div class="offer-box">
+                    <div class="offer-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Starting Price</span>
+                            <span class="stat-value">£9 / user / mo</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Free Trial</span>
+                            <span class="stat-value">14 Days</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Seat Minimum</span>
+                            <span class="stat-value">3 Users</span>
+                        </div>
+                    </div>
+                    <a href="https://hubspot.com" target="_blank" class="btn-offer">
+                        Claim 14-Day Free Trial
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <div class="offer-secure">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        Secure link via Snexz Partners
+                    </div>
+                </div>
+
+                <h2 class="panel-header" style="margin-top: 10px;">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                    Auditor's Report
+                    Snexz Report
                 </h2>
                 
                 <p>HubSpot is universally recognized as the gold standard for inbound marketing, sales, and CRM architecture. Unlike fragmented software stacks, it offers a <strong>unified ecosystem</strong> where marketing data feeds directly into sales pipelines and customer service tickets without API friction or data loss.</p>
@@ -196,13 +252,6 @@
                     </div>
 
                 </div>
-
-                <div class="cta-box">
-                    <a href="https://hubspot.com" target="_blank" class="btn-affiliate">
-                        Explore HubSpot
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                </div>
             </div>
 
         </div>
@@ -224,7 +273,7 @@
             // Apply exact opacity logic from index.html
             if (score >= 90) scoreEl.style.color = `rgba(17, 24, 39, 1)`;     
             else if (score >= 70) scoreEl.style.color = `rgba(17, 24, 39, 0.7)`;   
-            else if (score >= 60) scoreEl.style.color = `rgba(17, 24, 39, 0.4)`;   
+            else if (score >= 60) score   El.style.color = `rgba(17, 24, 39, 0.4)`;   
             else scoreEl.style.color = `rgba(17, 24, 39, 0.2)`; 
 
             // 2. Animate Capability Matrix
