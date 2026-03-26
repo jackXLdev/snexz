@@ -12,10 +12,19 @@
         .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; } .nav-logo { height: 35px; width: auto; stroke: var(--brand-main); } .nav-logo polygon { fill: var(--brand-main); } .nav-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.8rem; letter-spacing: -0.5px; color: var(--brand-main); margin: 0; }
         .nav-back { font-weight: 700; color: var(--text-main); text-decoration: none; font-size: 0.95rem; padding: 10px 18px; border-radius: 8px; background: #FFF; border: 1px solid var(--border); transition: 0.2s; display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow-sm); cursor: pointer; } .nav-back:hover { box-shadow: var(--shadow-premium); border-color: #D1D5DB; transform: translateY(-2px); }
         main { flex: 1; width: 100%; max-width: 1100px; display: flex; flex-direction: column; animation: fadeUp 0.6s ease-out; } @keyframes fadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        
         .tool-hero { display: flex; align-items: center; justify-content: space-between; background: #FFF; padding: 40px; border-radius: 24px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); margin-bottom: 30px; flex-wrap: wrap; gap: 20px; text-decoration: none; transition: all 0.2s ease; cursor: pointer; } .tool-hero:hover { transform: translateY(-4px); box-shadow: var(--shadow-premium); border-color: var(--brand-main); }
-        .hero-left { display: flex; align-items: center; gap: 25px; } .tool-logo { width: 85px; height: 85px; border-radius: 16px; object-fit: contain; border: 1px solid var(--border); padding: 10px; background: #FFF; box-shadow: var(--shadow-sm); transition: transform 0.2s; } .tool-hero:hover .tool-logo { transform: scale(1.05); }
-        .tool-title { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 3rem; letter-spacing: -1px; color: var(--text-main); margin: 0; line-height: 1; } .tool-industry { font-size: 0.9rem; font-weight: 800; color: var(--text-sub); text-transform: uppercase; letter-spacing: 1px; margin-top: 8px; display: block; }
+        .hero-left { display: flex; align-items: center; gap: 25px; } 
+        
+        .tool-logo-wrapper { width: 85px; height: 85px; min-width: 85px; border-radius: 16px; border: 1px solid var(--border); padding: 10px; background: #FFF; box-shadow: var(--shadow-sm); transition: transform 0.2s; display: flex; align-items: center; justify-content: center; } 
+        .tool-logo-wrapper svg, .tool-logo-wrapper img { width: 100%; height: 100%; object-fit: contain; }
+        .tool-hero:hover .tool-logo-wrapper { transform: scale(1.05); }
+        
+        .tool-title { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: clamp(2.2rem, 5vw, 3rem); letter-spacing: -1px; color: var(--text-main); margin: 0; line-height: 1.1; word-wrap: break-word; overflow-wrap: break-word; max-width: 100%; } 
+        .tool-industry { font-size: 0.9rem; font-weight: 800; color: var(--text-sub); text-transform: uppercase; letter-spacing: 1px; margin-top: 8px; display: block; }
+        
         .score-box { text-align: right; display: flex; flex-direction: column; align-items: flex-end; } .score-number { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 4.5rem; line-height: 0.9; letter-spacing: -2px; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); color: var(--brand-main); display: inline-block; } .score-box:hover .score-number { transform: translateY(-4px); } .score-text { font-size: 0.8rem; font-weight: 800; color: var(--text-sub); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+        
         .cube-grid { display: grid; grid-template-columns: 1fr 2.2fr; gap: 30px; margin-bottom: 60px; } @media (max-width: 800px) { .cube-grid { grid-template-columns: 1fr; } }
         .cube-panel { background: #FFF; border-radius: 24px; padding: 35px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; } .panel-header { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--text-main); margin: 0 0 25px 0; padding-bottom: 15px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
         .spec-list { list-style: none; padding: 0; margin: 0 0 30px 0; display: flex; flex-direction: column; gap: 12px; } .spec-item { display: flex; justify-content: space-between; align-items: center; font-size: 0.95rem; font-weight: 600; color: var(--text-sub); cursor: default; } .spec-value { display: inline-flex; align-items: center; justify-content: flex-start; gap: 8px; font-weight: 800; color: var(--text-main); background: #F3F4F6; padding: 8px 14px; border-radius: 8px; font-size: 0.85rem; min-width: 140px; }
@@ -28,25 +37,43 @@
         .icon-tick, .icon-cross { transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); } .icon-tick { color: var(--text-main); flex-shrink: 0; } .icon-cross { color: var(--text-sub); flex-shrink: 0; opacity: 0.7; } .eval-card:hover .icon-tick { transform: scale(1.3) rotate(15deg); } .eval-card:hover .icon-cross { transform: scale(1.3) rotate(-15deg); color: var(--text-main); opacity: 1; }
         .btn-conclude { margin-top: 30px; display: inline-flex; align-items: center; gap: 8px; color: var(--brand-main); text-decoration: none; font-weight: 800; font-size: 0.95rem; position: relative; padding-bottom: 10px; overflow: hidden; } .btn-conclude::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: var(--bar-thickness); background: var(--brand-main); border-radius: 4px; transform: translateX(-101%); transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); } .btn-conclude:hover::after { transform: translateX(0); } .btn-conclude svg { transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); } .btn-conclude:hover svg { transform: translateX(5px); }
         .site-footer { padding: 40px 0; text-align: center; color: var(--text-sub); font-size: 0.85rem; border-top: 1px solid var(--border); width: 100%; max-width: 1100px; font-weight: 600; margin-top: auto; }
+
+        @media (max-width: 600px) {
+            .tool-hero { padding: 25px 20px; flex-direction: column; align-items: flex-start; gap: 20px; }
+            .hero-left { flex-direction: column; align-items: flex-start; gap: 15px; width: 100%; }
+            .tool-logo-wrapper { width: 70px; height: 70px; min-width: 70px; }
+            .score-box { width: 100%; flex-direction: row; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 15px; margin-top: 5px; }
+            .score-number { font-size: 3rem; margin-bottom: -5px;}
+            .cube-panel { padding: 25px 20px; }
+            .panel-header { font-size: 1.25rem; }
+            .spec-item { flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 5px; border-bottom: 1px solid #F1F5F9; padding-bottom: 10px; }
+            .spec-item:last-child { border-bottom: none; }
+            .spec-value { width: 100%; justify-content: flex-start !important; }
+        }
     </style>
 </head>
 <body>
     <nav>
-        <a href="/" class="nav-brand"><svg class="nav-logo" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg"><path d="M 338 100 L 863 100 L 663 300 L 843 460 L 843 540 L 663 700 L 138 700 L 338 500 L 158 340 L 158 260 Z" stroke-width="85" fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="10" /><polygon points="300.5,280 430.5,280 700.5,520 570.5,520" /></svg><span class="nav-name">Snexz</span></a>
-        <a onclick="window.history.back(); return false;" href="/" class="nav-back"><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></span> Back to Results</a>
+        <a href="/" class="nav-brand"><svg class="nav-logo" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M 338 100 L 863 100 L 663 300 L 843 460 L 843 540 L 663 700 L 138 700 L 338 500 L 158 340 L 158 260 Z" stroke-width="85" fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="10" /><polygon points="300.5,280 430.5,280 700.5,520 570.5,520" /></svg><span class="nav-name">Snexz</span></a>
+        <a id="back-btn" href="/" class="nav-back">
+            <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></span> 
+            <span id="back-text">Back to Results</span>
+        </a>
     </nav>
     <main>
         <a href="https://shopify.com" target="_blank" class="tool-hero">
             <div class="hero-left">
-                <img src="https://logo.clearbit.com/shopify.com?size=250" onerror="this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://shopify.com&size=128';" class="tool-logo" alt="Shopify">
+                <div class="tool-logo-wrapper">
+                    <img src="https://logo.clearbit.com/shopify.com?size=250" onerror="this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://shopify.com&size=128';" alt="Shopify logo">
+                </div>
                 <div>
                     <h1 class="tool-title">Shopify</h1>
-                    <span class="tool-industry">E-Commerce • Retail • Dropshipping</span>
+                    <span class="tool-industry">Ecommerce • Retail • D2C • B2B</span>
                 </div>
             </div>
             <div class="score-box">
-                <div class="score-number" id="dynamic-score">0</div>
                 <div class="score-text">Snexz Score</div>
+                <div class="score-number" id="dynamic-score">0</div>
             </div>
         </a>
 
@@ -54,27 +81,27 @@
             <div class="cube-panel">
                 <h2 class="panel-header"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg> Architecture</h2>
                 <ul class="spec-list">
-                    <li class="spec-item">Primary Function <span class="spec-value" style="justify-content: center;">Omnichannel Retail</span></li>
+                    <li class="spec-item">Primary Function <span class="spec-value" style="justify-content: center;">Ecommerce Platform</span></li>
                     <li class="spec-item">Target Scale <span class="spec-value" style="justify-content: center;">Solo to Enterprise</span></li>
-                    <li class="spec-item">Single Sign-On (SSO) <span class="spec-value"><svg class="icon-tick-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Shopify Plus</span></li>
-                    <li class="spec-item">API Ecosystem <span class="spec-value"><svg class="icon-tick-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Extensive GraphQL</span></li>
+                    <li class="spec-item">POS Sync <span class="spec-value"><svg class="icon-tick-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Native POS App</span></li>
+                    <li class="spec-item">Ecosystem <span class="spec-value"><svg class="icon-tick-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Massive App Store</span></li>
                     <li class="spec-item">Compliance <span class="spec-value"><svg class="icon-tick-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> PCI DSS Level 1</span></li>
                 </ul>
 
                 <div class="matrix-title">Capability Matrix</div>
-                <div class="metric"><div class="metric-label"><span>Integration Depth</span><span>98%</span></div><div class="metric-track"><div class="metric-fill" data-target="98%"></div></div></div>
-                <div class="metric"><div class="metric-label"><span>User Interface (UI/UX)</span><span>95%</span></div><div class="metric-track"><div class="metric-fill" data-target="95%"></div></div></div>
-                <div class="metric"><div class="metric-label"><span>Data & Reporting</span><span>92%</span></div><div class="metric-track"><div class="metric-fill" data-target="92%"></div></div></div>
-                <div class="metric"><div class="metric-label"><span>Cost Efficiency (Scale)</span><span>88%</span></div><div class="metric-track"><div class="metric-fill" data-target="88%"></div></div></div>
-                <div class="metric" style="margin-bottom: 25px;"><div class="metric-label"><span>Workflow Automation</span><span>85%</span></div><div class="metric-track"><div class="metric-fill" data-target="85%" style="background: var(--text-sub);"></div></div></div>
+                <div class="metric"><div class="metric-label"><span>Checkout Conversion</span><span>99%</span></div><div class="metric-track"><div class="metric-fill" data-target="99%"></div></div></div>
+                <div class="metric"><div class="metric-label"><span>Storefront Builder</span><span>98%</span></div><div class="metric-track"><div class="metric-fill" data-target="98%"></div></div></div>
+                <div class="metric"><div class="metric-label"><span>App Ecosystem</span><span>98%</span></div><div class="metric-track"><div class="metric-fill" data-target="98%"></div></div></div>
+                <div class="metric"><div class="metric-label"><span>Inventory Basics</span><span>85%</span></div><div class="metric-track"><div class="metric-fill" data-target="85%"></div></div></div>
+                <div class="metric" style="margin-bottom: 25px;"><div class="metric-label"><span>B2B Features</span><span>75%</span></div><div class="metric-track"><div class="metric-fill" data-target="75%" style="background: var(--text-sub);"></div></div></div>
 
                 <div class="matrix-title">Deployment Profile</div>
                 <ul class="spec-list" style="margin-bottom: 0;">
-                    <li class="spec-item">Architecture <span class="spec-value" style="justify-content: center;">Cloud Hosted</span></li>
-                    <li class="spec-item">Mobile Access <span class="spec-value" style="justify-content: center;">Full iOS & Android</span></li>
-                    <li class="spec-item">Setup Complexity <span class="spec-value" style="justify-content: center;">Very Low</span></li>
-                    <li class="spec-item">Avg. Onboarding <span class="spec-value" style="justify-content: center;">1 - 3 Days</span></li>
-                    <li class="spec-item">Support Tier <span class="spec-value" style="justify-content: center;">24/7 Global Chat</span></li>
+                    <li class="spec-item">Architecture <span class="spec-value" style="justify-content: center;">Fully Hosted SaaS</span></li>
+                    <li class="spec-item">Mobile Access <span class="spec-value" style="justify-content: center;">Mobile Admin App</span></li>
+                    <li class="spec-item">Setup Complexity <span class="spec-value" style="justify-content: center;">Low</span></li>
+                    <li class="spec-item">Avg. Onboarding <span class="spec-value" style="justify-content: center;">&lt; 1 Week</span></li>
+                    <li class="spec-item">Support Tier <span class="spec-value" style="justify-content: center;">24/7 Priority</span></li>
                 </ul>
             </div>
 
@@ -82,28 +109,28 @@
                 <div class="offer-box">
                     <div class="offer-stats">
                         <div class="stat-item"><span class="stat-label">Starting Price</span><span class="stat-value">£25 / mo</span></div>
-                        <div class="stat-item"><span class="stat-label">Trial Period</span><span class="stat-value">3 Days Free</span></div>
-                        <div class="stat-item"><span class="stat-label">Promo Offer</span><span class="stat-value">£1 for 1st Mo</span></div>
+                        <div class="stat-item"><span class="stat-label">Special Offer</span><span class="stat-value">£1 for 1st mo</span></div>
+                        <div class="stat-item"><span class="stat-label">Staff Accounts</span><span class="stat-value">2 (Basic Plan)</span></div>
                     </div>
-                    <a href="https://shopify.com" target="_blank" class="btn-offer">Claim Shopify Offer <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="https://shopify.com" target="_blank" class="btn-offer">Start 3-Day Free Trial <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                     <div class="offer-secure"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> Secure link via Snexz Partners</div>
                 </div>
 
                 <h2 class="panel-header" style="margin-top: 10px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Snexz Report</h2>
-                <p>Shopify is the definitive global leader in e-commerce architecture. For retailers moving away from rigid, custom-coded web builds, Shopify offers a <strong>fully hosted, bulletproof infrastructure</strong> capable of handling massive traffic spikes without server management overhead.</p>
-                <p>Its true operational power lies in its App Store ecosystem. Whether you need sophisticated warehouse routing, highly targeted email marketing, or multi-currency checkout routing, there is a plug-and-play integration ready to deploy. However, scaling merchants must monitor their technology stack closely, as app subscriptions can bloat monthly overhead.</p>
+                <p>Shopify is the undisputed king of modern ecommerce. It completely abstracts away the headaches of web hosting, security compliance, and payment gateways, allowing brands to focus purely on selling.</p>
+                <p>Its greatest asset is its checkout system—Shop Pay is arguably the highest-converting checkout flow on the internet. However, while the base platform is affordable, true customization requires buying third-party apps, which can quickly drive up your monthly operational costs.</p>
 
                 <div class="evaluation-grid">
                     <div class="eval-col">
                         <div class="eval-header">Operational Advantages</div>
-                        <div class="eval-card" title="Unmatched third-party app ecosystem"><svg class="icon-tick" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><p>Unmatched app integration ecosystem</p></div>
-                        <div class="eval-card" title="Bulletproof 99.99% server uptime"><svg class="icon-tick" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><p>Bulletproof 99.99% server uptime</p></div>
-                        <div class="eval-card" title="Seamless multi-channel social selling"><svg class="icon-tick" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><p>Seamless multi-channel social selling</p></div>
+                        <div class="eval-card" title="Shop Pay provides one of the fastest, highest-converting checkouts available"><svg class="icon-tick" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><p>Unmatched checkout conversion</p></div>
+                        <div class="eval-card" title="Thousands of third-party apps cover almost any feature you need"><svg class="icon-tick" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><p>Massive 3rd-party app ecosystem</p></div>
+                        <div class="eval-card" title="Fully hosted infrastructure handles traffic spikes without crashing"><svg class="icon-tick" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><p>Rock-solid hosting reliability</p></div>
                     </div>
                     <div class="eval-col">
                         <div class="eval-header" style="color: var(--text-sub);">Known Limitations</div>
-                        <div class="eval-card" title="Reliance on paid apps increases costs"><svg class="icon-cross" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg><p>Reliance on paid apps drives up cost</p></div>
-                        <div class="eval-card" title="Transaction fees if not using Shopify Payments"><svg class="icon-cross" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg><p>Fees if not using native payments</p></div>
+                        <div class="eval-card" title="Shopify penalizes users with fees if they use external payment gateways"><svg class="icon-cross" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg><p>Fees for 3rd-party gateways</p></div>
+                        <div class="eval-card" title="Relying on paid apps for basic functions inflates monthly costs"><svg class="icon-cross" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg><p>App subscriptions increase costs</p></div>
                     </div>
                 </div>
 
@@ -120,6 +147,15 @@
             let currentCount = 0; const step = finalScore / (1000 / 20);
             const counter = setInterval(() => { currentCount += step; if (currentCount >= finalScore) { scoreEl.innerText = finalScore; clearInterval(counter); } else { scoreEl.innerText = Math.floor(currentCount); } }, 20);
             setTimeout(() => { document.querySelectorAll('.metric-fill').forEach(fill => { fill.style.width = fill.getAttribute('data-target'); }); }, 300);
+
+            const backBtn = document.getElementById('back-btn');
+            const backText = document.getElementById('back-text');
+            if (document.referrer.includes('industries.html')) {
+                backText.innerText = 'Back to Library';
+                backBtn.href = '/industries.html';
+            } else {
+                backBtn.onclick = function(e) { e.preventDefault(); window.history.back(); };
+            }
         });
     </script>
 </body>
