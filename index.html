@@ -12,12 +12,12 @@
     <style>
         :root { 
             --bg: #F9FAFB; 
-            --brand-main: #111827; 
-            --text-main: #111827; 
+            --brand-main: #000000; 
+            --text-main: #000000; 
             --text-sub: #6B7280; 
             --border: #E5E7EB; 
             --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            --shadow-premium: 0 10px 25px -5px rgba(17, 24, 39, 0.1);
+            --shadow-premium: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
         
         * {
@@ -46,7 +46,7 @@
         
         .search-container { background: transparent; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); text-align: left; width: 100%;}
         
-        .input-cluster { background: #FFF; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-premium); margin-bottom: 20px; border: 1px solid rgba(17,24,39,0.06); }
+        .input-cluster { background: #FFF; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-premium); margin-bottom: 20px; border: 1px solid rgba(0,0,0,0.06); }
         
         .input-row { display: flex; width: 100%; border-bottom: 1px solid var(--border); }
         .input-row:last-child { border-bottom: none; }
@@ -66,10 +66,10 @@
         .tech-toggle { display: block; position: relative; cursor: pointer; flex: 1; min-width: 120px;}
         .tech-toggle input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
         .tech-toggle span { display: block; padding: 14px 12px; text-align: center; border-radius: 12px; font-size: 0.9rem; font-weight: 700; color: var(--text-sub); transition: all 0.2s; background: #FFF; border: 1.5px solid var(--border); user-select: none; box-shadow: var(--shadow-sm); }
-        .tech-toggle input:checked ~ span { background: var(--brand-main); color: #FFF; border-color: var(--brand-main); box-shadow: 0 4px 15px rgba(17, 24, 39, 0.2); }
+        .tech-toggle input:checked ~ span { background: var(--brand-main); color: #FFF; border-color: var(--brand-main); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
         
-        .btn-audit { background: var(--brand-main); color: white; border: none; padding: 20px; border-radius: 16px; font-weight: 800; font-size: 1.2rem; cursor: pointer; transition: all 0.2s ease; font-family: 'Outfit', sans-serif; width: 100%; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(17, 24, 39, 0.15); }
-        .btn-audit:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(17, 24, 39, 0.25); }
+        .btn-audit { background: var(--brand-main); color: white; border: none; padding: 20px; border-radius: 16px; font-weight: 800; font-size: 1.2rem; cursor: pointer; transition: all 0.2s ease; font-family: 'Outfit', sans-serif; width: 100%; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); }
+        .btn-audit:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); }
         .btn-audit:active { transform: translateY(0); }
         
         .progress-wrapper { display: none; margin-top: 15px; width: 100%; }
@@ -102,7 +102,7 @@
         .metric-row:last-of-type { border-bottom: none; }
         
         .btn-proceed { display: flex; justify-content: center; align-items: center; gap: 8px; background: var(--brand-main); color: white; padding: 18px; border-radius: 12px; text-decoration: none; font-weight: 800; margin-top: 15px; font-size: 1.05rem; transition: 0.2s; font-family: 'Outfit', sans-serif; letter-spacing: 0.5px;}
-        .btn-proceed:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(17, 24, 39, 0.2); }
+        .btn-proceed:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); }
 
         .ranked-header { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--text-main); margin: 30px 0 15px 0; display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 10px; border-bottom: 1px solid var(--border);}
         .ranked-header span { font-size: 0.85rem; font-weight: 600; color: var(--text-sub); font-family: 'Plus Jakarta Sans', sans-serif;}
@@ -124,7 +124,7 @@
         .row-score svg { color: var(--text-sub); transition: 0.2s;}
         .ranked-row:hover .row-score svg { color: var(--brand-main); transform: translateX(4px); }
 
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(17, 24, 39, 0.7); z-index: 10000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(8px); }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 10000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(8px); }
         .modal-content { background: white; padding: 40px; border-radius: 24px; max-width: 500px; text-align: left; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); animation: modalPop 0.3s ease-out; color: var(--text-main); }
         
         .modal-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
@@ -303,277 +303,277 @@
                 <svg viewBox="0 0 1104 944" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                     <path fill="#000000" d="M784.000000,945.000000 C522.698486,945.000000 261.896942,945.000000 1.047713,945.000000 C1.047713,630.403503 1.047713,315.807037 1.047713,1.105274 C368.884888,1.105274 736.769836,1.105274 1104.827393,1.105274 C1104.827393,315.666595 1104.827393,630.333313 1104.827393,945.000000 C998.140198,945.000000 891.320129,945.000000 784.000000,945.000000 M739.806946,306.711243 C763.760376,306.711243 787.713806,306.711243 811.688293,306.711243 C811.688293,282.763458 811.688293,259.088196 811.688293,235.246964 C787.069702,235.246964 762.919495,235.246964 739.047668,234.313919 C739.047668,210.696320 739.047668,187.078720 739.047668,163.019089 C737.378357,163.019089 736.089905,163.015686 734.801453,163.019577 C639.641907,163.307068 544.482422,163.668839 449.322601,163.811157 C433.320831,163.835098 417.882019,166.533997 402.623199,171.001373 C337.133789,190.174927 296.188263,233.660355 277.701569,298.549896 C268.068695,332.361877 267.306976,366.903870 273.903107,401.502655 C285.498413,462.323547 318.125885,507.647949 373.772247,535.499023 C397.859985,547.554932 423.892029,551.914490 450.697723,551.933167 C484.696167,551.956909 518.694641,551.921692 552.693054,551.961670 C574.024536,551.986755 595.371582,551.614441 616.683472,552.298096 C645.741211,553.230286 665.440247,572.638245 666.396545,601.028931 C667.358704,629.594238 653.137268,649.536865 623.337402,653.991821 C609.752197,656.022827 595.756226,655.731262 581.945129,655.758789 C466.284088,655.989502 350.622772,656.049744 234.961517,656.160400 C230.502274,656.164673 226.043015,656.160950 221.368759,656.160950 C221.368759,703.430481 221.368759,750.146912 221.368759,797.187927 C223.718124,797.187927 225.699615,797.193237 227.681076,797.187134 C360.007080,796.777954 492.334045,796.528564 624.657837,795.745117 C640.360107,795.652161 656.476807,794.400635 671.663574,790.677002 C738.082703,774.391602 783.536255,734.062195 805.516785,668.853149 C815.710754,638.610901 817.656128,607.279480 814.164429,575.566833 C809.551941,533.673889 793.711609,496.826202 764.351074,466.405701 C728.168152,428.916504 683.380127,410.478546 631.568787,409.967957 C576.411560,409.424377 521.243591,410.048950 466.080444,409.995789 C442.465088,409.973053 420.943420,392.285126 416.125763,369.426147 C411.006165,345.134613 422.831146,321.205414 444.778015,310.887512 C455.767426,305.721039 467.430573,305.993195 479.059784,305.977386 C539.557068,305.895111 600.054443,305.913513 660.551819,305.896973 C662.321594,305.896484 664.091370,305.896881 666.208496,305.896881 C666.208496,282.014862 666.208496,258.751343 666.208496,235.107254 C690.682678,235.107254 714.804138,235.107254 739.195862,235.969040 C739.183960,243.748199 739.180115,251.527374 739.158386,259.306519 C739.114136,275.173981 739.060242,291.041473 738.122803,307.206879 C714.533936,307.206879 690.945068,307.206879 667.567383,307.206879 C667.567383,330.949615 667.567383,354.346588 667.567383,377.882812 C691.678955,377.882812 715.240234,377.882812 738.849548,377.882812 C738.849548,353.973877 738.849548,330.359711 739.806946,306.711243 M812.182251,198.499954 C812.182251,210.288864 812.182251,222.077774 812.182251,234.112274 C836.254456,234.112274 859.809875,234.112274 883.501587,234.112274 C883.501587,210.270813 883.501587,186.750244 883.501587,163.307129 C859.611267,163.307129 836.053162,163.307129 812.190430,163.307129 C812.190430,174.922913 812.190430,186.211441 812.182251,198.499954 z"/>
                     <path fill="#FEFEFE" d="M738.925537,235.107254 C714.804138,235.107254 690.682678,235.107254 666.208496,235.107254 C666.208496,258.751343 666.208496,282.014862 666.208496,305.896881 C664.091370,305.896881 662.321594,305.896484 660.551819,305.896973 C600.054443,305.913513 539.557068,305.895111 479.059784,305.977386 C467.430573,305.993195 455.767426,305.721039 444.778015,310.887512 C422.831146,321.205414 411.006165,345.134613 416.125763,369.426147 C420.943420,392.285126 442.465088,409.973053 466.080444,409.995789 C521.243591,410.048950 576.411560,409.424377 631.568787,409.967957 C683.380127,410.478546 728.168152,428.916504 764.351074,466.405701 C793.711609,496.826202 809.551941,533.673889 814.164429,575.566833 C817.656128,607.279480 815.710754,638.610901 805.516785,668.853149 C783.536255,734.062195 738.082703,774.391602 671.663574,790.677002 C656.476807,794.400635 640.360107,795.652161 624.657837,795.745117 C492.334045,796.528564 360.007080,796.777954 227.681076,797.187134 C225.699615,797.193237 223.718124,797.187927 221.368759,797.187927 C221.368759,750.146912 221.368759,703.430481 221.368759,656.160950 C226.043015,656.160950 230.502274,656.164673 234.961517,656.160400 C350.622772,656.049744 466.284088,655.989502 581.945129,655.758789 C595.756226,655.731262 609.752197,656.022827 623.337402,653.991821 C653.137268,649.536865 667.358704,629.594238 666.396545,601.028931 C665.440247,572.638245 645.741211,553.230286 616.683472,552.298096 C595.371582,551.614441 574.024536,551.986755 552.693054,551.961670 C518.694641,551.921692 484.696167,551.956909 450.697723,551.933167 C423.892029,551.914490 397.859985,547.554932 373.772247,535.499023 C318.125885,507.647949 285.498413,462.323547 273.903107,401.502655 C267.306976,366.903870 268.068695,332.361877 277.701569,298.549896 C296.188263,233.660355 337.133789,190.174927 402.623199,171.001373 C417.882019,166.533997 433.320831,163.835098 449.322601,163.811157 C544.482422,163.668839 639.641907,163.307068 734.801453,163.019577 C736.089905,163.015686 737.378357,163.019089 739.047668,163.019089 C739.047668,187.078720 739.047668,210.696320 738.951904,234.750397 C738.856140,235.186890 738.925537,235.107254 738.925537,235.107254 z"/>
-                    <path fill="#FCFCFC" d="M738.812683,235.216919 C762.919495,235.246964 787.069702,235.246964 811.688293,235.246964 C811.688293,259.088196 811.688293,282.763458 811.688293,306.711243 C787.713806,306.711243 763.760376,306.711243 739.364014,306.773560 C738.921143,306.835907 739.010376,306.908936 739.010376,306.908936 C739.060242,291.041473 739.114136,275.173981 739.158386,259.306519 C739.180115,251.527374 739.183960,243.748199 739.060669,235.538147 C738.925537,235.107254 738.856140,235.186890 738.812683,235.216919 z"/>
-                    <path fill="#FDFDFD" d="M812.186340,197.999969 C812.190430,186.211441 812.190430,174.922913 812.190430,163.307129 C836.053162,163.307129 859.611267,163.307129 883.501587,163.307129 C883.501587,186.750244 883.501587,210.270813 883.501587,234.112274 C859.809875,234.112274 836.254456,234.112274 812.182251,234.112274 C812.182251,222.077774 812.182251,210.288864 812.186340,197.999969 z"/>
-                    <path fill="#FDFDFD" d="M738.885376,306.790741 C738.849548,330.359711 738.849548,353.973877 738.849548,377.882812 C715.240234,377.882812 691.678955,377.882812 667.567383,377.882812 C667.567383,354.346588 667.567383,330.949615 667.567383,307.206879 C690.945068,307.206879 714.533936,307.206879 738.566589,307.057922 C739.010376,306.908936 738.921143,306.835907 738.885376,306.790741 z"/>
-                </svg>
-                <h3 class="modal-brand-name">Snexz</h3>
-            </div>
-            <div class="modal-header">
-                <h2 id="modal-title"></h2>
-            </div>
-            <div id="modal-body"></div>
-            <button onclick="closeModal()" style="margin-top:25px; background:var(--brand-main); color:white; border:none; padding:15px 30px; border-radius:12px; font-weight:700; cursor:pointer; font-family:'Outfit', sans-serif; letter-spacing: 0.5px; width: 100%;">Close Panel</button>
+                <path fill="#FCFCFC" d="M738.812683,235.216919 C762.919495,235.246964 787.069702,235.246964 811.688293,235.246964 C811.688293,259.088196 811.688293,282.763458 811.688293,306.711243 C787.713806,306.711243 763.760376,306.711243 739.364014,306.773560 C738.921143,306.835907 739.010376,306.908936 739.010376,306.908936 C739.060242,291.041473 739.114136,275.173981 739.158386,259.306519 C739.180115,251.527374 739.183960,243.748199 739.060669,235.538147 C738.925537,235.107254 738.856140,235.186890 738.812683,235.216919 z"/>
+                <path fill="#FDFDFD" d="M812.186340,197.999969 C812.190430,186.211441 812.190430,174.922913 812.190430,163.307129 C836.053162,163.307129 859.611267,163.307129 883.501587,163.307129 C883.501587,186.750244 883.501587,210.270813 883.501587,234.112274 C859.809875,234.112274 836.254456,234.112274 812.182251,234.112274 C812.182251,222.077774 812.182251,210.288864 812.186340,197.999969 z"/>
+                <path fill="#FDFDFD" d="M738.885376,306.790741 C738.849548,330.359711 738.849548,353.973877 738.849548,377.882812 C715.240234,377.882812 691.678955,377.882812 667.567383,377.882812 C667.567383,354.346588 667.567383,330.949615 667.567383,307.206879 C690.945068,307.206879 714.533936,307.206879 738.566589,307.057922 C739.010376,306.908936 738.921143,306.835907 738.885376,306.790741 z"/>
+            </svg>
+            <h3 class="modal-brand-name">Snexz</h3>
         </div>
+        <div class="modal-header">
+            <h2 id="modal-title"></h2>
+        </div>
+        <div id="modal-body"></div>
+        <button onclick="closeModal()" style="margin-top:25px; background:var(--brand-main); color:white; border:none; padding:15px 30px; border-radius:12px; font-weight:700; cursor:pointer; font-family:'Outfit', sans-serif; letter-spacing: 0.5px; width: 100%;">Close Panel</button>
     </div>
+</div>
 
-    <footer class="site-footer">
-        <div class="footer-links">
-            <a onclick="openModal('how')">How It Works</a>
-            <a onclick="openModal('privacy')">Privacy Policy</a>
-            <a href="/industries.html">Software Library</a>
-            <a href="mailto:hello@snexz.com">Contact</a>
-        </div>
-        <div>&copy; 2026 Snexz. All rights reserved.</div>
-        <div style="max-width:400px; margin:15px auto 0; line-height:1.5; opacity:0.7;"><strong>Earnings Disclosure:</strong> Snexz may earn a commission on qualifying purchases made through our referral links.</div>
-    </footer>
+<footer class="site-footer">
+    <div class="footer-links">
+        <a onclick="openModal('how')">How It Works</a>
+        <a onclick="openModal('privacy')">Privacy Policy</a>
+        <a href="/industries.html">Software Library</a>
+        <a href="mailto:hello@snexz.com">Contact</a>
+    </div>
+    <div>&copy; 2026 Snexz. All rights reserved.</div>
+    <div style="max-width:400px; margin:15px auto 0; line-height:1.5; opacity:0.7;"><strong>Earnings Disclosure:</strong> Snexz may earn a commission on qualifying purchases made through our referral links.</div>
+</footer>
 
-    <script>
-        window.addEventListener('load', () => {
-            // Only run the loader timeout logic if the loader is actually visible
-            const loader = document.getElementById('loader-overlay');
-            if (window.getComputedStyle(loader).display !== 'none') {
-                setTimeout(() => {
-                    loader.style.opacity = '0';
-                    setTimeout(() => { loader.style.visibility = 'hidden'; }, 500);
-                }, 2000); 
-            }
-        });
-
-        async function localizeCurrency() {
-            try {
-                const res = await fetch('https://ipapi.co/json/');
-                const data = await res.json();
-                const userCurrency = data.currency;
-                const budgetSelect = document.getElementById('input-budget');
-                const rates = { 'USD': { sym: '$', mult: 1.25 }, 'EUR': { sym: '€', mult: 1.17 }, 'AUD': { sym: 'A$', mult: 1.95 }, 'CAD': { sym: 'C$', mult: 1.70 } };
-                if (rates[userCurrency]) {
-                    const c = rates[userCurrency];
-                    budgetSelect.options[1].text = `${c.sym}${Math.round(10 * c.mult)} - ${c.sym}${Math.round(50 * c.mult)}`;
-                    budgetSelect.options[2].text = `${c.sym}${Math.round(50 * c.mult)} - ${c.sym}${Math.round(200 * c.mult)}`;
-                    budgetSelect.options[3].text = `${c.sym}${Math.round(200 * c.mult)}+`;
-                }
-            } catch (error) { console.log("Localization deferred to default."); }
+<script>
+    window.addEventListener('load', () => {
+        // Only run the loader timeout logic if the loader is actually visible
+        const loader = document.getElementById('loader-overlay');
+        if (window.getComputedStyle(loader).display !== 'none') {
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => { loader.style.visibility = 'hidden'; }, 500);
+            }, 2000); 
         }
-        localizeCurrency();
+    });
 
-        function openModal(type) {
-            const m = document.getElementById('info-modal'), t = document.getElementById('modal-title'), b = document.getElementById('modal-body');
-            if(type === 'how') { 
-                t.innerText = "The Decision Engine"; 
-                b.innerHTML = "<p>Snexz operates utilizing <strong>Programmatic Feature Matching</strong>. By bypassing surface-level marketplace marketing, our engine maps your specific industry, scale, and compliance needs directly to verified B2B SaaS architecture.</p><p>We cross-reference budget constraints and operational workflows to establish an optimal software match, saving you hours of research and thousands in mismatched software subscriptions.</p>"; 
-            } else { 
-                t.innerText = "Privacy Policy"; 
-                b.innerHTML = "<p>Business privacy is a foundational pillar of the Snexz infrastructure. We operate strictly as an analytical proxy; we do not track, store, or monetize individual company data or browsing habits.</p><p>Our engine strictly analyzes the parameters provided during a search request. Communication is secured via industry-standard encryption, ensuring a completely anonymous and private verification experience.</p>"; 
+    async function localizeCurrency() {
+        try {
+            const res = await fetch('https://ipapi.co/json/');
+            const data = await res.json();
+            const userCurrency = data.currency;
+            const budgetSelect = document.getElementById('input-budget');
+            const rates = { 'USD': { sym: '$', mult: 1.25 }, 'EUR': { sym: '€', mult: 1.17 }, 'AUD': { sym: 'A$', mult: 1.95 }, 'CAD': { sym: 'C$', mult: 1.70 } };
+            if (rates[userCurrency]) {
+                const c = rates[userCurrency];
+                budgetSelect.options[1].text = `${c.sym}${Math.round(10 * c.mult)} - ${c.sym}${Math.round(50 * c.mult)}`;
+                budgetSelect.options[2].text = `${c.sym}${Math.round(50 * c.mult)} - ${c.sym}${Math.round(200 * c.mult)}`;
+                budgetSelect.options[3].text = `${c.sym}${Math.round(200 * c.mult)}+`;
             }
-            m.style.display = 'flex';
+        } catch (error) { console.log("Localization deferred to default."); }
+    }
+    localizeCurrency();
+
+    function openModal(type) {
+        const m = document.getElementById('info-modal'), t = document.getElementById('modal-title'), b = document.getElementById('modal-body');
+        if(type === 'how') { 
+            t.innerText = "The Decision Engine"; 
+            b.innerHTML = "<p>Snexz operates utilizing <strong>Programmatic Feature Matching</strong>. By bypassing surface-level marketplace marketing, our engine maps your specific industry, scale, and compliance needs directly to verified B2B SaaS architecture.</p><p>We cross-reference budget constraints and operational workflows to establish an optimal software match, saving you hours of research and thousands in mismatched software subscriptions.</p>"; 
+        } else { 
+            t.innerText = "Privacy Policy"; 
+            b.innerHTML = "<p>Business privacy is a foundational pillar of the Snexz infrastructure. We operate strictly as an analytical proxy; we do not track, store, or monetize individual company data or browsing habits.</p><p>Our engine strictly analyzes the parameters provided during a search request. Communication is secured via industry-standard encryption, ensuring a completely anonymous and private verification experience.</p>"; 
         }
-        function closeModal() { document.getElementById('info-modal').style.display = 'none'; }
+        m.style.display = 'flex';
+    }
+    function closeModal() { document.getElementById('info-modal').style.display = 'none'; }
+    
+    function editSearch() {
+        document.getElementById('result-area').style.display = 'none';
+        document.getElementById('search-box-ui').style.display = 'block';
         
-        function editSearch() {
-            document.getElementById('result-area').style.display = 'none';
-            document.getElementById('search-box-ui').style.display = 'block';
-            
-            document.getElementById('audit-btn').style.display = 'block';
-            document.getElementById('audit-btn').disabled = false;
-            document.getElementById('progress-wrapper').style.display = 'none';
-            document.getElementById('progress-bar').style.width = '0%';
+        document.getElementById('audit-btn').style.display = 'block';
+        document.getElementById('audit-btn').disabled = false;
+        document.getElementById('progress-wrapper').style.display = 'none';
+        document.getElementById('progress-bar').style.width = '0%';
+    }
+
+    function getScoreColor(score) {
+        if (score >= 90) return `rgba(0, 0, 0, 1)`;     
+        if (score >= 70) return `rgba(0, 0, 0, 0.7)`;   
+        if (score >= 60) return `rgba(0, 0, 0, 0.4)`;   
+        return `rgba(0, 0, 0, 0.2)`;                    
+    }
+
+    const softwareDatabase = [
+        { id: 'hubspot', name: 'HubSpot', domain: 'hubspot.com', ind: ['Agency', 'SaaS', 'Ecommerce', 'Finance', 'Education'], task: ['CRM', 'Marketing', 'Customer Support', 'Analytics'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Free', 'Medium', 'Enterprise'], desc: 'The gold standard CRM and marketing automation suite.', link: 'hubspot.html', tags: ['Sales', 'Marketing'] },
+        { id: 'monday', name: 'Monday.com', domain: 'monday.com', ind: ['Agency', 'SaaS', 'Construction', 'Real Estate', 'NonProfit'], task: ['Project Management', 'CRM', 'HR'], size: ['Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium'], desc: 'Highly visual, customizable work OS and project tracker.', link: 'monday.html', tags: ['Project Mgmt'] },
+        { id: 'shopify', name: 'Shopify', domain: 'shopify.com', ind: ['Ecommerce', 'Hospitality'], task: ['Invoicing', 'Marketing', 'Inventory'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium', 'Enterprise'], desc: 'The definitive platform for independent retail architecture.', link: 'shopify.html', tags: ['E-Commerce'] },
+        { id: 'contractor-foreman', name: 'Contractor Foreman', domain: 'contractorforeman.com', ind: ['Construction'], task: ['Project Management', 'Invoicing'], size: ['Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'All-in-one management for specialty contractors and builders.', link: 'contractor-foreman.html', tags: ['Construction'] },
+        { id: 'quickbooks', name: 'QuickBooks', domain: 'quickbooks.intuit.com', ind: ['Construction', 'Agency', 'Medical', 'Ecommerce', 'Real Estate', 'Legal', 'SaaS', 'Finance', 'NonProfit'], task: ['Invoicing', 'Analytics'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'Industry-standard accounting and automated billing.', link: 'quickbooks.html', tags: ['Finance'] },
+        { id: 'zendesk', name: 'Zendesk', domain: 'zendesk.com', ind: ['SaaS', 'Ecommerce', 'Agency', 'Hospitality', 'Education'], task: ['CRM', 'Customer Support'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Medium', 'Enterprise'], desc: 'Enterprise-grade customer service and ticketing system.', link: 'zendesk.html', tags: ['Support'] },
+        { id: 'highlevel', name: 'HighLevel', domain: 'gohighlevel.com', customLogo: 'https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_9e317070104764b88a916723e743a654/highlevel.png', ind: ['Agency', 'Real Estate'], task: ['CRM', 'Marketing', 'Booking'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Medium'], desc: 'White-label marketing platform built specifically for agencies.', link: 'highlevel.html', tags: ['Agency'] },
+        { id: 'pandadoc', name: 'PandaDoc', domain: 'pandadoc.com', ind: ['Legal', 'Agency', 'SaaS', 'Real Estate', 'Finance'], task: ['Project Management', 'CRM', 'Document'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low', 'Medium'], desc: 'Automated document signing and secure proposal tracking.', link: 'pandadoc.html', tags: ['Document'] },
+        { id: 'katana', name: 'Katana Cloud', domain: 'katanamrp.com', ind: ['Ecommerce', 'Construction'], task: ['Project Management', 'Invoicing', 'Inventory'], size: ['Small', 'Medium'], budget: ['Medium', 'Enterprise'], desc: 'Advanced manufacturing and inventory management software.', link: 'katana.html', tags: ['Inventory'] },
+        { id: 'appointy', name: 'Appointy', domain: 'appointy.com', svgLogo: `<svg width="100%" height="100%" viewBox="0 0 1008 1024" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g><path d="M 831.26 877.79 L 824.50 880.50 L 642.50 880.65 C493.15,880.77 458.44,880.55 449.00,879.42 C401.04,873.66 347.54,855.06 305.50,829.54 C265.32,805.15 231.49,775.31 203.98,740.00 C145.22,664.57 118.82,569.89 129.44,472.68 C135.95,413.16 158.70,352.49 192.90,303.50 C217.30,268.53 255.33,231.00 289.46,208.19 C331.91,179.83 377.14,161.01 425.50,151.59 C453.69,146.10 460.39,145.51 494.50,145.50 C529.44,145.50 539.62,146.41 568.38,152.09 C602.32,158.80 629.96,168.38 662.00,184.55 C775.51,241.84 853.23,356.12 863.95,481.50 C865.43,498.78 865.38,833.10 863.89,840.20 C861.38,852.27 852.86,864.85 842.26,872.16 C839.93,873.77 834.98,876.30 831.26,877.79 ZM 550.00 839.33 C551.92,839.53 607.28,839.65 673.00,839.60 L 792.50 839.50 L 799.05 836.40 C807.98,832.16 812.37,828.02 816.23,820.18 L 819.50 813.54 L 819.50 691.52 C819.50,577.84 819.37,568.75 817.67,558.50 C811.28,520.23 798.09,486.57 777.90,457.00 C744.77,408.49 694.82,372.49 640.00,357.61 C597.81,346.16 550.67,346.15 509.78,357.58 C469.63,368.80 435.02,388.54 405.62,417.00 C374.44,447.18 353.75,479.69 340.62,519.14 C315.16,595.59 330.06,681.88 379.78,745.95 C388.58,757.29 408.42,777.54 419.00,785.98 C438.90,801.85 464.33,816.35 487.31,824.91 C504.46,831.31 530.36,837.26 550.00,839.33 ZM 595.37 716.44 C583.15,718.58 561.15,718.37 549.50,716.00 C513.76,708.74 484.44,687.91 466.79,657.23 C458.99,643.69 454.30,631.02 451.55,616.14 C449.56,605.37 449.56,584.81 451.55,573.39 C458.30,534.69 483.68,501.26 519.50,483.90 C554.68,466.84 595.47,467.11 630.24,484.62 C665.14,502.19 689.87,535.54 696.57,574.04 C698.99,587.93 698.11,611.05 694.67,624.23 C681.96,672.82 644.19,707.90 595.37,716.44 Z" fill="rgb(116,23,123)"/><path d="M 0.00 512.00 L 0.00 0.00 L 504.00 0.00 L 1008.00 0.00 L 1008.00 512.00 L 1008.00 1024.00 L 504.00 1024.00 L 0.00 1024.00 L 0.00 512.00 ZM 831.26 877.79 C834.98,876.30 839.93,873.77 842.26,872.16 C852.86,864.85 861.38,852.27 863.89,840.20 C865.38,833.10 865.43,498.78 863.95,481.50 C853.23,356.12 775.51,241.84 662.00,184.55 C629.96,168.38 602.32,158.80 568.38,152.09 C539.62,146.41 529.44,145.50 494.50,145.50 C460.39,145.51 453.69,146.10 425.50,151.59 C377.14,161.01 331.91,179.83 289.46,208.19 C255.33,231.00 217.30,268.53 192.90,303.50 C158.70,352.49 135.95,413.16 129.44,472.68 C118.82,569.89 145.22,664.57 203.98,740.00 C231.49,775.31 265.32,805.15 305.50,829.54 C347.54,855.06 401.04,873.66 449.00,879.42 C458.44,880.55 493.15,880.77 642.50,880.65 L 824.50 880.50 L 831.26 877.79 ZM 550.00 839.33 C530.36,837.26 504.46,831.31 487.31,824.91 C464.33,816.35 438.90,801.85 419.00,785.98 C408.42,777.54 388.58,757.29 379.78,745.95 C330.06,681.88 315.16,595.59 340.62,519.14 C353.75,479.69 374.44,447.18 405.62,417.00 C435.02,388.54 469.63,368.80 509.78,357.58 C550.67,346.15 597.81,346.16 640.00,357.61 C694.82,372.49 744.77,408.49 777.90,457.00 C798.09,486.57 811.28,520.23 817.67,558.50 C819.37,568.75 819.50,577.84 819.50,691.52 L 819.50 813.54 L 816.23 820.18 C812.37,828.02 807.98,832.16 799.05,836.40 L 792.50 839.50 L 673.00 839.60 C607.28,839.65 551.92,839.53 550.00,839.33 ZM 595.37 716.44 C644.19,707.90 681.96,672.82 694.67,624.23 C698.11,611.05 698.99,587.93 696.57,574.04 C689.87,535.54 665.14,502.19 630.24,484.62 C595.47,467.11 554.68,466.84 519.50,483.90 C483.68,501.26 458.30,534.69 451.55,573.39 C449.56,584.81 449.56,605.37 451.55,616.14 C454.30,631.02 458.99,643.69 466.79,657.23 C484.44,687.91 513.76,708.74 549.50,716.00 C561.15,718.37 583.15,718.58 595.37,716.44 Z" fill="rgb(254,254,254)"/></g></svg>`, ind: ['Medical', 'Legal', 'Hospitality'], task: ['Booking'], size: ['Solo', 'Micro', 'Small'], budget: ['Free', 'Low'], desc: 'HIPAA-compliant patient and client scheduling portal.', link: 'appointy.html', tags: ['Booking'] },
+        { id: 'calendly', name: 'Calendly', domain: 'calendly.com', ind: ['Agency', 'SaaS', 'Medical', 'Real Estate', 'Education'], task: ['Booking'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low'], desc: 'Automated scheduling and calendar synchronization platform.', link: 'calendly.html', tags: ['Booking'] },
+        { id: 'notion', name: 'Notion', domain: 'notion.so', ind: ['Agency', 'SaaS', 'Education', 'NonProfit'], task: ['Project Management', 'Document'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low'], desc: 'Highly flexible, all-in-one workspace for documents and wikis.', link: 'notion.html', tags: ['Workspace'] },
+        { id: 'brevo', name: 'Brevo', domain: 'brevo.com', svgLogo: `<svg width="100%" height="100%" viewBox="0 0 1000 295" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><path d="M820.28 182.338C820.28 137.755 848.604 106.4 888.892 106.4C929.18 106.4 957.956 137.737 957.956 182.338C957.956 226.939 929.187 256.5 888.892 256.5C848.598 256.5 820.28 225.588 820.28 182.338ZM778.224 182.338C778.224 248.12 824.262 294.479 888.886 294.479C953.51 294.479 1000 248.12 1000 182.338C1000 116.556 953.962 68.4399 888.886 68.4399C823.81 68.4399 778.224 115.686 778.224 182.338ZM563.521 71.0853L650.292 291.821H691.025L777.791 71.0853H733.966L671.104 241.498H670.214L607.352 71.0853H563.521ZM394.856 174.383C397.508 133.76 424.515 106.4 461.261 106.4C493.128 106.4 517.037 126.712 520.58 157.179H447.089C420.973 157.179 406.801 160.269 396.191 174.402H394.856V174.39V174.383ZM352.805 181.006C352.805 246.788 399.289 294.46 463.468 294.46C506.854 294.46 544.916 272.391 561.295 237.502L525.885 219.835C513.494 242.792 489.585 256.482 463.468 256.482C432.028 256.482 403.704 232.637 403.704 209.679C403.704 197.766 411.673 192.457 423.18 192.457H563.502V180.544C563.502 114.317 521.007 68.4029 459.925 68.4029C398.844 68.4029 352.799 115.649 352.799 180.988M232.399 291.796H272.242V156.285C272.242 127.149 290.382 106.394 315.627 106.394C326.256 106.394 337.311 109.927 342.635 114.774C346.623 104.174 352.818 93.5923 362.111 82.9924C351.482 74.1684 333.342 68.4153 315.627 68.4153C266.937 68.4153 232.399 104.618 232.399 156.267V291.809V291.796ZM39.843 145.698V37.9598H105.358C127.486 37.9598 142.103 50.7611 142.103 70.185C142.103 92.2542 123.072 109.033 84.1191 121.834C57.5571 130.214 45.6116 137.281 41.1785 145.679L39.843 145.692V145.698ZM39.843 253.861V208.835C39.843 188.967 56.6668 169.543 80.1311 162.032C100.943 154.966 118.193 147.899 132.81 140.407C152.286 151.895 164.232 171.744 164.232 192.5C164.232 227.814 130.584 253.861 84.9909 253.861H39.843ZM0 291.821H88.5337C155.829 291.821 206.282 249.884 206.282 194.257C206.282 163.79 190.794 136.43 163.341 118.763C177.513 104.63 184.153 88.2955 184.153 68.4276C184.153 27.3784 154.493 0 109.791 0H0V291.821Z" fill="#0B996E"/></svg>`, ind: ['Ecommerce', 'Agency', 'Hospitality', 'NonProfit'], task: ['Marketing', 'CRM'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low', 'Medium'], desc: 'Affordable, scalable email marketing and automation platform.', link: 'brevo.html', tags: ['Marketing'] },
+        { id: 'slack', name: 'Slack', domain: 'slack.com', ind: ['SaaS', 'Agency', 'Ecommerce', 'NonProfit', 'Education'], task: ['Project Management', 'Customer Support'], size: ['Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low', 'Medium', 'Enterprise'], desc: 'The industry-standard hub for team communication and workflows.', link: 'slack.html', tags: ['Comms'] },
+        { id: 'dropbox', name: 'Dropbox', domain: 'dropbox.com', ind: ['Construction', 'Agency', 'Legal', 'Real Estate', 'Education'], task: ['Document', 'Project Management'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low', 'Medium'], desc: 'AI-enhanced workspace and secure cloud file-sharing architecture.', link: 'dropbox.html', tags: ['Storage'] },
+        { id: 'activecampaign', name: 'ActiveCampaign', domain: 'activecampaign.com', ind: ['Agency', 'SaaS', 'Ecommerce', 'Education'], task: ['Marketing', 'CRM'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Medium', 'Enterprise'], desc: 'Deep marketing automation and customer experience platform.', link: 'activecampaign.html', tags: ['Marketing'] },
+        { id: 'clickup', name: 'ClickUp', domain: 'clickup.com', ind: ['Agency', 'SaaS', 'Ecommerce', 'Education', 'Finance'], task: ['Project Management', 'Document'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low', 'Medium'], desc: 'One app to replace them all for tasks, docs, and team collaboration.', link: 'clickup.html', tags: ['Project Mgmt'] },
+        { id: 'webflow', name: 'Webflow', domain: 'webflow.com', ind: ['Agency', 'SaaS', 'Ecommerce'], task: ['Marketing', 'Analytics'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'Professional visual web development and CMS platform.', link: 'webflow.html', tags: ['Web Design'] },
+        { id: 'sproutsocial', name: 'Sprout Social', domain: 'sproutsocial.com', ind: ['Agency', 'Ecommerce', 'SaaS', 'Hospitality'], task: ['Marketing', 'Analytics'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Medium', 'Enterprise'], desc: 'Premium social media management and intelligence tool.', link: 'sproutsocial.html', tags: ['Social Media'] },
+        { id: 'unbounce', name: 'Unbounce', domain: 'unbounce.com', ind: ['Agency', 'Ecommerce', 'SaaS'], task: ['Marketing', 'Analytics'], size: ['Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'AI-powered landing page builder for CRO and paid ads.', link: 'unbounce.html', tags: ['CRO'] }
+    ];
+
+    function startSearch() {
+        const reqInd = document.getElementById('input-industry').value;
+        const reqTask = document.getElementById('input-task').value;
+        const reqSize = document.getElementById('input-size').value;
+        const reqBudget = document.getElementById('input-budget').value;
+        
+        if (!reqInd || !reqTask || !reqSize || !reqBudget) {
+            const btn = document.getElementById('audit-btn');
+            const originalText = btn.innerText;
+            btn.innerText = "Please complete all fields";
+            btn.style.backgroundColor = "#EF4444"; 
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.style.backgroundColor = "var(--brand-main)";
+            }, 2000);
+            return;
         }
 
-        function getScoreColor(score) {
-            if (score >= 90) return `rgba(17, 24, 39, 1)`;     
-            if (score >= 70) return `rgba(17, 24, 39, 0.7)`;   
-            if (score >= 60) return `rgba(17, 24, 39, 0.4)`;   
-            return `rgba(17, 24, 39, 0.2)`;                    
-        }
+        document.getElementById('audit-btn').style.display = 'none';
+        const progressWrapper = document.getElementById('progress-wrapper');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        progressWrapper.style.display = 'block';
 
-        const softwareDatabase = [
-            { id: 'hubspot', name: 'HubSpot', domain: 'hubspot.com', ind: ['Agency', 'SaaS', 'Ecommerce', 'Finance', 'Education'], task: ['CRM', 'Marketing', 'Customer Support', 'Analytics'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Free', 'Medium', 'Enterprise'], desc: 'The gold standard CRM and marketing automation suite.', link: 'hubspot.html', tags: ['Sales', 'Marketing'] },
-            { id: 'monday', name: 'Monday.com', domain: 'monday.com', ind: ['Agency', 'SaaS', 'Construction', 'Real Estate', 'NonProfit'], task: ['Project Management', 'CRM', 'HR'], size: ['Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium'], desc: 'Highly visual, customizable work OS and project tracker.', link: 'monday.html', tags: ['Project Mgmt'] },
-            { id: 'shopify', name: 'Shopify', domain: 'shopify.com', ind: ['Ecommerce', 'Hospitality'], task: ['Invoicing', 'Marketing', 'Inventory'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Low', 'Medium', 'Enterprise'], desc: 'The definitive platform for independent retail architecture.', link: 'shopify.html', tags: ['E-Commerce'] },
-            { id: 'contractor-foreman', name: 'Contractor Foreman', domain: 'contractorforeman.com', ind: ['Construction'], task: ['Project Management', 'Invoicing'], size: ['Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'All-in-one management for specialty contractors and builders.', link: 'contractor-foreman.html', tags: ['Construction'] },
-            { id: 'quickbooks', name: 'QuickBooks', domain: 'quickbooks.intuit.com', ind: ['Construction', 'Agency', 'Medical', 'Ecommerce', 'Real Estate', 'Legal', 'SaaS', 'Finance', 'NonProfit'], task: ['Invoicing', 'Analytics'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'Industry-standard accounting and automated billing.', link: 'quickbooks.html', tags: ['Finance'] },
-            { id: 'zendesk', name: 'Zendesk', domain: 'zendesk.com', ind: ['SaaS', 'Ecommerce', 'Agency', 'Hospitality', 'Education'], task: ['CRM', 'Customer Support'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Medium', 'Enterprise'], desc: 'Enterprise-grade customer service and ticketing system.', link: 'zendesk.html', tags: ['Support'] },
-            { id: 'highlevel', name: 'HighLevel', domain: 'gohighlevel.com', customLogo: 'https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_9e317070104764b88a916723e743a654/highlevel.png', ind: ['Agency', 'Real Estate'], task: ['CRM', 'Marketing', 'Booking'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Medium'], desc: 'White-label marketing platform built specifically for agencies.', link: 'highlevel.html', tags: ['Agency'] },
-            { id: 'pandadoc', name: 'PandaDoc', domain: 'pandadoc.com', ind: ['Legal', 'Agency', 'SaaS', 'Real Estate', 'Finance'], task: ['Project Management', 'CRM', 'Document'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low', 'Medium'], desc: 'Automated document signing and secure proposal tracking.', link: 'pandadoc.html', tags: ['Document'] },
-            { id: 'katana', name: 'Katana Cloud', domain: 'katanamrp.com', ind: ['Ecommerce', 'Construction'], task: ['Project Management', 'Invoicing', 'Inventory'], size: ['Small', 'Medium'], budget: ['Medium', 'Enterprise'], desc: 'Advanced manufacturing and inventory management software.', link: 'katana.html', tags: ['Inventory'] },
-            { id: 'appointy', name: 'Appointy', domain: 'appointy.com', svgLogo: `<svg width="100%" height="100%" viewBox="0 0 1008 1024" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g><path d="M 831.26 877.79 L 824.50 880.50 L 642.50 880.65 C493.15,880.77 458.44,880.55 449.00,879.42 C401.04,873.66 347.54,855.06 305.50,829.54 C265.32,805.15 231.49,775.31 203.98,740.00 C145.22,664.57 118.82,569.89 129.44,472.68 C135.95,413.16 158.70,352.49 192.90,303.50 C217.30,268.53 255.33,231.00 289.46,208.19 C331.91,179.83 377.14,161.01 425.50,151.59 C453.69,146.10 460.39,145.51 494.50,145.50 C529.44,145.50 539.62,146.41 568.38,152.09 C602.32,158.80 629.96,168.38 662.00,184.55 C775.51,241.84 853.23,356.12 863.95,481.50 C865.43,498.78 865.38,833.10 863.89,840.20 C861.38,852.27 852.86,864.85 842.26,872.16 C839.93,873.77 834.98,876.30 831.26,877.79 ZM 550.00 839.33 C551.92,839.53 607.28,839.65 673.00,839.60 L 792.50 839.50 L 799.05 836.40 C807.98,832.16 812.37,828.02 816.23,820.18 L 819.50 813.54 L 819.50 691.52 C819.50,577.84 819.37,568.75 817.67,558.50 C811.28,520.23 798.09,486.57 777.90,457.00 C744.77,408.49 694.82,372.49 640.00,357.61 C597.81,346.16 550.67,346.15 509.78,357.58 C469.63,368.80 435.02,388.54 405.62,417.00 C374.44,447.18 353.75,479.69 340.62,519.14 C315.16,595.59 330.06,681.88 379.78,745.95 C388.58,757.29 408.42,777.54 419.00,785.98 C438.90,801.85 464.33,816.35 487.31,824.91 C504.46,831.31 530.36,837.26 550.00,839.33 ZM 595.37 716.44 C583.15,718.58 561.15,718.37 549.50,716.00 C513.76,708.74 484.44,687.91 466.79,657.23 C458.99,643.69 454.30,631.02 451.55,616.14 C449.56,605.37 449.56,584.81 451.55,573.39 C458.30,534.69 483.68,501.26 519.50,483.90 C554.68,466.84 595.47,467.11 630.24,484.62 C665.14,502.19 689.87,535.54 696.57,574.04 C698.99,587.93 698.11,611.05 694.67,624.23 C681.96,672.82 644.19,707.90 595.37,716.44 Z" fill="rgb(116,23,123)"/><path d="M 0.00 512.00 L 0.00 0.00 L 504.00 0.00 L 1008.00 0.00 L 1008.00 512.00 L 1008.00 1024.00 L 504.00 1024.00 L 0.00 1024.00 L 0.00 512.00 ZM 831.26 877.79 C834.98,876.30 839.93,873.77 842.26,872.16 C852.86,864.85 861.38,852.27 863.89,840.20 C865.38,833.10 865.43,498.78 863.95,481.50 C853.23,356.12 775.51,241.84 662.00,184.55 C629.96,168.38 602.32,158.80 568.38,152.09 C539.62,146.41 529.44,145.50 494.50,145.50 C460.39,145.51 453.69,146.10 425.50,151.59 C377.14,161.01 331.91,179.83 289.46,208.19 C255.33,231.00 217.30,268.53 192.90,303.50 C158.70,352.49 135.95,413.16 129.44,472.68 C118.82,569.89 145.22,664.57 203.98,740.00 C231.49,775.31 265.32,805.15 305.50,829.54 C347.54,855.06 401.04,873.66 449.00,879.42 C458.44,880.55 493.15,880.77 642.50,880.65 L 824.50 880.50 L 831.26 877.79 ZM 550.00 839.33 C530.36,837.26 504.46,831.31 487.31,824.91 C464.33,816.35 438.90,801.85 419.00,785.98 C408.42,777.54 388.58,757.29 379.78,745.95 C330.06,681.88 315.16,595.59 340.62,519.14 C353.75,479.69 374.44,447.18 405.62,417.00 C435.02,388.54 469.63,368.80 509.78,357.58 C550.67,346.15 597.81,346.16 640.00,357.61 C694.82,372.49 744.77,408.49 777.90,457.00 C798.09,486.57 811.28,520.23 817.67,558.50 C819.37,568.75 819.50,577.84 819.50,691.52 L 819.50 813.54 L 816.23 820.18 C812.37,828.02 807.98,832.16 799.05,836.40 L 792.50 839.50 L 673.00 839.60 C607.28,839.65 551.92,839.53 550.00,839.33 ZM 595.37 716.44 C644.19,707.90 681.96,672.82 694.67,624.23 C698.11,611.05 698.99,587.93 696.57,574.04 C689.87,535.54 665.14,502.19 630.24,484.62 C595.47,467.11 554.68,466.84 519.50,483.90 C483.68,501.26 458.30,534.69 451.55,573.39 C449.56,584.81 449.56,605.37 451.55,616.14 C454.30,631.02 458.99,643.69 466.79,657.23 C484.44,687.91 513.76,708.74 549.50,716.00 C561.15,718.37 583.15,718.58 595.37,716.44 Z" fill="rgb(254,254,254)"/></g></svg>`, ind: ['Medical', 'Legal', 'Hospitality'], task: ['Booking'], size: ['Solo', 'Micro', 'Small'], budget: ['Free', 'Low'], desc: 'HIPAA-compliant patient and client scheduling portal.', link: 'appointy.html', tags: ['Booking'] },
-            { id: 'calendly', name: 'Calendly', domain: 'calendly.com', ind: ['Agency', 'SaaS', 'Medical', 'Real Estate', 'Education'], task: ['Booking'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low'], desc: 'Automated scheduling and calendar synchronization platform.', link: 'calendly.html', tags: ['Booking'] },
-            { id: 'notion', name: 'Notion', domain: 'notion.so', ind: ['Agency', 'SaaS', 'Education', 'NonProfit'], task: ['Project Management', 'Document'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low'], desc: 'Highly flexible, all-in-one workspace for documents and wikis.', link: 'notion.html', tags: ['Workspace'] },
-            { id: 'brevo', name: 'Brevo', domain: 'brevo.com', svgLogo: `<svg width="100%" height="100%" viewBox="0 0 1000 295" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><path d="M820.28 182.338C820.28 137.755 848.604 106.4 888.892 106.4C929.18 106.4 957.956 137.737 957.956 182.338C957.956 226.939 929.187 256.5 888.892 256.5C848.598 256.5 820.28 225.588 820.28 182.338ZM778.224 182.338C778.224 248.12 824.262 294.479 888.886 294.479C953.51 294.479 1000 248.12 1000 182.338C1000 116.556 953.962 68.4399 888.886 68.4399C823.81 68.4399 778.224 115.686 778.224 182.338ZM563.521 71.0853L650.292 291.821H691.025L777.791 71.0853H733.966L671.104 241.498H670.214L607.352 71.0853H563.521ZM394.856 174.383C397.508 133.76 424.515 106.4 461.261 106.4C493.128 106.4 517.037 126.712 520.58 157.179H447.089C420.973 157.179 406.801 160.269 396.191 174.402H394.856V174.39V174.383ZM352.805 181.006C352.805 246.788 399.289 294.46 463.468 294.46C506.854 294.46 544.916 272.391 561.295 237.502L525.885 219.835C513.494 242.792 489.585 256.482 463.468 256.482C432.028 256.482 403.704 232.637 403.704 209.679C403.704 197.766 411.673 192.457 423.18 192.457H563.502V180.544C563.502 114.317 521.007 68.4029 459.925 68.4029C398.844 68.4029 352.799 115.649 352.799 180.988M232.399 291.796H272.242V156.285C272.242 127.149 290.382 106.394 315.627 106.394C326.256 106.394 337.311 109.927 342.635 114.774C346.623 104.174 352.818 93.5923 362.111 82.9924C351.482 74.1684 333.342 68.4153 315.627 68.4153C266.937 68.4153 232.399 104.618 232.399 156.267V291.809V291.796ZM39.843 145.698V37.9598H105.358C127.486 37.9598 142.103 50.7611 142.103 70.185C142.103 92.2542 123.072 109.033 84.1191 121.834C57.5571 130.214 45.6116 137.281 41.1785 145.679L39.843 145.692V145.698ZM39.843 253.861V208.835C39.843 188.967 56.6668 169.543 80.1311 162.032C100.943 154.966 118.193 147.899 132.81 140.407C152.286 151.895 164.232 171.744 164.232 192.5C164.232 227.814 130.584 253.861 84.9909 253.861H39.843ZM0 291.821H88.5337C155.829 291.821 206.282 249.884 206.282 194.257C206.282 163.79 190.794 136.43 163.341 118.763C177.513 104.63 184.153 88.2955 184.153 68.4276C184.153 27.3784 154.493 0 109.791 0H0V291.821Z" fill="#0B996E"/></svg>`, ind: ['Ecommerce', 'Agency', 'Hospitality', 'NonProfit'], task: ['Marketing', 'CRM'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Free', 'Low', 'Medium'], desc: 'Affordable, scalable email marketing and automation platform.', link: 'brevo.html', tags: ['Marketing'] },
-            { id: 'slack', name: 'Slack', domain: 'slack.com', ind: ['SaaS', 'Agency', 'Ecommerce', 'NonProfit', 'Education'], task: ['Project Management', 'Customer Support'], size: ['Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low', 'Medium', 'Enterprise'], desc: 'The industry-standard hub for team communication and workflows.', link: 'slack.html', tags: ['Comms'] },
-            { id: 'dropbox', name: 'Dropbox', domain: 'dropbox.com', ind: ['Construction', 'Agency', 'Legal', 'Real Estate', 'Education'], task: ['Document', 'Project Management'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low', 'Medium'], desc: 'AI-enhanced workspace and secure cloud file-sharing architecture.', link: 'dropbox.html', tags: ['Storage'] },
-            { id: 'activecampaign', name: 'ActiveCampaign', domain: 'activecampaign.com', ind: ['Agency', 'SaaS', 'Ecommerce', 'Education'], task: ['Marketing', 'CRM'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Medium', 'Enterprise'], desc: 'Deep marketing automation and customer experience platform.', link: 'activecampaign.html', tags: ['Marketing'] },
-            { id: 'clickup', name: 'ClickUp', domain: 'clickup.com', ind: ['Agency', 'SaaS', 'Ecommerce', 'Education', 'Finance'], task: ['Project Management', 'Document'], size: ['Solo', 'Micro', 'Small', 'Medium', 'Enterprise'], budget: ['Free', 'Low', 'Medium'], desc: 'One app to replace them all for tasks, docs, and team collaboration.', link: 'clickup.html', tags: ['Project Mgmt'] },
-            { id: 'webflow', name: 'Webflow', domain: 'webflow.com', ind: ['Agency', 'SaaS', 'Ecommerce'], task: ['Marketing', 'Analytics'], size: ['Solo', 'Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'Professional visual web development and CMS platform.', link: 'webflow.html', tags: ['Web Design'] },
-            { id: 'sproutsocial', name: 'Sprout Social', domain: 'sproutsocial.com', ind: ['Agency', 'Ecommerce', 'SaaS', 'Hospitality'], task: ['Marketing', 'Analytics'], size: ['Small', 'Medium', 'Enterprise'], budget: ['Medium', 'Enterprise'], desc: 'Premium social media management and intelligence tool.', link: 'sproutsocial.html', tags: ['Social Media'] },
-            { id: 'unbounce', name: 'Unbounce', domain: 'unbounce.com', ind: ['Agency', 'Ecommerce', 'SaaS'], task: ['Marketing', 'Analytics'], size: ['Micro', 'Small', 'Medium'], budget: ['Low', 'Medium'], desc: 'AI-powered landing page builder for CRO and paid ads.', link: 'unbounce.html', tags: ['CRO'] }
+        const stages = [
+            "Initializing engine...",
+            "Querying SaaS database...",
+            "Analyzing industry compliance...",
+            "Evaluating scale constraints...",
+            "Cross-referencing budget...",
+            "Calculating ROI metrics...",
+            "Testing API integrations...",
+            "Compiling decision matrix...",
+            "Finalizing optimal match..."
         ];
 
-        function startSearch() {
-            const reqInd = document.getElementById('input-industry').value;
-            const reqTask = document.getElementById('input-task').value;
-            const reqSize = document.getElementById('input-size').value;
-            const reqBudget = document.getElementById('input-budget').value;
-            
-            if (!reqInd || !reqTask || !reqSize || !reqBudget) {
-                const btn = document.getElementById('audit-btn');
-                const originalText = btn.innerText;
-                btn.innerText = "Please complete all fields";
-                btn.style.backgroundColor = "#EF4444"; 
+        let progress = 0;
+        let currentStage = 0;
+        progressText.innerText = stages[0];
+
+        function processStep() {
+            let jump = Math.floor(Math.random() * 7) + 1;
+            let pause = Math.floor(Math.random() * 600) + 100;
+
+            if (Math.random() > 0.85) pause += 800; 
+
+            progress += jump;
+
+            if (progress >= 100) {
+                progress = 100;
+                progressBar.style.width = '100%';
                 setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.style.backgroundColor = "var(--brand-main)";
-                }, 2000);
+                    showResults(reqInd, reqTask, reqSize, reqBudget);
+                }, 400);
                 return;
             }
 
-            document.getElementById('audit-btn').style.display = 'none';
-            const progressWrapper = document.getElementById('progress-wrapper');
-            const progressBar = document.getElementById('progress-bar');
-            const progressText = document.getElementById('progress-text');
-            progressWrapper.style.display = 'block';
+            progressBar.style.width = `${progress}%`;
 
-            const stages = [
-                "Initializing engine...",
-                "Querying SaaS database...",
-                "Analyzing industry compliance...",
-                "Evaluating scale constraints...",
-                "Cross-referencing budget...",
-                "Calculating ROI metrics...",
-                "Testing API integrations...",
-                "Compiling decision matrix...",
-                "Finalizing optimal match..."
-            ];
-
-            let progress = 0;
-            let currentStage = 0;
-            progressText.innerText = stages[0];
-
-            function processStep() {
-                let jump = Math.floor(Math.random() * 7) + 1;
-                let pause = Math.floor(Math.random() * 600) + 100;
-
-                if (Math.random() > 0.85) pause += 800; 
-
-                progress += jump;
-
-                if (progress >= 100) {
-                    progress = 100;
-                    progressBar.style.width = '100%';
-                    setTimeout(() => {
-                        showResults(reqInd, reqTask, reqSize, reqBudget);
-                    }, 400);
-                    return;
-                }
-
-                progressBar.style.width = `${progress}%`;
-
-                const stageIndex = Math.floor((progress / 100) * stages.length);
-                if (stageIndex < stages.length && currentStage !== stageIndex) {
-                    currentStage = stageIndex;
-                    progressText.innerText = stages[currentStage];
-                }
-
-                setTimeout(processStep, pause);
+            const stageIndex = Math.floor((progress / 100) * stages.length);
+            if (stageIndex < stages.length && currentStage !== stageIndex) {
+                currentStage = stageIndex;
+                progressText.innerText = stages[currentStage];
             }
-            
-            processStep();
+
+            setTimeout(processStep, pause);
         }
+        
+        processStep();
+    }
 
-        function showResults(reqInd, reqTask, reqSize, reqBudget) {
-            let results = softwareDatabase.map(tool => {
-                let score = 50; 
-                score += (tool.id.length % 4); 
-                if (tool.ind.includes(reqInd)) score += 25; else score -= 10; 
-                if (tool.task.includes(reqTask)) score += 15;
-                if (tool.size.includes(reqSize)) score += 8;
-                const budgetTiers = { 'Free': 0, 'Low': 1, 'Medium': 2, 'Enterprise': 3 };
-                if (budgetTiers[tool.budget[0]] <= budgetTiers[reqBudget]) score += 10;
-                if (score > 98) score = 98;
-                if (score < 50) score = 50;
-                return { ...tool, score };
-            });
+    function showResults(reqInd, reqTask, reqSize, reqBudget) {
+        let results = softwareDatabase.map(tool => {
+            let score = 50; 
+            score += (tool.id.length % 4); 
+            if (tool.ind.includes(reqInd)) score += 25; else score -= 10; 
+            if (tool.task.includes(reqTask)) score += 15;
+            if (tool.size.includes(reqSize)) score += 8;
+            const budgetTiers = { 'Free': 0, 'Low': 1, 'Medium': 2, 'Enterprise': 3 };
+            if (budgetTiers[tool.budget[0]] <= budgetTiers[reqBudget]) score += 10;
+            if (score > 98) score = 98;
+            if (score < 50) score = 50;
+            return { ...tool, score };
+        });
 
-            results.sort((a, b) => b.score - a.score);
-            const topTool = results[0];
-            const runnerUps = results.slice(1, 4);
+        results.sort((a, b) => b.score - a.score);
+        const topTool = results[0];
+        const runnerUps = results.slice(1, 4);
 
-            const resultArea = document.getElementById('result-area');
+        const resultArea = document.getElementById('result-area');
+        
+        let runnerUpsHTML = '';
+        runnerUps.forEach(tool => {
+            const isFiltered = tool.score === 50;
+            let logoContent = tool.svgLogo ? 
+                tool.svgLogo : 
+                `<img src="https://logo.clearbit.com/${tool.domain}" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${tool.domain}&size=128';" alt="${tool.name} logo">`;
             
-            let runnerUpsHTML = '';
-            runnerUps.forEach(tool => {
-                const isFiltered = tool.score === 50;
-                let logoContent = tool.svgLogo ? 
-                    tool.svgLogo : 
-                    `<img src="https://logo.clearbit.com/${tool.domain}" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${tool.domain}&size=128';" alt="${tool.name} logo">`;
-                
-                runnerUpsHTML += `
-                    <a href="/${tool.link}?score=${tool.score}" class="ranked-row" ${isFiltered ? 'style="background: #F9FAFB; border-color: transparent; box-shadow: none;"' : ''}>
-                        <div class="row-left">
-                            <div class="row-logo">${logoContent}</div>
-                            <div class="row-details">
-                                <h3 ${isFiltered ? 'style="color: var(--text-sub);"' : ''}>${tool.name}</h3>
-                                <p>${isFiltered ? `Lacks native ${reqInd} workflow support.` : tool.desc}</p>
-                            </div>
-                        </div>
-                        <div class="row-score" style="color: ${getScoreColor(tool.score)}; opacity: ${isFiltered ? '0.3' : '1'};">
-                            ${isFiltered ? '' : tool.score}
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </div>
-                    </a>
-                `;
-            });
-
-            let topLogoContent = topTool.svgLogo ? 
-                topTool.svgLogo : 
-                `<img src="https://logo.clearbit.com/${topTool.domain}" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${topTool.domain}&size=128';" alt="${topTool.name} logo">`;
-
-            resultArea.innerHTML = `
-                <button onclick="editSearch()" class="btn-back">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                    Back to Search
-                </button>
-
-                <div class="audit-card">
-                    <div class="brand-header-result">
-                        <div class="result-logo-container">
-                            <div class="company-logo">${topLogoContent}</div>
-                            <div class="result-title">
-                                <span>Top Recommendation</span>
-                                <h2>${topTool.name}</h2>
-                            </div>
-                        </div>
-                        <div class="score-pill">
-                            <div class="score-big">${topTool.score}</div>
-                            <div class="score-label">Snexz Score</div>
+            runnerUpsHTML += `
+                <a href="/${tool.link}?score=${tool.score}" class="ranked-row" ${isFiltered ? 'style="background: #F9FAFB; border-color: transparent; box-shadow: none;"' : ''}>
+                    <div class="row-left">
+                        <div class="row-logo">${logoContent}</div>
+                        <div class="row-details">
+                            <h3 ${isFiltered ? 'style="color: var(--text-sub);"' : ''}>${tool.name}</h3>
+                            <p>${isFiltered ? `Lacks native ${reqInd} workflow support.` : tool.desc}</p>
                         </div>
                     </div>
-                    
-                    <div style="background: #F9FAFB; border-radius: 12px; padding: 15px 20px; border: 1px solid var(--border);">
-                        <div class="metric-row"><span>Scale Alignment</span><strong style="color: var(--brand-main);">${reqSize} Tier</strong></div>
-                        <div class="metric-row"><span>Industry Compliance</span><strong style="color: var(--brand-main);">${reqInd} Standards</strong></div>
-                    </div>
-                    
-                    <a href="/${topTool.link}?score=${topTool.score}" class="btn-proceed">
-                        View Analysis 
+                    <div class="row-score" style="color: ${getScoreColor(tool.score)}; opacity: ${isFiltered ? '0.3' : '1'};">
+                        ${isFiltered ? '' : tool.score}
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                </div>
+                    </div>
+                </a>
+            `;
+        });
 
-                <div class="ranked-header">
-                    Other Tools Analysed
-                    <span>Showing top 4 evaluated systems</span>
+        let topLogoContent = topTool.svgLogo ? 
+            topTool.svgLogo : 
+            `<img src="https://logo.clearbit.com/${topTool.domain}" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${topTool.domain}&size=128';" alt="${topTool.name} logo">`;
+
+        resultArea.innerHTML = `
+            <button onclick="editSearch()" class="btn-back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to Search
+            </button>
+
+            <div class="audit-card">
+                <div class="brand-header-result">
+                    <div class="result-logo-container">
+                        <div class="company-logo">${topLogoContent}</div>
+                        <div class="result-title">
+                            <span>Top Recommendation</span>
+                            <h2>${topTool.name}</h2>
+                        </div>
+                    </div>
+                    <div class="score-pill">
+                        <div class="score-big">${topTool.score}</div>
+                        <div class="score-label">Snexz Score</div>
+                    </div>
                 </div>
                 
-                <div class="ranked-list">
-                    ${runnerUpsHTML}
+                <div style="background: #F9FAFB; border-radius: 12px; padding: 15px 20px; border: 1px solid var(--border);">
+                    <div class="metric-row"><span>Scale Alignment</span><strong style="color: var(--brand-main);">${reqSize} Tier</strong></div>
+                    <div class="metric-row"><span>Industry Compliance</span><strong style="color: var(--brand-main);">${reqInd} Standards</strong></div>
                 </div>
-            `;
+                
+                <a href="/${topTool.link}?score=${topTool.score}" class="btn-proceed">
+                    View Analysis 
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <div class="ranked-header">
+                Other Tools Analysed
+                <span>Showing top 4 evaluated systems</span>
+            </div>
             
-            document.getElementById('search-box-ui').style.display = 'none';
-            resultArea.style.display = 'block';
-        }
-    </script>
+            <div class="ranked-list">
+                ${runnerUpsHTML}
+            </div>
+        `;
+        
+        document.getElementById('search-box-ui').style.display = 'none';
+        resultArea.style.display = 'block';
+    }
+</script>
 </body>
 </html>
