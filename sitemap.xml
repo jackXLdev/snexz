@@ -14,6 +14,7 @@
   </url>
 
   <url><loc>https://www.snexz.com/activecampaign.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.snexz.com/airtable.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/apollo.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/appointy.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/brevo.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -21,9 +22,12 @@
   <url><loc>https://www.snexz.com/clickup.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/contractor-foreman.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/dropbox.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.snexz.com/freshdesk.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/gorgias.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.snexz.com/gusto.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/highlevel.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/hubspot.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.snexz.com/intercom.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/katana.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/keap.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/monday.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -37,6 +41,7 @@
   <url><loc>https://www.snexz.com/teamwork.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/unbounce.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/webflow.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.snexz.com/wrike.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/zendesk.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
 </urlset>
