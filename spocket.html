@@ -151,4 +151,14 @@
             setTimeout(() => { document.querySelectorAll('.metric-fill').forEach(fill => { fill.style.width = fill.getAttribute('data-target'); }); }, 300);
 
             const backBtn = document.getElementById('back-btn');
-            const backText =
+            const backText = document.getElementById('back-text');
+            if (document.referrer.includes('industries.html')) {
+                backText.innerText = 'Back to Library';
+                backBtn.href = '/industries.html';
+            } else {
+                backBtn.onclick = function(e) { e.preventDefault(); window.history.back(); };
+            }
+        });
+    </script>
+</body>
+</html>
