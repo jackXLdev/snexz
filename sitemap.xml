@@ -48,5 +48,10 @@
   <url><loc>https://www.snexz.com/getresponse.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/spocket.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/convertkit.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.snexz.com/asana.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.snexz.com/klaviyo.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.snexz.com/deel.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.snexz.com/semrush.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.snexz.com/typeform.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
 </urlset>
