@@ -13,6 +13,11 @@
     <priority>0.9</priority>
   </url>
 
+  <url><loc>https://www.snexz.com/canva.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.snexz.com/miro.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.snexz.com/jasper.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.snexz.com/xero.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.snexz.com/freshbooks.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/activecampaign.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/airtable.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/apollo.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
