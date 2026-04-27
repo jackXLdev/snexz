@@ -537,7 +537,7 @@
                 `<img src="https://logo.clearbit.com/${tool.domain}" onerror="this.onerror=null; this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${tool.domain}&size=128';" alt="${tool.name} logo">`;
             
             runnerUpsHTML += `
-                <a href="${isFiltered ? '#' : '/' + tool.link + '?score=' + tool.score}" class="ranked-row" ${isFiltered ? 'style="background: #F9FAFB; border-color: transparent; box-shadow: none; cursor: default;"' : ''}>
+                <a href="${isFiltered ? '#' : '/' + tool.link}" class="ranked-row" ${isFiltered ? 'style="background: #F9FAFB; border-color: transparent; box-shadow: none; cursor: default;"' : ''}>
                     <div class="row-left">
                         <div class="row-logo">${logoContent}</div>
                         <div class="row-details">
@@ -583,7 +583,7 @@
                     <div class="metric-row"><span>Industry Compliance</span><strong style="color: var(--brand-main);">${reqInd} Standards</strong></div>
                 </div>
                 
-                <a href="/${topTool.link}?score=${topTool.score}" class="btn-proceed">
+                <a href="/${topTool.link}" class="btn-proceed">
                     View Analysis 
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
