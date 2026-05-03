@@ -13,6 +13,11 @@
     <priority>0.9</priority>
   </url>
 
+  <url><loc>https://www.snexz.com/mailchimp.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.snexz.com/salesforce.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.snexz.com/trello.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.snexz.com/bamboohr.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.snexz.com/stripe.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/canva.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/miro.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.snexz.com/jasper.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
