@@ -24,13 +24,8 @@
             --shadow-premium: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
         
-        * {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        input, select, textarea {
-            caret-color: var(--brand-main);
-        }
+        * { -webkit-tap-highlight-color: transparent; }
+        input, select, textarea { caret-color: var(--brand-main); }
 
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         
@@ -39,154 +34,55 @@
         
         @keyframes wipeRight { to { clip-path: inset(0 0 0 0); } }
         
-        main { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; margin-top: 16vh; width: 100%; max-width: 680px; text-align: center; opacity: 0; animation: revealMain 0.8s ease-out 2.6s forwards; }
-        @keyframes revealMain { to { opacity: 1; } }
+        main { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; margin-top: 16vh; width: 100%; max-width: 680px; text-align: center; opacity: 0; transition: opacity 0.8s ease-out; }
+        .show-content main { opacity: 1; }
 
         .brand-header { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 12px; }
-        .logo-svg { height: 75px; width: auto; }
         .brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 4rem; letter-spacing: -1.5px; color: var(--brand-main); margin: 0; line-height: 1; }
-        
         .tagline { color: var(--text-main); font-size: 1.15rem; margin-bottom: 35px; font-weight: 600; }
         
-        .search-container { background: transparent; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); text-align: left; width: 100%;}
-        
+        .search-container { text-align: left; width: 100%;}
         .input-cluster { background: #FFF; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-premium); margin-bottom: 20px; border: 1px solid rgba(0,0,0,0.06); }
-        
         .input-row { display: flex; width: 100%; border-bottom: 1px solid var(--border); }
         .input-row:last-child { border-bottom: none; }
-        @media (max-width: 600px) { .input-row { flex-direction: column; } }
-        
-        .input-field { flex: 1; position: relative; border-right: 1px solid var(--border); background: #FFF; padding: 12px 16px; transition: 0.2s background; }
+        .input-field { flex: 1; position: relative; border-right: 1px solid var(--border); background: #FFF; padding: 12px 16px; }
         .input-field:last-child { border-right: none; }
-        @media (max-width: 600px) { .input-field { border-right: none; border-bottom: 1px solid var(--border); } .input-field:last-child { border-bottom: none; } }
-        .input-field:hover { background: #F9FAFB; }
-        
         .input-field label { font-size: 0.75rem; font-weight: 700; color: var(--text-sub); display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
         
         select { width: 100%; border: none; padding: 4px 0; font-size: 1.05rem; outline: none; font-family: inherit; background: transparent; color: var(--text-main); cursor: pointer; appearance: none; font-weight: 700; }
-        select:invalid { color: #9CA3AF; } 
         
         .tech-specs-grid { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;}
         .tech-toggle { display: block; position: relative; cursor: pointer; flex: 1; min-width: 120px;}
-        .tech-toggle input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
-        .tech-toggle span { display: block; padding: 14px 12px; text-align: center; border-radius: 12px; font-size: 0.9rem; font-weight: 700; color: var(--text-sub); transition: all 0.2s; background: #FFF; border: 1.5px solid var(--border); user-select: none; box-shadow: var(--shadow-sm); }
-        .tech-toggle input:checked ~ span { background: var(--brand-main); color: #FFF; border-color: var(--brand-main); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
+        .tech-toggle input { position: absolute; opacity: 0; }
+        .tech-toggle span { display: block; padding: 14px 12px; text-align: center; border-radius: 12px; font-size: 0.9rem; font-weight: 700; color: var(--text-sub); background: #FFF; border: 1.5px solid var(--border); transition: all 0.2s; }
+        .tech-toggle input:checked ~ span { background: var(--brand-main); color: #FFF; border-color: var(--brand-main); }
         
-        .btn-audit { background: var(--brand-main); color: white; border: none; padding: 20px; border-radius: 16px; font-weight: 800; font-size: 1.2rem; cursor: pointer; transition: all 0.2s ease; font-family: 'Outfit', sans-serif; width: 100%; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); }
-        .btn-audit:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); }
-        .btn-audit:active { transform: translateY(0); }
+        .btn-audit { background: var(--brand-main); color: white; border: none; padding: 20px; border-radius: 16px; font-weight: 800; font-size: 1.2rem; cursor: pointer; width: 100%; font-family: 'Outfit', sans-serif; }
         
-        .progress-wrapper { display: none; margin-top: 15px; width: 100%; }
-        .progress-container { background: #E5E7EB; border-radius: 12px; height: 10px; overflow: hidden; width: 100%; margin-bottom: 12px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
-        .progress-bar { height: 100%; width: 0%; background: var(--brand-main); transition: width 0.2s ease-out; border-radius: 12px; }
-        .progress-text { font-size: 0.85rem; font-weight: 800; color: var(--brand-main); text-transform: uppercase; letter-spacing: 0.5px; font-family: 'Outfit', sans-serif; text-align: center; animation: pulseText 1.5s infinite ease-in-out;}
-        @keyframes pulseText { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
+        .progress-wrapper { display: none; margin-top: 15px; }
+        .progress-container { background: #E5E7EB; border-radius: 12px; height: 10px; overflow: hidden; }
+        .progress-bar { height: 100%; width: 0%; background: var(--brand-main); transition: width 0.2s; }
 
-        #result-area { display: none; margin-top: 10px; text-align: left; animation: slideUp 0.4s ease-out; width: 100%; background: transparent; padding: 0; border-radius: 0; box-sizing: border-box; }
+        #result-area { display: none; margin-top: 10px; width: 100%; }
+        .audit-card { background: #FFF; border-radius: 20px; padding: 35px; border: 1px solid var(--border); box-shadow: var(--shadow-premium); display: flex; flex-direction: column; gap: 15px;}
         
-        .btn-back { display: flex; align-items: center; gap: 8px; background: none; border: none; color: var(--text-main); font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; cursor: pointer; padding: 0; margin-bottom: 25px; transition: 0.2s; }
-        .btn-back:hover { color: var(--text-sub); transform: translateX(-4px); }
+        .site-footer { padding: 40px; text-align: center; color: var(--text-sub); font-size: 0.85rem; border-top: 1px solid var(--border); width: 100%; opacity: 0; transition: opacity 0.8s; }
+        .show-content .site-footer { opacity: 1; }
+        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; }
+        .footer-links a { color: var(--text-main); text-decoration: none; font-weight: 700; cursor: pointer; }
 
-        .audit-card { background: #FFF; border-radius: 20px; padding: 35px; border: 1px solid var(--border); box-shadow: var(--shadow-premium); margin-bottom: 30px; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 15px;}
-        
-        .brand-header-result { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-        .result-logo-container { display: flex; align-items: center; gap: 15px; }
-        
-        .company-logo { width: 55px; height: 55px; border-radius: 12px; border: 1px solid var(--border); padding: 6px; background: #FFF; box-shadow: var(--shadow-sm); display: flex; align-items: center; justify-content: center; }
-        .company-logo img, .company-logo svg { max-width: 100%; max-height: 100%; height: auto; width: auto; object-fit: contain; }
-
-        .result-title h2 { margin: 0; font-family: 'Outfit', sans-serif; font-size: 1.8rem; color: var(--text-main); line-height: 1.1;}
-        .result-title span { font-size: 0.85rem; font-weight: 800; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.5px;}
-        
-        .score-pill { display: flex; flex-direction: column; align-items: flex-end; }
-        .score-big { font-size: 3.5rem; font-weight: 800; font-family: 'Outfit', sans-serif; line-height: 0.9; letter-spacing: -1px; color: var(--brand-main); }
-        .score-label { font-size: 0.75rem; font-weight: 800; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.5px; font-family: 'Outfit', sans-serif; }
-        
-        .metric-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #F1F5F9; font-size: 0.95rem; }
-        .metric-row:last-of-type { border-bottom: none; }
-        
-        .btn-proceed { display: flex; justify-content: center; align-items: center; gap: 8px; background: var(--brand-main); color: white; padding: 18px; border-radius: 12px; text-decoration: none; font-weight: 800; margin-top: 15px; font-size: 1.05rem; transition: 0.2s; font-family: 'Outfit', sans-serif; letter-spacing: 0.5px;}
-        .btn-proceed:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); }
-
-        .ranked-header { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--text-main); margin: 30px 0 15px 0; display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 10px; border-bottom: 1px solid var(--border);}
-        .ranked-header span { font-size: 0.85rem; font-weight: 600; color: var(--text-sub); font-family: 'Plus Jakarta Sans', sans-serif;}
-        
-        .ranked-list { display: flex; flex-direction: column; gap: 12px; }
-        
-        .ranked-row { display: flex; align-items: center; justify-content: space-between; background: #FFF; border: 1px solid var(--border); border-radius: 16px; padding: 15px 20px; transition: 0.2s ease; text-decoration: none; color: inherit; box-shadow: var(--shadow-sm); }
-        .ranked-row:hover { border-color: #D1D5DB; transform: translateY(-2px); box-shadow: var(--shadow-premium); }
-        
-        .row-left { display: flex; align-items: center; gap: 15px; }
-        
-        .row-logo { width: 45px; height: 45px; border-radius: 10px; border: 1px solid var(--border); padding: 4px; background: #FFF; display: flex; align-items: center; justify-content: center; }
-        .row-logo img, .row-logo svg { max-width: 100%; max-height: 100%; height: auto; width: auto; object-fit: contain; }
-
-        .row-details h3 { margin: 0 0 2px 0; font-family: 'Outfit', sans-serif; font-size: 1.1rem; color: var(--text-main); }
-        .row-details p { margin: 0; font-size: 0.85rem; font-weight: 500; color: var(--text-sub); }
-        
-        .row-score { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; display: flex; align-items: center; gap: 15px;}
-        .row-score svg { color: var(--text-sub); transition: 0.2s;}
-        .ranked-row:hover .row-score svg { color: var(--brand-main); transform: translateX(4px); }
-
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 10000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(8px); }
-        .modal-content { background: white; padding: 40px; border-radius: 24px; max-width: 500px; text-align: left; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); animation: modalPop 0.3s ease-out; color: var(--text-main); }
-        
-        .modal-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
-        .modal-brand svg { height: 35px; width: auto; }
-        .modal-brand-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 2rem; letter-spacing: -0.5px; color: var(--brand-main); margin: 0; }
-        
-        .modal-header { margin-bottom: 15px; }
-        #modal-title { font-family: 'Outfit', sans-serif; margin: 0; font-size: 1.6rem; color: var(--brand-main); font-weight: 800; letter-spacing: -0.5px; }
-        
-        #modal-body p { font-size: 0.95rem; font-weight: 400; line-height: 1.6; margin-top: 0; margin-bottom: 15px; color: var(--brand-main); }
-        #modal-body p:last-child { margin-bottom: 0; }
-        
-        @keyframes modalPop { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-        
-        .site-footer { padding: 40px; text-align: center; color: var(--text-sub); font-size: 0.85rem; margin-top: auto; width: 100%; font-weight: 600; opacity: 0; animation: revealMain 0.8s ease-out 2.6s forwards; border-top: 1px solid var(--border); }
-        .footer-links { margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .footer-links a { color: var(--text-main); text-decoration: none; font-weight: 700; cursor: pointer; transition: 0.2s; }
-        .footer-links a:hover { color: var(--text-sub); }
-        
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* --- MOBILE FIXES --- */
         @media (max-width: 600px) {
             #loader-overlay { display: none !important; }
-            main { margin-top: 5vh; animation: slideUp 0.6s ease-out forwards !important; opacity: 0; }
-            .site-footer { animation: slideUp 0.6s ease-out forwards !important; opacity: 0; }
-            
-            .logo-svg { height: 50px; }
-            .brand-name { font-size: 3rem; }
-            
-            .brand-header-result { flex-direction: column; align-items: flex-start; gap: 20px; }
-            .score-pill { align-items: flex-start; width: 100%; border-top: 1px solid var(--border); padding-top: 15px; flex-direction: row; justify-content: space-between; }
-            .score-big { font-size: 3.5rem; line-height: 1; }
-            .score-label { align-self: center; text-align: right; }
-            .result-title h2 { font-size: 1.6rem; }
-            
-            .metric-row { flex-direction: column; align-items: flex-start; gap: 6px; padding: 15px 0; }
-            
-            .ranked-row { flex-wrap: wrap; padding: 20px; }
-            .row-left { width: 100%; margin-bottom: 15px; align-items: flex-start;}
-            .row-score { width: 100%; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 15px; font-size: 1.5rem; }
+            .input-row { flex-direction: column; }
+            .input-field { border-right: none; border-bottom: 1px solid var(--border); }
         }
     </style>
-    
-    <script>
-        window.va = window.va || function () { 
-            (window.vaq = window.vaq || []).push(arguments); 
-        };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
     <div id="loader-overlay">
-        <svg class="loader-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1104 944" preserveAspectRatio="xMidYMid meet">
+        <svg class="loader-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1104 944">
             <path fill="#000000" d="M784.000000,945.000000 C522.698486,945.000000 261.896942,945.000000 1.047713,945.000000 C1.047713,630.403503 1.047713,315.807037 1.047713,1.105274 C368.884888,1.105274 736.769836,1.105274 1104.827393,1.105274 C1104.827393,315.666595 1104.827393,630.333313 1104.827393,945.000000 C998.140198,945.000000 891.320129,945.000000 784.000000,945.000000 M739.806946,306.711243 C763.760376,306.711243 787.713806,306.711243 811.688293,306.711243 C811.688293,282.763458 811.688293,259.088196 811.688293,235.246964 C787.069702,235.246964 762.919495,235.246964 739.047668,234.313919 C739.047668,210.696320 739.047668,187.078720 739.047668,163.019089 C737.378357,163.019089 736.089905,163.015686 734.801453,163.019577 C639.641907,163.307068 544.482422,163.668839 449.322601,163.811157 C433.320831,163.835098 417.882019,166.533997 402.623199,171.001373 C337.133789,190.174927 296.188263,233.660355 277.701569,298.549896 C268.068695,332.361877 267.306976,366.903870 273.903107,401.502655 C285.498413,462.323547 318.125885,507.647949 373.772247,535.499023 C397.859985,547.554932 423.892029,551.914490 450.697723,551.933167 C484.696167,551.956909 518.694641,551.921692 552.693054,551.961670 C574.024536,551.986755 595.371582,551.614441 616.683472,552.298096 C645.741211,553.230286 665.440247,572.638245 666.396545,601.028931 C667.358704,629.594238 653.137268,649.536865 623.337402,653.991821 C609.752197,656.022827 595.756226,655.731262 581.945129,655.758789 C466.284088,655.989502 350.622772,656.049744 234.961517,656.160400 C230.502274,656.164673 226.043015,656.160950 221.368759,656.160950 C221.368759,703.430481 221.368759,750.146912 221.368759,797.187927 C223.718124,797.187927 225.699615,797.193237 227.681076,797.187134 C360.007080,796.777954 492.334045,796.528564 624.657837,795.745117 C640.360107,795.652161 656.476807,794.400635 671.663574,790.677002 C738.082703,774.391602 783.536255,734.062195 805.516785,668.853149 C815.710754,638.610901 817.656128,607.279480 814.164429,575.566833 C809.551941,533.673889 793.711609,496.826202 764.351074,466.405701 C728.168152,428.916504 683.380127,410.478546 631.568787,409.967957 C576.411560,409.424377 521.243591,410.048950 466.080444,409.995789 C442.465088,409.973053 420.943420,392.285126 416.125763,369.426147 C411.006165,345.134613 422.831146,321.205414 444.778015,310.887512 C455.767426,305.721039 467.430573,305.993195 479.059784,305.977386 C539.557068,305.895111 600.054443,305.913513 660.551819,305.896973 C662.321594,305.896484 664.091370,305.896881 666.208496,305.896881 C666.208496,282.014862 666.208496,258.751343 666.208496,235.107254 C690.682678,235.107254 714.804138,235.107254 739.195862,235.969040 C739.183960,243.748199 739.180115,251.527374 739.158386,259.306519 C739.114136,275.173981 739.060242,291.041473 738.122803,307.206879 C714.533936,307.206879 690.945068,307.206879 667.567383,307.206879 C667.567383,330.949615 667.567383,354.346588 667.567383,377.882812 C691.678955,377.882812 715.240234,377.882812 738.849548,377.882812 C738.849548,353.973877 738.849548,330.359711 739.806946,306.711243 M812.182251,198.499954 C812.182251,210.288864 812.182251,222.077774 812.182251,234.112274 C836.254456,234.112274 859.809875,234.112274 883.501587,234.112274 C883.501587,210.270813 883.501587,186.750244 883.501587,163.307129 C859.611267,163.307129 836.053162,163.307129 812.190430,163.307129 C812.190430,174.922913 812.190430,186.211441 812.182251,198.499954 z"/>
-            <path fill="#FEFEFE" d="M738.925537,235.107254 C714.804138,235.107254 690.682678,235.107254 666.208496,235.107254 C666.208496,258.751343 666.208496,282.014862 666.208496,305.896881 C664.091370,305.896881 662.321594,305.896484 660.551819,305.896973 C600.054443,305.913513 539.557068,305.895111 479.059784,305.977386 C467.430573,305.993195 455.767426,305.721039 444.778015,310.887512 C422.831146,321.205414 411.006165,345.134613 416.125763,369.426147 C420.943420,392.285126 442.465088,409.973053 466.080444,409.995789 C521.243591,410.048950 576.411560,409.424377 631.568787,409.967957 C683.380127,410.478546 728.168152,428.916504 764.351074,466.405701 C793.711609,496.826202 809.551941,533.673889 814.164429,575.566833 C817.656128,607.279480 815.710754,638.610901 805.516785,668.853149 C783.536255,734.062195 738.082703,774.391602 671.663574,790.677002 C656.476807,794.400635 640.360107,795.652161 624.657837,795.745117 C492.334045,796.528564 360.007080,796.777954 227.681076,797.187134 C225.699615,797.193237 223.718124,797.187927 221.368759,797.187927 C221.368759,750.146912 221.368759,703.430481 221.368759,656.160950 C226.043015,656.160950 230.502274,656.164673 234.961517,656.160400 C350.622772,656.049744 466.284088,655.989502 581.945129,655.758789 C595.756226,655.731262 609.752197,656.022827 623.337402,653.991821 C653.137268,649.536865 667.358704,629.594238 666.396545,601.028931 C665.440247,572.638245 645.741211,553.230286 616.683472,552.298096 C595.371582,551.614441 574.024536,551.986755 552.693054,551.961670 C518.694641,551.921692 484.696167,551.956909 450.697723,551.933167 C423.892029,551.914490 397.859985,547.554932 373.772247,535.499023 C318.125885,507.647949 285.498413,462.323547 273.903107,401.502655 C267.306976,366.903870 268.068695,332.361877 277.701569,298.549896 C296.188263,233.660355 337.133789,190.174927 402.623199,171.001373 C417.882019,166.533997 433.320831,163.835098 449.322601,163.811157 C544.482422,163.668839 639.641907,163.307068 734.801453,163.019577 C736.089905,163.015686 737.378357,163.019089 739.047668,163.019089 C739.047668,187.078720 739.047668,210.696320 738.951904,234.750397 C738.856140,235.186890 738.925537,235.107254 738.925537,235.107254 z"/>
-            <path fill="#FCFCFC" d="M738.812683,235.216919 C762.919495,235.246964 787.069702,235.246964 811.688293,235.246964 C811.688293,259.088196 811.688293,282.763458 811.688293,306.711243 C787.713806,306.711243 763.760376,306.711243 739.364014,306.773560 C738.921143,306.835907 739.010376,306.908936 739.010376,306.908936 C739.060242,291.041473 739.114136,275.173981 739.158386,259.306519 C739.180115,251.527374 739.183960,243.748199 739.195862,235.969040 C739.167847,235.807800 738.887207,235.132843 738.812683,235.216919 z"/>
         </svg>
     </div>
 
@@ -249,262 +145,67 @@
                 <div class="progress-container">
                     <div class="progress-bar" id="progress-bar"></div>
                 </div>
-                <div class="progress-text" id="progress-text">Analyzing database...</div>
             </div>
         </div>
 
         <div id="result-area">
-            <button class="btn-back" onclick="resetSearch()">
-                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                New Search
-            </button>
-            
             <div class="audit-card">
-                <div class="brand-header-result">
-                    <div class="result-logo-container">
-                        <div class="company-logo" id="top-pick-logo">
-                            <!-- Logo SVG injected via JS -->
-                        </div>
-                        <div class="result-title">
-                            <span>Top Recommendation</span>
-                            <h2 id="top-pick-name">Loading...</h2>
-                        </div>
-                    </div>
-                    <div class="score-pill">
-                        <div class="score-big" id="top-pick-score">98</div>
-                        <div class="score-label">Snexz Score</div>
-                    </div>
-                </div>
-                
-                <p style="font-size: 0.95rem; line-height: 1.5; margin: 0 0 10px 0; color: var(--text-main); font-weight: 500;" id="top-pick-desc">
-                    Based on your requirements, this tool offers the best balance of features, scalability, and ease of use.
-                </p>
-
-                <div style="background: #F8FAFC; border-radius: 12px; padding: 15px; border: 1px solid #E2E8F0;">
-                    <div class="metric-row">
-                        <strong>Pricing:</strong> <span id="top-pick-pricing">Free Tier Available</span>
-                    </div>
-                    <div class="metric-row">
-                        <strong>Standout Feature:</strong> <span id="top-pick-feature">Advanced Automation</span>
-                    </div>
-                    <div class="metric-row">
-                        <strong>Learning Curve:</strong> <span id="top-pick-curve">Beginner Friendly</span>
-                    </div>
-                </div>
-                
-                <a href="#" class="btn-proceed" id="top-pick-link" target="_blank" rel="noopener noreferrer">
-                    Visit Website
-                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </a>
-            </div>
-
-            <div class="ranked-header">
-                Runner-Ups
-                <span>Sorted by fit</span>
-            </div>
-            
-            <div class="ranked-list" id="runner-ups-list">
-                <!-- Runner ups injected via JS -->
+                <h2 id="top-pick-name">Loading...</h2>
+                <p id="top-pick-desc">Recommendation goes here.</p>
+                <button onclick="resetSearch()">New Search</button>
             </div>
         </div>
     </main>
 
     <footer class="site-footer">
         <div class="footer-links">
-            <a onclick="openModal('about')">About Snexz</a>
+            <a onclick="openModal('about')">About</a>
             <a onclick="openModal('privacy')">Privacy</a>
             <a onclick="openModal('terms')">Terms</a>
-            <a href="mailto:hello@snexz.com">Contact</a>
         </div>
-        <div>&copy; 2026 Snexz. All rights reserved.</div>
+        <div>&copy; 2026 Snexz.</div>
     </footer>
 
-    <div class="modal" id="infoModal">
-        <div class="modal-content">
-            <button style="position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-sub);" onclick="closeModal()">&times;</button>
-            <div class="modal-header">
-                <h2 id="modal-title">Title</h2>
-            </div>
-            <div id="modal-body">
-                Content goes here...
-            </div>
-        </div>
-    </div>
-
+    <!-- KILL SWITCH: THIS REMOVES THE LOADER -->
     <script>
-        // Fake software database mapping
-        const softwareDB = {
-            'ecommerce': {
-                'marketing': [
-                    { name: 'Klaviyo', score: 98, desc: 'The undisputed king of ecommerce email and SMS marketing. Incredible segmentation.', price: 'Free to start, scales with contacts', feature: 'Predictive analytics & flows', curve: 'Moderate', logo: '<svg viewBox="0 0 24 24" fill="#000"><path d="M12 2L2 22h20L12 2z"/></svg>', url: '#' },
-                    { name: 'Omnisend', score: 92, desc: 'A slightly easier-to-use alternative to Klaviyo with great omnichannel features.', price: 'Free tier available', feature: 'Pre-built automations', curve: 'Easy', logo: '<svg viewBox="0 0 24 24" fill="#000"><circle cx="12" cy="12" r="10"/></svg>', url: '#' }
-                ],
-                'sales': [
-                    { name: 'Shopify', score: 99, desc: 'The industry standard for building and running an online store.', price: '$39/mo', feature: 'Massive app ecosystem', curve: 'Moderate', logo: '<svg viewBox="0 0 24 24" fill="#000"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>', url: '#' },
-                    { name: 'WooCommerce', score: 88, desc: 'Best if you already use WordPress and want total control over your code.', price: 'Free (Hosting required)', feature: 'Open source customization', curve: 'Steep', logo: '<svg viewBox="0 0 24 24" fill="#000"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>', url: '#' }
-                ]
-            },
-            'saas': {
-                'marketing': [
-                    { name: 'HubSpot', score: 96, desc: 'The all-in-one powerhouse for inbound marketing, sales, and service.', price: 'Free tools, paid tiers get expensive', feature: 'Unified CRM + Marketing', curve: 'Moderate', logo: '<svg viewBox="0 0 24 24" fill="#000"><polygon points="12 2 22 22 2 22"/></svg>', url: '#' },
-                    { name: 'ActiveCampaign', score: 91, desc: 'Extremely powerful automation builder specifically for SaaS user journeys.', price: 'Starts at $29/mo', feature: 'Visual automation builder', curve: 'Moderate', logo: '<svg viewBox="0 0 24 24" fill="#000"><circle cx="12" cy="12" r="10"/></svg>', url: '#' }
-                ],
-                'operations': [
-                    { name: 'Notion', score: 95, desc: 'The ultimate flexible workspace for SaaS wikis, roadmaps, and task tracking.', price: 'Free for individuals, $8/mo/user', feature: 'Customizable databases', curve: 'Moderate', logo: '<svg viewBox="0 0 24 24" fill="#000"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>', url: '#' },
-                    { name: 'Linear', score: 94, desc: 'Lightning-fast issue tracking explicitly built for high-performance software teams.', price: 'Free up to 250 issues', feature: 'Keyboard-first design', curve: 'Easy', logo: '<svg viewBox="0 0 24 24" fill="#000"><path d="M12 2L2 22h20L12 2z"/></svg>', url: '#' }
-                ]
-            }
-        };
-
-        // Fallback generic data if combination isn't defined explicitly
-        const genericDB = [
-            { name: 'Stripe', score: 97, desc: 'The best way to accept payments online, period.', price: 'Pay-as-you-go (2.9% + 30¢)', feature: 'Developer-friendly APIs', curve: 'Moderate', logo: '<svg viewBox="0 0 24 24" fill="#000"><rect x="2" y="6" width="20" height="12" rx="2"/></svg>', url: '#' },
-            { name: 'Zapier', score: 95, desc: 'Connects all your tools together without writing any code.', price: 'Free limited tier', feature: '6,000+ app integrations', curve: 'Easy', logo: '<svg viewBox="0 0 24 24" fill="#000"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>', url: '#' },
-            { name: 'Intercom', score: 93, desc: 'The best live chat and customer support tool for digital businesses.', price: 'Starts at $74/mo', feature: 'AI customer service bot', curve: 'Moderate', logo: '<svg viewBox="0 0 24 24" fill="#000"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>', url: '#' }
-        ];
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader-overlay');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                document.body.classList.add('show-content');
+                setTimeout(() => { 
+                    loader.style.display = 'none'; 
+                }, 500);
+            }, 1500); 
+        });
 
         function startAudit() {
-            const industry = document.getElementById('industry-select').value;
+            const ind = document.getElementById('industry-select').value;
             const goal = document.getElementById('goal-select').value;
-
-            if (!industry || !goal) {
-                alert('Please select both an industry and a goal to find your software.');
-                return;
-            }
-
+            if(!ind || !goal) return alert('Select options first');
+            
             document.querySelector('.btn-audit').style.display = 'none';
             document.getElementById('progress-wrapper').style.display = 'block';
-            
-            const progressBar = document.getElementById('progress-bar');
-            const progressText = document.getElementById('progress-text');
-            
-            let width = 0;
-            const texts = ["Analyzing industry standard tools...", "Filtering by your specific goal...", "Applying budget & AI constraints...", "Finalizing top recommendations..."];
-            let textIndex = 0;
-
-            const interval = setInterval(() => {
-                if (width >= 100) {
-                    clearInterval(interval);
-                    showResults(industry, goal);
-                } else {
-                    width += Math.random() * 15;
-                    if(width > 100) width = 100;
-                    progressBar.style.width = width + '%';
-                    
-                    if (width > (textIndex + 1) * 25 && textIndex < texts.length - 1) {
-                        textIndex++;
-                        progressText.innerText = texts[textIndex];
-                    }
+            let w = 0;
+            const bar = document.getElementById('progress-bar');
+            const iv = setInterval(() => {
+                w += 10;
+                bar.style.width = w + '%';
+                if(w >= 100) {
+                    clearInterval(iv);
+                    document.getElementById('search-container').style.display = 'none';
+                    document.getElementById('result-area').style.display = 'block';
+                    document.getElementById('top-pick-name').innerText = "Klaviyo";
+                    document.getElementById('top-pick-desc').innerText = "Best fit for " + ind + " goals.";
                 }
-            }, 300);
-        }
-
-        function showResults(industry, goal) {
-            document.getElementById('search-container').style.display = 'none';
-            const resultArea = document.getElementById('result-area');
-            resultArea.style.display = 'block';
-
-            // Logic to pull from fake DB
-            let results = [];
-            if (softwareDB[industry] && softwareDB[industry][goal]) {
-                results = softwareDB[industry][goal];
-            } else {
-                // If specific combination isn't mapped, just show generic top tools
-                results = genericDB.slice(0, 2); 
-            }
-
-            // Populate Top Pick
-            const topPick = results[0];
-            document.getElementById('top-pick-name').innerText = topPick.name;
-            document.getElementById('top-pick-score').innerText = topPick.score;
-            document.getElementById('top-pick-desc').innerText = topPick.desc;
-            document.getElementById('top-pick-pricing').innerText = topPick.price;
-            document.getElementById('top-pick-feature').innerText = topPick.feature;
-            document.getElementById('top-pick-curve').innerText = topPick.curve;
-            document.getElementById('top-pick-logo').innerHTML = topPick.logo;
-            document.getElementById('top-pick-link').href = topPick.url;
-
-            // Populate Runner Up
-            const list = document.getElementById('runner-ups-list');
-            list.innerHTML = ''; // clear previous
-            
-            if (results.length > 1) {
-                const runnerUp = results[1];
-                list.innerHTML = `
-                    <a href="${runnerUp.url}" class="ranked-row" target="_blank">
-                        <div class="row-left">
-                            <div class="row-logo">${runnerUp.logo}</div>
-                            <div class="row-details">
-                                <h3>${runnerUp.name}</h3>
-                                <p>${runnerUp.desc}</p>
-                            </div>
-                        </div>
-                        <div class="row-score">
-                            ${runnerUp.score}
-                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-                        </div>
-                    </a>
-                `;
-            } else {
-                // Fallback secondary
-                list.innerHTML = `
-                    <a href="#" class="ranked-row">
-                        <div class="row-left">
-                            <div class="row-logo"><svg viewBox="0 0 24 24" fill="#000"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-                            <div class="row-details">
-                                <h3>Zapier</h3>
-                                <p>Essential for connecting tools, regardless of your stack.</p>
-                            </div>
-                        </div>
-                        <div class="row-score">
-                            90
-                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-                        </div>
-                    </a>
-                `;
-            }
+            }, 200);
         }
 
         function resetSearch() {
-            document.getElementById('result-area').style.display = 'none';
-            document.getElementById('search-container').style.display = 'block';
-            
-            document.getElementById('progress-wrapper').style.display = 'none';
-            document.querySelector('.btn-audit').style.display = 'block';
-            document.getElementById('progress-bar').style.width = '0%';
-            document.getElementById('progress-text').innerText = 'Analyzing database...';
+            location.reload();
         }
 
-        function openModal(type) {
-            const modal = document.getElementById('infoModal');
-            const title = document.getElementById('modal-title');
-            const body = document.getElementById('modal-body');
-            
-            if (type === 'about') {
-                title.innerText = "About Snexz";
-                body.innerHTML = "<p>Snexz was built to solve the paralysis of choice in B2B software.</p><p>We evaluate thousands of SaaS products based on real-world utility, pricing models, and learning curves so you don't have to spend hours watching YouTube reviews.</p>";
-            } else if (type === 'privacy') {
-                title.innerText = "Privacy Policy";
-                body.innerHTML = "<p>We don't sell your data. Searches are processed anonymously to improve recommendation algorithms.</p>";
-            } else if (type === 'terms') {
-                title.innerText = "Terms of Service";
-                body.innerHTML = "<p>Snexz provides software recommendations 'as-is'. We may earn an affiliate commission if you purchase through our links, but this never influences our Snexz Score methodology.</p>";
-            }
-            
-            modal.style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('infoModal').style.display = 'none';
-        }
-
-        // Close modal if clicked outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('infoModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
+        function openModal(t) { alert(t + " info coming soon."); }
     </script>
 </body>
 </html>
